@@ -114,3 +114,91 @@ mesh = makeTree(config)
 writeMeshFile(mesh, "mesh.obj")
 
 
+
+############## Begin stem generation config class ############### by Timon, 27.10.
+# This class will do the same as the above tree config class,
+# with the addition of allowing more parameters, esp. curvature and elliptic stems
+class StemConfig:
+    def __init__(self, length, bottomdiam1, bottomdiam2, middiam1, middiam2, topdiam1, topdiam2, bend):
+        self.length = length
+        self.bottomdiam1 = bottomdiam1
+        self.bottomdiam2 = bottomdiam2
+        self.middiam1 = middiam1
+        self.middiam2 = middiam2
+        self.topdiam1 = topdiam1
+        self.topdiam2 = topdiam2
+        self.bend = bend
+################## End StemConfig Class ########################
+
+
+def createRing(Xrad, Yrad, Nsides, xshift, z):
+    r = []
+    for i in range(0, Nsides):
+        x = math.cos( i * math.pi * 2 / Nsides) * Xrad + xshift
+        y = math.sin( i * math.pi * 2 / Nsides) * Yrad
+        r.append( [x,y,z] )
+    return r
+
+
+#### End of class ring ####
+
+
+NSides = 20   # can be altered at will
+
+def f(x):
+    return (4 * ( -x **2  + x ))
+# F is the function used to describe the bend.
+# F should always range between 0 and 1 for x between 0 and 1, with f(0) = 0, f(1) = 1
+
+
+
+def makeStem(config, Nsides, Nrings):
+    mesh = Mesh()
+
+# from here: create rings
+    rings = []
+    for i in range(0 , Nrings + 1):
+        pos = ( i / Nrings)
+        if pos < 0.5:
+            xrad = (config.bottomdiam1 * ( 1 - ( 2 * pos )) + config.middiam1 * (2 * pos)) / 2
+            yrad = (config.bottomdiam2 * ( 1 - ( 2 * pos )) + config.middiam2 * (2 * pos)) / 2
+        else:
+            xrad = (config.middiam1 * (2 - (2 * pos)) + config.topdiam1 * (2 * (pos - 0.5))) / 2
+            yrad = (config.middiam2 * (2 - (2 * pos)) + config.topdiam2 * (2 * (pos - 0.5))) / 2
+        xshift = f(pos) * config.bend
+        z = pos * config.length
+        r = createRing(xrad, yrad, Nsides, xshift, z)
+        rings.append(r)
+# until here : saved all vertices, organized in rings
+# now: make sides
+
+    for i in range(0 , len(rings) - 1 ):
+        n = len(rings[i])
+        for j in range(0 , n):
+            mesh.createTriangle(rings[i][j], rings[i][(j + 1) % n], rings[i + 1][j] )
+            mesh.createTriangle(rings[i][ (j + 1) % n], rings[i+1][j], rings[i+1][( j + 1) % n])
+#now: make Ends
+    r = rings[0]
+    n = len(r)
+    for j in range(0, n):
+        mesh.createTriangle(r[j], r[(j + 1) % n], [f(0), 0, 0])
+
+    r = rings[len(rings) - 1]
+    n = len(r)
+    for j in range(0, n):
+        mesh.createTriangle(r[j], r[(j + 1) % n], [f(1), 0, config.length])
+# finished making ends
+    return mesh
+
+
+config = StemConfig(300, 25, 20, 18, 16, 13, 13, 20)
+
+mesh = makeStem(config, 20, 10)
+
+writeMeshFile(mesh, "mesh.obj")
+
+
+
+
+
+
