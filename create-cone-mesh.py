@@ -18,7 +18,9 @@ class Mesh:
         self.vertices.append(v2)
         self.vertices.append(v3)
 
-        self.faces.append([currentIndex + 1, currentIndex + 2, currentIndex + 3])
+        self.faces.append(currentIndex + 1)
+        self.faces.append(currentIndex + 2)
+        self.faces.append(currentIndex + 3)
 ####################### END Mesh class ######################
 
 ####################### BEGIN Tree generation config class ######################
@@ -107,11 +109,11 @@ def writeMeshFile(mesh, fileName):
 
 
 
-config = TreeConfig(0.5, 1, 10, 20)
+#config = TreeConfig(0.05, 0.1, 0.10, 0.20)
 
-mesh = makeTree(config)
+#mesh = makeTree(config)
 
-writeMeshFile(mesh, "mesh.obj")
+#writeMeshFile(mesh, "mesh.obj")
 
 
 
@@ -191,14 +193,11 @@ def makeStem(config, Nsides, Nrings):
     return mesh
 
 
-config = StemConfig(300, 25, 20, 18, 16, 13, 13, 20)
+config = StemConfig(30, 2.5, 2.0, 1.8, 1.6, 1.3, 1.3, 20.0)
 
 mesh = makeStem(config, 20, 10)
 
-writeMeshFile(mesh, "mesh.obj")
+#writeMeshFile(mesh, "mesh.obj")
 
-
-
-
-
-
+vertices = mesh.vertices
+indices = mesh.faces
