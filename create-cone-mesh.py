@@ -9,9 +9,7 @@ class Mesh:
         self.vertices = []
         self.faces = []
 
-    
     def createTriangle(self, v1, v2, v3):
-
         currentIndex = len(self.vertices) - 1
 
         self.vertices.append(v1)
@@ -21,82 +19,15 @@ class Mesh:
         self.faces.append(currentIndex + 1)
         self.faces.append(currentIndex + 2)
         self.faces.append(currentIndex + 3)
+
+    def TriangleByIndex(self, v1, v2, v3):
+        self.faces.append([v1, v2, v3])
+
 ####################### END Mesh class ######################
 
-####################### BEGIN Tree generation config class ######################
-class TreeConfig:
-    def __init__(self, radius1, radius2, length, sides):
-        self.radius1 = radius1
-        self.radius2 = radius2
-        self.length = length
-        self.sides = sides
-####################### END Tree generation config class ######################
-
-
-def makeTree(config):
-    mesh = Mesh()
-
-    makeEnd(mesh, config.sides, config.radius1, 0)
-    makeEnd(mesh, config.sides, config.radius2, config.length)
-
-    makeSides(mesh, config)
-
-    return mesh
-
-
-def makeEnd(mesh, sides, radius, z):
-
-    angle_step = 360 / sides 
-
-    for step in range(0, sides):
-    
-        deg_to_rad = math.pi / 180
-
-        a1 = step * angle_step * deg_to_rad
-        a2 = (step+1) * angle_step * deg_to_rad
-
-        x1 = math.cos(a1) * radius
-        y1 = math.sin(a1) * radius
-
-        x2 = math.cos(a2) * radius
-        y2 = math.sin(a2) * radius
-
-        mesh.createTriangle([0,0,z], [x1,y1, z], [x2, y2, z])
-
-
-
-def makeSides(mesh, config):
-
-    angle_step = 360 / config.sides 
-
-    for step in range(0, config.sides):
-    
-        deg_to_rad = math.pi / 180
-
-        a1 = step * angle_step * deg_to_rad
-        a2 = (step+1) * angle_step * deg_to_rad
-
-        x1_1 = math.cos(a1) * config.radius1
-        y1_1 = math.sin(a1) * config.radius1
-
-        x2_1 = math.cos(a2) * config.radius1
-        y2_1 = math.sin(a2) * config.radius1
-
-        x1_2 = math.cos(a1) * config.radius2
-        y1_2 = math.sin(a1) * config.radius2
-
-        x2_2 = math.cos(a2) * config.radius2
-        y2_2 = math.sin(a2) * config.radius2
-
-
-        mesh.createTriangle([x1_1, y1_1, 0], [x2_1,y2_1, 0], [x1_2, y1_2, config.length])
-        mesh.createTriangle([x2_1, y2_1, 0], [x2_2, y2_2, config.length], [x1_2,y1_2,config.length])
- 
-
 def writeMeshFile(mesh, fileName):
-
     with open(fileName, "w") as file:
-        
+
         # Write vertices from list to file:
         for vertex in mesh.vertices:
             file.write("v " + str(vertex[0]) + " " + str(vertex[1]) + " " + str(vertex[2]) + "\n")
@@ -106,14 +37,6 @@ def writeMeshFile(mesh, fileName):
             file.write("f " + str(face[0] + 1) + " " + str(face[1] + 1) + " " + str(face[2] + 1) + "\n")
 
         file.close()
-
-
-
-#config = TreeConfig(0.05, 0.1, 0.10, 0.20)
-
-#mesh = makeTree(config)
-
-#writeMeshFile(mesh, "mesh.obj")
 
 
 
@@ -130,40 +53,45 @@ class StemConfig:
         self.topdiam1 = topdiam1
         self.topdiam2 = topdiam2
         self.bend = bend
+
+
 ################## End StemConfig Class ########################
 
 
 def createRing(Xrad, Yrad, Nsides, xshift, z):
     r = []
     for i in range(0, Nsides):
-        x = math.cos( i * math.pi * 2 / Nsides) * Xrad + xshift
-        y = math.sin( i * math.pi * 2 / Nsides) * Yrad
-        r.append( [x,y,z] )
+        x = math.cos(i * math.pi * 2 / Nsides) * Xrad + xshift
+        y = math.sin(i * math.pi * 2 / Nsides) * Yrad
+        r.append([x, y, z])
     return r
 
 
 #### End of class ring ####
 
 
-NSides = 20   # can be altered at will
-
-def f(x):
-    return (4 * ( -x **2  + x ))
 # F is the function used to describe the bend.
 # F should always range between 0 and 1 for x between 0 and 1, with f(0) = 0, f(1) = 1
+def f(x):
+    return (4 * (-x ** 2 + x))                  #parabola
+#Try also:
+#   return (x**4-2*x**3+(5/4)*x**2-(1/4)*x)*(-64)  #polynomial double-bend
+#   return (-math.cos(x*math.pi)+1)/2  #single cos-wave
+#   return (-math.cos(x*math.pi*2)+1)/2   #double cos-wave
+#   return (sqrt(1-(x/2)^2)-cos(1/2))/(1-cos(1/2))  #- 55° circular arc
 
 
 
 def makeStem(config, Nsides, Nrings):
     mesh = Mesh()
 
-# from here: create rings
+    # from here: create rings
     rings = []
-    for i in range(0 , Nrings + 1):
-        pos = ( i / Nrings)
+    for i in range(0, Nrings + 1):
+        pos = (i / Nrings)
         if pos < 0.5:
-            xrad = (config.bottomdiam1 * ( 1 - ( 2 * pos )) + config.middiam1 * (2 * pos)) / 2
-            yrad = (config.bottomdiam2 * ( 1 - ( 2 * pos )) + config.middiam2 * (2 * pos)) / 2
+            xrad = (config.bottomdiam1 * (1 - (2 * pos)) + config.middiam1 * (2 * pos)) / 2
+            yrad = (config.bottomdiam2 * (1 - (2 * pos)) + config.middiam2 * (2 * pos)) / 2
         else:
             xrad = (config.middiam1 * (2 - (2 * pos)) + config.topdiam1 * (2 * (pos - 0.5))) / 2
             yrad = (config.middiam2 * (2 - (2 * pos)) + config.topdiam2 * (2 * (pos - 0.5))) / 2
@@ -171,33 +99,47 @@ def makeStem(config, Nsides, Nrings):
         z = pos * config.length
         r = createRing(xrad, yrad, Nsides, xshift, z)
         rings.append(r)
-# until here : saved all vertices, organized in rings
-# now: make sides
+    # until here : saved all vertices, organized in rings
+    # now: write into mesh-class
 
-    for i in range(0 , len(rings) - 1 ):
-        n = len(rings[i])
-        for j in range(0 , n):
-            mesh.createTriangle(rings[i][j], rings[i][(j + 1) % n], rings[i + 1][j] )
-            mesh.createTriangle(rings[i][ (j + 1) % n], rings[i+1][j], rings[i+1][( j + 1) % n])
-#now: make Ends
-    r = rings[0]
-    n = len(r)
-    for j in range(0, n):
-        mesh.createTriangle(r[j], r[(j + 1) % n], [f(0), 0, 0])
+    mesh.vertices.append([f(0), 0, 0])                #The center vertex of the front face will hold index 0
+    for r in rings:                                 #Now the rings vertices
+        for v in r:
+            mesh.vertices.append(v)
+    mesh.vertices.append([f(1), 0, config.length])      #The center vertex of the back face
 
-    r = rings[len(rings) - 1]
-    n = len(r)
-    for j in range(0, n):
-        mesh.createTriangle(r[j], r[(j + 1) % n], [f(1), 0, config.length])
-# finished making ends
+    #Adding triangles for:
+    # -front end
+    for i in range(1, Nsides + 1):
+        mesh.TriangleByIndex(i, (i % Nsides) + 1, 0)
+    # -back end
+    for i in range(1, Nsides + 1):
+        mesh.TriangleByIndex(Nrings*Nsides + i, Nrings*Nsides + (i % Nsides) + 1, (Nrings+1)*Nsides + 1)
+    # -sides
+    for i in range(0, Nrings):
+        for j in range(1, Nsides +1):
+            mesh.TriangleByIndex(i * Nsides + j, (i + 1) * Nsides + j, i * Nsides + ((j % Nsides)+1))
+            mesh.TriangleByIndex((i + 1) * Nsides + ((j % Nsides) +1), (i + 1) * Nsides + j, i * Nsides + ((j% Nsides) +1))
+
+
+
     return mesh
+
+
+
+
+
 
 
 config = StemConfig(30, 2.5, 2.0, 1.8, 1.6, 1.3, 1.3, 20.0)
 
 mesh = makeStem(config, 20, 10)
 
-#writeMeshFile(mesh, "mesh.obj")
+writeMeshFile(mesh, "mesh.obj")
 
 vertices = mesh.vertices
 indices = mesh.faces
+
+
+
+
