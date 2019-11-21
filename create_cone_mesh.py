@@ -21,7 +21,10 @@ class Mesh:
         self.faces.append(currentIndex + 3)
 
     def triangleByIndex(self, v1, v2, v3):
-        self.faces.append([v1, v2, v3])
+        #self.faces.append([v1, v2, v3])
+        self.faces.append(v1)
+        self.faces.append(v2)
+        self.faces.append(v3)
 
 ####################### END Mesh class ######################
 
@@ -131,7 +134,7 @@ def make_stem(config, n_sides, n_rings):
     return mesh
 
 
-my_config = StemConfig(30, 2.5, 2.0, 1.8, 1.6, 1.3, 1.3, 20.0)
+my_config = StemConfig(3, 0.25, 0.2, 0.18, 0.16, 0.13, 0.13, bend=0.2)
 
 mesh = make_stem(my_config, 20, 10)
 
