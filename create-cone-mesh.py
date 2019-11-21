@@ -84,7 +84,7 @@ def f(x):
 
 
 def make_stem(config, n_sides, n_rings):
-    """Creates a stem mesh.
+    """Create a stem mesh.
 
     Keyword arguments:
     config -- StemConfig object ; tree mesh configuration
