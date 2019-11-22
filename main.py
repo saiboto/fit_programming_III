@@ -14,9 +14,10 @@ planeId = p.loadURDF("plane.urdf")
 stem_start_pos = [0, 0, 4]
 # Orientation is given as rotations of multiples of pi around the x, y, and z
 # axis in that order.
-cubeStartOrientation = p.getQuaternionFromEuler([0, math.pi * 0.5, 0])
+stem_start_orientation = p.getQuaternionFromEuler([0, -math.pi * 0.5, 0])
 
-# boxId = p.loadURDF("r2d2.urdf", stem_start_pos, cubeStartOrientation)
+# boxId = p.loadURDF("r2d2.urdf", stem_start_pos, stem_start_orientation)
+# boxId = p.loadURDF("random_urdfs/000/000.urdf", stem_start_pos, stem_start_orientation)
 
 stem_collision_shape_id = p.createCollisionShape(
     shapeType=p.GEOM_MESH,
@@ -28,17 +29,18 @@ stem_body_id = p.createMultiBody(
     baseMass=1,
     baseCollisionShapeIndex=stem_collision_shape_id,
     basePosition=stem_start_pos,
-    baseOrientation=cubeStartOrientation,
-    baseInertialFramePosition=[0, 0, 4]
+    baseOrientation=stem_start_orientation,
+    baseInertialFramePosition=[0, 0, 0.2],
+    baseInertialFrameOrientation=stem_start_orientation
 )
 
 p.changeDynamics(
     stem_body_id,
     -1,
-    lateralFriction=0.01,
+    lateralFriction=0.1,
     spinningFriction=0.01,
     rollingFriction=0.01,
-    restitution=0.1
+    restitution=0.9
 )
 
 for i in range(10000):

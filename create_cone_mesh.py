@@ -106,17 +106,18 @@ def make_stem(config, n_sides, n_rings):
             xrad = (config.middiam1 * (2 - (2 * pos)) + config.topdiam1 * (2 * (pos - 0.5))) / 2
             yrad = (config.middiam2 * (2 - (2 * pos)) + config.topdiam2 * (2 * (pos - 0.5))) / 2
         xshift = f(pos) * config.bend
-        z = pos * config.length
+#       z = pos * config.length
+        z = pos * config.length - (config.length/2)
         r = createRing(xrad, yrad, n_sides, xshift, z)
         rings.append(r)
     # until here : saved all vertices, organized in rings
     # now: write into mesh-class
 
-    mesh.vertices.append([f(0), 0, 0])                #The center vertex of the front face will hold index 0
+    mesh.vertices.append([f(0), 0, -config.length/2])                #The center vertex of the front face will hold index 0
     for r in rings:                                 #Now the rings vertices
         for v in r:
             mesh.vertices.append(v)
-    mesh.vertices.append([f(1), 0, config.length])      #The center vertex of the back face
+    mesh.vertices.append([f(1), 0, config.length/2])      #The center vertex of the back face
 
     #Adding triangles for:
     # -front end
