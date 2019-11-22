@@ -1,4 +1,4 @@
-
+import math
 import time
 
 import pybullet as p
@@ -11,9 +11,12 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
 p.setGravity(0, 0, -10)
 planeId = p.loadURDF("plane.urdf")
 
-cubeStartPos = [0, 0, 4]
-cubeStartOrientation = p.getQuaternionFromEuler([10, 0, 0])
-# boxId = p.loadURDF("r2d2.urdf", cubeStartPos, cubeStartOrientation)
+stem_start_pos = [0, 0, 4]
+# Orientation is given as rotations of multiples of pi around the x, y, and z
+# axis in that order.
+cubeStartOrientation = p.getQuaternionFromEuler([0, math.pi * 0.5, 0])
+
+# boxId = p.loadURDF("r2d2.urdf", stem_start_pos, cubeStartOrientation)
 
 stem_collision_shape_id = p.createCollisionShape(
     shapeType=p.GEOM_MESH,
@@ -24,8 +27,18 @@ stem_collision_shape_id = p.createCollisionShape(
 stem_body_id = p.createMultiBody(
     baseMass=1,
     baseCollisionShapeIndex=stem_collision_shape_id,
-    basePosition=cubeStartPos,
-    baseOrientation=cubeStartOrientation
+    basePosition=stem_start_pos,
+    baseOrientation=cubeStartOrientation,
+    baseInertialFramePosition=[0, 0, 4]
+)
+
+p.changeDynamics(
+    stem_body_id,
+    -1,
+    lateralFriction=0.01,
+    spinningFriction=0.01,
+    rollingFriction=0.01,
+    restitution=0.1
 )
 
 for i in range(10000):
