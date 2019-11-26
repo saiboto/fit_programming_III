@@ -122,28 +122,21 @@ def make_stem(config, n_sides, n_rings):
     #Adding triangles for:
     # -front end
     for i in range(1, n_sides + 1):
-        mesh.triangleByIndex(i, (i % n_sides) + 1, 0)
+        mesh.triangleByIndex((i % n_sides) + 1, i,  0)
     # -back end
     for i in range(1, n_sides + 1):
         mesh.triangleByIndex(n_rings * n_sides + i, n_rings * n_sides + (i % n_sides) + 1, (n_rings + 1) * n_sides + 1)
     # -sides
     for i in range(0, n_rings):
         for j in range(1, n_sides + 1):
-            mesh.triangleByIndex(i * n_sides + j, (i + 1) * n_sides + j, i * n_sides + ((j % n_sides) + 1))
+            mesh.triangleByIndex(i * n_sides + j, i * n_sides + ((j % n_sides) + 1), (i + 1) * n_sides + j)
             mesh.triangleByIndex((i + 1) * n_sides + ((j % n_sides) + 1), (i + 1) * n_sides + j, i * n_sides + ((j % n_sides) + 1))
 
     return mesh
 
 
-my_config = StemConfig(3, 0.25, 0.2, 0.18, 0.16, 0.13, 0.13, bend=0.2)
+# my_config = StemConfig(3, 0.25, 0.2, 0.18, 0.16, 0.13, 0.13, bend=0.2)
 
-mesh = make_stem(my_config, 20, 10)
+# mesh = make_stem(my_config, 20, 10)
 
 # writeMeshFile(mesh, "mesh.obj")
-
-vertices = mesh.vertices
-indices = mesh.faces
-
-
-
-
