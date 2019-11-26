@@ -93,7 +93,8 @@ def make_stem(config, n_sides, n_rings):
     n_sides -- int ; number of sides along the stem. Must be greater than two!
     n_rings -- int ; number of rings along the stem. Must be greater than two!
     """
-    mesh = Mesh()
+    meshes = []
+   
 
     # from here: create rings
     rings = []
@@ -113,28 +114,15 @@ def make_stem(config, n_sides, n_rings):
     # until here : saved all vertices, organized in rings
     # now: write into mesh-class
 
-    mesh.vertices.append([f(0), 0, -config.length/2])                #The center vertex of the front face will hold index 0
-    for r in rings:                                 #Now the rings vertices
-        for v in r:
+     for i in range(0,n_rings):
+        mesh = Mesh()
+        for v in rings[i]:
             mesh.vertices.append(v)
-    mesh.vertices.append([f(1), 0, config.length/2])      #The center vertex of the back face
+        for v in rings[i+1]:
+            mesh.vertices.append(v)
+        meshed.append(mesh)
 
-    #Adding triangles for:
-    # -front end
-    for i in range(1, n_sides + 1):
-        mesh.triangleByIndex((i % n_sides) + 1, i,  0)
-    # -back end
-    for i in range(1, n_sides + 1):
-        mesh.triangleByIndex(n_rings * n_sides + i, n_rings * n_sides + (i % n_sides) + 1, (n_rings + 1) * n_sides + 1)
-    # -sides
-    for i in range(0, n_rings):
-        for j in range(1, n_sides + 1):
-            mesh.triangleByIndex(i * n_sides + j, i * n_sides + ((j % n_sides) + 1), (i + 1) * n_sides + j)
-            mesh.triangleByIndex((i + 1) * n_sides + ((j % n_sides) + 1), (i + 1) * n_sides + j, i * n_sides + ((j % n_sides) + 1))
-
-    return mesh
-
-
+    return meshes
 # my_config = StemConfig(3, 0.25, 0.2, 0.18, 0.16, 0.13, 0.13, bend=0.2)
 
 # mesh = make_stem(my_config, 20, 10)
