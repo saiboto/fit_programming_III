@@ -86,7 +86,7 @@ def f(x):
 
 
 def make_stem(config, n_sides, n_rings):
-    """Create a stem mesh.
+    """Create an array of n_rings (kind of) cylindrical meshes, that together form a stem.
 
     Keyword arguments:
     config -- StemConfig object ; tree mesh configuration
@@ -94,7 +94,6 @@ def make_stem(config, n_sides, n_rings):
     n_rings -- int ; number of rings along the stem. Must be greater than two!
     """
     meshes = []
-   
 
     # from here: create rings
     rings = []
@@ -114,15 +113,18 @@ def make_stem(config, n_sides, n_rings):
     # until here : saved all vertices, organized in rings
     # now: write into mesh-class
 
-     for i in range(0,n_rings):
+    for i in range(0, n_rings):
         mesh = Mesh()
         for v in rings[i]:
             mesh.vertices.append(v)
         for v in rings[i+1]:
             mesh.vertices.append(v)
-        meshed.append(mesh)
+
+        meshes.append(mesh)
 
     return meshes
+
+
 # my_config = StemConfig(3, 0.25, 0.2, 0.18, 0.16, 0.13, 0.13, bend=0.2)
 
 # mesh = make_stem(my_config, 20, 10)
