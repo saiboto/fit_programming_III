@@ -15,22 +15,22 @@ terms that are enclosed by quotation marks.
 
 # Coarse Description
 
-a "user config file reader" reads in the user config file
+    + a "user config file reader" reads in the user config file
 
-a "user config validator" validates the config's content
+    + a "user config validator" validates the config's content
 
-a "config initializer" initializes a config object for each component that needs one
+    + a "config initializer" initializes a config object for each component that needs one
+            
+    + all remaining "components" are initialized with their respective config object
+        + initialize the "physics engine"
+        + initialize the "stem spawner"
+            + initialize the "stem factory"
+            + initialize the "forwarder"
+        + initialize the "reporter"
         
-all remaining "components" are initialized with their respective config object
-+ initialize the "physics engine"
-+ initialize the "stem spawner"
-    + initialize the "stem factory"
-    + initialize the "forwarder"
-+ initialize the "reporter"
-    
-the stem spawner spawns stems in the physics engine one after the other using the stem factory and the forwarder
-    
-the reporter writes all desired information on the resulting polter into one or more output file(s)
+    + the stem spawner spawns stems in the physics engine one after the other using the stem factory and the forwarder
+        
+    + the reporter writes all desired information on the resulting polter into one or more output file(s)
 
 
 # Additional information
@@ -89,38 +89,28 @@ the reporter writes all desired information on the resulting polter into one or 
 
 # Explanations on Individual Components/Keywords
     
-user config file reader: Trys to open the user config file. Expects to find a
-    certain set of inputs in that file. Provides a user config object.
+user config file reader: Trys to open the user config file. Expects to find a certain set of inputs in that file. Provides a user config object.
     
 user config validator: Validates all user config input.
 
-config initializer: Provides config objects with default settings for each
-    component and overrides these defaults when given a user config object.
+config initializer: Provides config objects with default settings for each component and overrides these defaults when given a user config object.
     
 components: The main "players" in the program flow. Until now these are:
-    + user config file reader
-    + user config validator
-    + config initializer
-    + physics engine
-    + stem spawer
-    + stem factory
-    + forwarder
-    + reporter
++ user config file reader
++ user config validator
++ config initializer
++ physics engine
++ stem spawer
++ stem factory
++ forwarder
++ reporter
     
-physics engine: A collection of functions and classes that use the pybullet
-    modules to expose physics engine functionality to the other components in a
-    way that specifically fits these components' requirements.
+physics engine: A collection of functions and classes that use the pybullet modules to expose physics engine functionality to the other components in a way that specifically fits these components' requirements.
     
-stem spawner: An object that contains a stem factory and a forwarder and which
-    is responsible for telling these two components to drop new stems at the
-    right time, i.e. when the already existing stems have settled after the
-    preceding drop.
+stem spawner: An object that contains a stem factory and a forwarder and which is responsible for telling these two components to drop new stems at the right time, i.e. when the already existing stems have settled after the preceding drop.
 
-stem factory: An object that produces and stores stem information necessary for
-    the engine to spawn new stems.
+stem factory: An object that produces and stores stem information necessary for the engine to spawn new stems.
     
-forwarder: An object that returns position and orientation information for the
-    stem that is to be spawned next, possible based on the current state of the
-    simulation.
+forwarder: An object that returns position and orientation information for the stem that is to be spawned next, possible based on the current state of the simulation.
     
 reporter: Reports all desired information on the resulting stems and polter.
