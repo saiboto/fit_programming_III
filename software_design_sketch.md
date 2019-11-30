@@ -14,7 +14,6 @@ terms that are enclosed by quotation marks.
 
 
 # Coarse Description
--------------------------------------------------------------------------------
 
 a "user config file reader" reads in the user config file
 
@@ -35,62 +34,60 @@ the reporter writes all desired information on the resulting polter into one or 
 
 
 # Additional information
--------------------------------------------------------------------------------
 
 + In the beginning, there is just a file path to a user config file.
 
-a "user config file reader" reads in the user config file
-    + if any expected information is missing:
-        + give feedback to the user about what was missing
-        + abort
+    + a "user config file reader" reads in the user config file
+        + if any expected information is missing:
+            + give feedback to the user about what was missing
+            + abort
 
-a "user config validator" validates the config's content
-    + if any information is incorrect:
-        + give feedback to the user about what was expected instead
-        + abort
+    + a "user config validator" validates the config's content
+        + if any information is incorrect:
+            + give feedback to the user about what was expected instead
+            + abort
 
 + Now, there is a complete and correct user config object.
 
-a "config initializer" initializes a config object for each component that
- needs one
-    + for each config object:
-        + set default parameters chosen by us
-        + override parameters where config information was given by the user
+    + a "config initializer" initializes a config object for each component that
+      needs one
+        + for each config object:
+            + set default parameters chosen by us
+            + override parameters where config information was given by the user
         
 + Now, there is a complete config object for each component.
         
-all remaining "components" are initialized with their respective config object
-    initialize the "physics engine"
-    initialize the "stem spawner"
-        initialize the "stem factory"
-        initialize the "forwarder"
-    initialize the "reporter"
+    + all remaining "components" are initialized with their respective config object
+        + initialize the "physics engine"
+        + initialize the "stem spawner"
+            + initialize the "stem factory"
+            + initialize the "forwarder"
+        + initialize the "reporter"
     
 + Now, all components are completely initialized.
     
-the stem spawner spawns stems in the physics engine one after the other using
- the stem factory and the forwarder
-    
-    + while the stem factory has stems left:
-        + the stem factory asks the forwarder for a position
-        + the stem factory asks the physics engine to create a 3D stem object (at
-          the position given by the forwarder), passing the engine a stem object
-          that contains all the necessary information (3D and physics related)
+    + the stem spawner spawns stems in the physics engine one after the other using
+      the stem factory and the forwarder
         
-        + the stem spawner waits for a certain duration so that the polter can
-          settle down
+        + while the stem factory has stems left:
+            + the stem factory asks the forwarder for a position
+            + the stem factory asks the physics engine to create a 3D stem object (at
+              the position given by the forwarder), passing the engine a stem object
+              that contains all the necessary information (3D and physics related)
+            
+            + the stem spawner waits for a certain duration so that the polter can
+              settle down
         
 + Now, all stems have been placed within the simulation.
     
-the reporter writes all desired information on the resulting polter into one
- or more output file(s)
-    + the reporter asks the stem factory to report on the created stems
-    + the reporter asks the engine to report on it's general current state and
-      also on the individual stems
+    + the reporter writes all desired information on the resulting polter into one
+      or more output file(s)
+        + the reporter asks the stem factory to report on the created stems
+        + the reporter asks the engine to report on it's general current state and
+          also on the individual stems
 
 
 # Explanations on Individual Components/Keywords
--------------------------------------------------------------------------------
     
 user config file reader: Trys to open the user config file. Expects to find a
     certain set of inputs in that file. Provides a user config object.
