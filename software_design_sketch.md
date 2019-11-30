@@ -15,27 +15,31 @@ terms that are enclosed by quotation marks.
 
 # Coarse Description
 
-    + a "user config file reader" reads in the user config file
+    a "user config file reader" reads in the user config file
 
-    + a "user config validator" validates the config's content
+    a "user config validator" validates the config's content
 
-    + a "config initializer" initializes a config object for each component that needs one
-            
-    + all remaining "components" are initialized with their respective config object
-        + initialize the "physics engine"
-        + initialize the "stem spawner"
-            + initialize the "stem factory"
-            + initialize the "forwarder"
-        + initialize the "reporter"
-        
-    + the stem spawner spawns stems in the physics engine one after the other using the stem factory and the forwarder
-        
-    + the reporter writes all desired information on the resulting polter into one or more output file(s)
+    a "config initializer" initializes a config object for each component
+    that needs one
+          
+    all remaining "components" are initialized with their respective config
+    object
+      + initialize the "physics engine"
+      + initialize the "stem spawner"
+          + initialize the "stem factory"
+          + initialize the "forwarder"
+      + initialize the "reporter"
+      
+    the stem spawner spawns stems in the physics engine one after the other
+    using the stem factory and the forwarder
+      
+    the reporter writes all desired information on the resulting polter into
+    one or more output file(s)
 
 
 # Additional information
 
-+ In the beginning, there is just a file path to a user config file.
+In the beginning, there is just a file path to a user config file.
 
     + a "user config file reader" reads in the user config file
         + if any expected information is missing:
@@ -47,7 +51,7 @@ terms that are enclosed by quotation marks.
             + give feedback to the user about what was expected instead
             + abort
 
-+ Now, there is a complete and correct user config object.
+Now, there is a complete and correct user config object.
 
     + a "config initializer" initializes a config object for each component that
       needs one
@@ -55,7 +59,7 @@ terms that are enclosed by quotation marks.
             + set default parameters chosen by us
             + override parameters where config information was given by the user
         
-+ Now, there is a complete config object for each component.
+Now, there is a complete config object for each component.
         
     + all remaining "components" are initialized with their respective config object
         + initialize the "physics engine"
@@ -64,7 +68,7 @@ terms that are enclosed by quotation marks.
             + initialize the "forwarder"
         + initialize the "reporter"
     
-+ Now, all components are completely initialized.
+Now, all components are completely initialized.
     
     + the stem spawner spawns stems in the physics engine one after the other using
       the stem factory and the forwarder
@@ -78,7 +82,7 @@ terms that are enclosed by quotation marks.
             + the stem spawner waits for a certain duration so that the polter can
               settle down
         
-+ Now, all stems have been placed within the simulation.
+Now, all stems have been placed within the simulation.
     
     + the reporter writes all desired information on the resulting polter into one
       or more output file(s)
