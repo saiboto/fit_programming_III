@@ -13,30 +13,29 @@ on certain parts. At the very bottom you can find explanations for most of the
 terms that are enclosed by quotation marks.
 
 
-# Coarse Description ----------------------------------------------------------
+# Coarse Description
+-------------------------------------------------------------------------------
 
 a "user config file reader" reads in the user config file
 
 a "user config validator" validates the config's content
 
-a "config initializer" initializes a config object for each component that
- needs one
+a "config initializer" initializes a config object for each component that needs one
         
 all remaining "components" are initialized with their respective config object
-    initialize the "physics engine"
-    initialize the "stem spawner"
-        initialize the "stem factory"
-        initialize the "forwarder"
-    initialize the "reporter"
++ initialize the "physics engine"
++ initialize the "stem spawner"
+    + initialize the "stem factory"
+    + initialize the "forwarder"
++ initialize the "reporter"
     
-the stem spawner spawns stems in the physics engine one after the other using
- the stem factory and the forwarder
+the stem spawner spawns stems in the physics engine one after the other using the stem factory and the forwarder
     
-the reporter writes all desired information on the resulting polter into one
- or more output file(s)
+the reporter writes all desired information on the resulting polter into one or more output file(s)
 
 
-# Additional information ------------------------------------------------------
+# Additional information
+-------------------------------------------------------------------------------
 
 + In the beginning, there is just a file path to a user config file.
 
@@ -90,7 +89,8 @@ the reporter writes all desired information on the resulting polter into one
       also on the individual stems
 
 
-# Explanations on Individual Components/Keywords ------------------------------
+# Explanations on Individual Components/Keywords
+-------------------------------------------------------------------------------
     
 user config file reader: Trys to open the user config file. Expects to find a
     certain set of inputs in that file. Provides a user config object.
