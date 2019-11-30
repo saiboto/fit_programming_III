@@ -1,3 +1,4 @@
+from typing import List
 import math
 
 import pybullet as p
@@ -6,7 +7,7 @@ import Config
 
 
 class Placement:
-    def __init__(self, position: [], orientation: []):
+    def __init__(self, position: List[float], orientation: List[float]):
         """Creates an object that contains my_placement information.
 
         orientation -- rotations of multiples of pi around the x, y, and z axis
@@ -58,7 +59,7 @@ def _bend_function(x: float) -> float:
     #   return (-math.cos(x*math.pi*2)+1)/2   #double cos-wave
 
 
-def _make_stem(config: Config.SingleStem) -> [[float]]:
+def _make_stem(config: Config.SingleStem) -> List[List[List[float]]]:
     """Create an array of n_meshes near cylindrical meshes, that
     together form a stem.
 
