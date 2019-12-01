@@ -22,4 +22,3 @@ if __name__ == "__main__":
     stem_settings = user_settings.get('Random stem generation')
     for stem_settings_name, stem_settings_value in stem_settings.items():
         print(stem_settings_name, stem_settings_value)
-
