@@ -4,50 +4,55 @@ import time
 import pybullet as p
 import pybullet_data
 
-import create_cone_mesh
+import Config
+import Stem
+
 
 physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
-p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
+# necessary for using objects of pybullet_data
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
+
 p.setGravity(0, 0, -10)
+
 planeId = p.loadURDF("plane.urdf")
 
-stem_start_pos = [0, 0, 4]
-# Orientation is given as rotations of multiples of pi around the x, y, and z
-# axis in that order.
-stem_start_orientation = p.getQuaternionFromEuler([0, -math.pi * 0.5, 0])
+# boxId = p.loadURDF("r2d2.urdf", stem_start_position, stem_start_orientation)
+# boxId = p.loadURDF("random_urdfs/000/000.urdf", stem_start_position, stem_start_orientation)
 
-# boxId = p.loadURDF("r2d2.urdf", stem_start_pos, stem_start_orientation)
-# boxId = p.loadURDF("random_urdfs/000/000.urdf", stem_start_pos, stem_start_orientation)
+# my_config = create_cone_mesh.StemConfig(3, 0.25, 0.2, 0.18, 0.16, 0.13, 0.13, bend=0.2)
+# meshes = create_cone_mesh.make_stem(my_config, 20, 10)
 
-stem_collision_shape_id = p.createCollisionShape(
-    shapeType=p.GEOM_MESH,
-    vertices=create_cone_mesh.vertices,
-    indices=create_cone_mesh.indices
-)
+my_single_stem_config = Config.SingleStem(length=3,
+                                          bottom_diameter_x=0.25,
+                                          bottom_diameter_y=0.2,
+                                          middle_diameter_x=0.18,
+                                          middle_diameter_y=0.16,
+                                          top_diameter_x=0.13,
+                                          top_diameter_y=0.13,
+                                          bend=0.2)
 
-stem_body_id = p.createMultiBody(
-    baseMass=1,
-    baseCollisionShapeIndex=stem_collision_shape_id,
-    basePosition=stem_start_pos,
-    baseOrientation=stem_start_orientation,
-    baseInertialFramePosition=[0, 0, 0.2],
-    baseInertialFrameOrientation=stem_start_orientation
-)
+my_placement = Stem.Placement([0, 0, 2.5], [0, -math.pi * 0.5, 0])
 
-p.changeDynamics(
-    stem_body_id,
-    -1,
-    lateralFriction=0.1,
-    spinningFriction=0.01,
-    rollingFriction=0.01,
-    restitution=0.9
-)
+debug_text_id = p.addUserDebugText('', my_placement.position)
 
-for i in range(10000):
+my_stems = []
+for i in range(500000):
+    if i % 200 == 0:
+        my_stems.append(Stem.Stem(my_single_stem_config, my_placement))
+        debug_text_id = p.addUserDebugText(
+            str(my_stems[-1]._pybullet_id),
+            my_placement.position,
+            replaceItemUniqueId=debug_text_id)
+
+    if i == 1150:
+        p.resetBasePositionAndOrientation(my_stems[5]._pybullet_id,
+                                          my_placement.position,
+                                          my_placement.orientation)
+
     p.stepSimulation()
-    time.sleep(1/240)
+    time.sleep(1/100)
 
-cubePos, cubeOrn = p.getBasePositionAndOrientation(stem_body_id)
-print(cubePos, cubeOrn)
+# cubePos, cubeOrn = p.getBasePositionAndOrientation(stem_body_id)
+# print(cubePos, cubeOrn)
 
 p.disconnect()
