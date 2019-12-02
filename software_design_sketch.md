@@ -1,3 +1,5 @@
+# Principles
+
 I tried to base the following design concept on a few principle ideas:
 + Single Responsibility: Every component is responsible only for one thing.
 + If possible, components ask other components to do something, instead of
@@ -57,11 +59,12 @@ Now, there is a complete and correct user config object.
     needs one
         for each config object:
             set default parameters chosen by us
-            override parameters where config information was given by the user
+            overwrite parameters where config information was given by the user
         
 Now, there is a complete config object for each component.
         
-    all remaining "components" are initialized with their respective config object
+    all remaining "components" are initialized with their respective config
+    object
         initialize the "physics engine"
         initialize the "stem spawner"
             initialize the "stem factory"
@@ -70,25 +73,26 @@ Now, there is a complete config object for each component.
     
 Now, all components are completely initialized.
     
-    the stem spawner spawns stems in the physics engine one after the other using
-    the stem factory and the forwarder
+    the stem spawner spawns stems in the physics engine one after the other
+    using the stem factory and the forwarder
         
         while the stem factory has stems left:
             the stem factory asks the forwarder for a position
-            the stem factory asks the physics engine to create a 3D stem object (at
-            the position given by the forwarder), passing the engine a stem object
-            that contains all the necessary information (3D and physics related)
+            the stem factory asks the physics engine to create a 3D stem object
+            (at the position given by the forwarder), passing the engine a stem
+            object that contains all the necessary information (3D and physics
+            related)
             
-            the stem spawner waits for a certain duration so that the polter can
-            settle down
+            the stem spawner waits for a certain duration so that the polter
+            can settle down
         
 Now, all stems have been placed within the simulation.
     
-    the reporter writes all desired information on the resulting polter into one
-    or more output file(s)
+    the reporter writes all desired information on the resulting polter into
+    one or more output file(s)
         the reporter asks the stem factory to report on the created stems
-        the reporter asks the engine to report on it's general current state and
-        also on the individual stems
+        the reporter asks the engine to report on it's general current state
+        and also on the individual stems
 
 
 # Explanations on Individual Components/Keywords
@@ -97,7 +101,7 @@ user config file reader: Trys to open the user config file. Expects to find a ce
     
 user config validator: Validates all user config input.
 
-config initializer: Provides config objects with default settings for each component and overrides these defaults when given a user config object.
+config initializer: Provides config objects with default settings for each component and overwrites these defaults when given a user config object.
     
 components: The main "players" in the program flow. Until now these are:
 + user config file reader
