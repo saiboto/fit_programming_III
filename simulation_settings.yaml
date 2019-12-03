@@ -9,4 +9,26 @@ stem_settings:
     Middle stem diameter y: 16
 
     Head stem diameter x: 14
-    Head stem diameter x: 13
+    Head stem diameter y: 13
+
+    Stem Diameter:
+      Bottom x: 22
+      Bottom y: 20
+
+    Stem Diameter 2:
+      Bottom:
+        x: 22
+        y: 20
+      Middle:
+        x: 18
+        y: 16
+
+    Value distribution parameters:
+        normal:
+            mean: 0
+            standard deviation: 1
+        uniform:
+            min:
+            max:
+        exponential:
+            mean:
