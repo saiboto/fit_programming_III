@@ -13,6 +13,10 @@ def yaml_dump(file_path, data):
     with open(file_path, "w") as file_descriptor:
         yaml.dump(data, file_descriptor)
 
+if __name__ == "__main__":
+    user_settings_file_path = "simulation_settings.yaml"
+    user_settings = yaml_loader(user_settings_file_path)
+    print(user_settings)
 
 if __name__ == "__main__":
     user_settings_file_path = "simulation_settings.yaml"
