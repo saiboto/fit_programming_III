@@ -36,6 +36,7 @@ my_placement = Stem.Placement([0, 0, 2.5], [0, -math.pi * 0.5, 0])
 debug_text_id = p.addUserDebugText('', my_placement.position)
 
 my_stems = []
+
 for i in range(500000):
     if i % 200 == 0:
         my_stems.append(Stem.Stem(my_single_stem_config, my_placement))
@@ -51,8 +52,5 @@ for i in range(500000):
 
     p.stepSimulation()
     time.sleep(1/100)
-
-# cubePos, cubeOrn = p.getBasePositionAndOrientation(stem_body_id)
-# print(cubePos, cubeOrn)
 
 p.disconnect()
