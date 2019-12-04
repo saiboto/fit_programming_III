@@ -50,7 +50,7 @@ class SingleStem:
 class UserInput:
     """ Contains all information that a user can give to the program.
 
-    Attributes:
+    Attributes
         + num_stems -- Number of stems
         + length_mean -- Mean stem length ; unit: meters
         + length_sd -- Standard deviation of stem length ; unit: meters
