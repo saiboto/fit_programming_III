@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 File paths:
 
 Random stem generation:
@@ -25,39 +24,3 @@ Random stem generation:
 
   # unit: centimeters per meter
   Mean bend: 2
-=======
-stem_settings:
-    
-    Number of stems: 100
-
-    Bottom stem diameter x: 22
-    Bottom stem diameter y: 20
-
-    Middle stem diameter x: 18
-    Middle stem diameter y: 16
-
-    Head stem diameter x: 14
-    Head stem diameter y: 13
-
-    Stem Diameter:
-      Bottom x: 22
-      Bottom y: 20
-
-    Stem Diameter 2:
-      Bottom:
-        x: 22
-        y: 20
-      Middle:
-        x: 18
-        y: 16
-
-    Value distribution parameters:
-        normal:
-            mean: 0
-            standard deviation: 1
-        uniform:
-            min:
-            max:
-        exponential:
-            mean:
->>>>>>> 969b79f771c633368b260b0dc471c42e760ab33a
