@@ -1,21 +1,15 @@
 # Principles
 
-I tried to base the following design concept on a few principle ideas:
-+ Single Responsibility: Every component is responsible only for one thing.
-+ If possible, components ask other components to do something, instead of
-  asking for information to do it by themselves.
-+ The pybullet API is used only by a dedicated set of functions and/or objects,
-  whose job it is to offer the engine's services to the rest of the code. By
-  doing it this way, we don't need to deal with pybullet outside of this
-  self-made engine API.
+The following design sketch trys to follow a few principle ideas:
+
++ Single Responsibility: Every component is responsible for only one thing.
++ If possible, components ask other components to do something, instead of asking for information to do it by themselves.
++ The pybullet API is used only by a dedicated set of functions and/or objects, whose job it is to offer the engine's services to the rest of the code. By doing it this way, we don't need to deal with pybullet outside of this self-made engine API.
   
-Below, I first wrote down a very "coarse" design description as an overview and
-after that I repeated that overview and added more "fine-grained" information
-on certain parts. At the very bottom you can find explanations for most of the
-terms that are enclosed by quotation marks.
+Below, I first wrote down a very "coarse" design description as an overview and after that I repeated that overview and added more "fine-grained" information on certain parts. At the very bottom you can find explanations for most of the terms that are enclosed by quotation marks.
 
 
-# Coarse Description
+# Coarse Outline
 
     a "user config file reader" reads in the user config file
 
@@ -37,9 +31,9 @@ terms that are enclosed by quotation marks.
       
     the reporter writes all desired information on the resulting polter into
     one or more output file(s)
+    
 
-
-# Additional information
+# Additional Information
 
 In the beginning, there is just a file path to a user config file.
 
