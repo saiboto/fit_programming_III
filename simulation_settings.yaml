@@ -1,34 +1,26 @@
-stem_settings:
-    
-    Number of stems: 100
+File paths:
 
-    Bottom stem diameter x: 22
-    Bottom stem diameter y: 20
+Random stem generation:
 
-    Middle stem diameter x: 18
-    Middle stem diameter y: 16
+  Number of stems: 100
 
-    Head stem diameter x: 14
-    Head stem diameter y: 13
+  # unit: meters
+  Length:
+    mean: 3
+    standard deviation: 0.02
 
-    Stem Diameter:
-      Bottom x: 22
-      Bottom y: 20
+  # unit: centimeters
+  Middle stem diameter:
+    mean: 20
+    standard deviation: 5
 
-    Stem Diameter 2:
-      Bottom:
-        x: 22
-        y: 20
-      Middle:
-        x: 18
-        y: 16
+  # no unit; used for a distribution with mean one
+  Cross section deformation standard deviation: 0.03
 
-    Value distribution parameters:
-        normal:
-            mean: 0
-            standard deviation: 1
-        uniform:
-            min:
-            max:
-        exponential:
-            mean:
+  # unit: centimeters per meter
+  Stem taper:
+    mean: 1
+    standard deviation: 0.3
+
+  # unit: centimeters per meter
+  Mean bend: 2
