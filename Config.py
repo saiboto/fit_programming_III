@@ -47,23 +47,45 @@ class SingleStem:
 #                  width, height):
 
 
-class User:
+class UserInput:
+    """ Contains all information that a user can give to the program.
+
+    Attributes:
+        + num_stems -- Number of stems
+        + length_mean -- Mean stem length ; unit: meters
+        + length_sd -- Standard deviation of stem length ; unit: meters
+        + middle_stem_diameter_mean -- unit: meters
+        + middle_stem_diameter_sd -- unit: meters
+        + ellipticity_sd -- Standard deviation around a mean of one ; no unit
+        + stem_taper_mean -- unit: centimeters per meter
+        + stem_taper_sd -- unit: centimeters per meter
+        + bend_mean -- unit: centimeters per meter
+    """
     def __init__(self,
                  num_stems: int,
-                 bottom_diameter_x: float,
-                 middle_diameter: float,
-                 top_diameter: float,
-                 bend: float):
+                 length_mean: float,
+                 length_sd: float,
+                 middle_stem_diameter_mean: float,
+                 middle_stem_diameter_sd: float,
+                 ellipticity_sd: float,
+                 stem_taper_mean: float,
+                 stem_taper_sd: float,
+                 bend_mean: float):
         self.num_stems = num_stems
-        self.bottom_diameter_x = bottom_diameter_x
-        self.middle_diameter = middle_diameter
-        self.top_diameter = top_diameter
-        self.bend = bend
+        self.length_mean = length_mean
+        self.length_sd = length_sd
+        self.middle_stem_diameter_mean = middle_stem_diameter_mean
+        self.middle_stem_diameter_sd = middle_stem_diameter_sd
+        self.ellipticity_sd = ellipticity_sd
+        self.stem_taper_mean = stem_taper_mean
+        self.stem_taper_sd = stem_taper_sd
+        self.bend_mean = bend_mean
 
 
 class StemFactory:
     def __init__(self,
                  ):
+        pass
 
 
 class PhysicsEngine:
