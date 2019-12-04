@@ -1,0 +1,26 @@
+File paths:
+
+Random stem generation:
+
+  Number of stems: 100
+
+  # unit: meters
+  Length:
+    mean: 3
+    standard deviation: 0.02
+
+  # unit: centimeters
+  Middle stem diameter:
+    mean: 20
+    standard deviation: 5
+
+  # no unit; used for a distribution with mean one
+  Cross section deformation standard deviation: 0.03
+
+  # unit: centimeters per meter
+  Stem taper:
+    mean: 1
+    standard deviation: 0.3
+
+  # unit: centimeters per meter
+  Mean bend: 2
