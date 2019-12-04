@@ -19,7 +19,7 @@ if __name__ == "__main__":
     user_settings = yaml_loader(user_settings_file_path)
     print(user_settings)
 
-    stem_settings = user_settings.get('stem_settings')
+    stem_settings = user_settings.get('Random stem generation')
     for stem_settings_name, stem_settings_value in stem_settings.items():
         print(stem_settings_name, stem_settings_value)
 
