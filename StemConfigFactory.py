@@ -23,10 +23,11 @@ def run(user_input: UserInterface.Input.RandomStemGeneration):
         top_diameter_x = (mid_diameter - (2/(taper * length))) / 100
         top_diameter_y = top_diameter_x * ellipticity
 
-        stem_config_list.append(Config.SingleStem(length,
-                                                  bottom_diameter_x, bottom_diameter_y,
-                                                  middle_diameter_x, middle_diameter_y,
-                                                  top_diameter_x, top_diameter_y,
-                                                  bend))
+        stem_config_list.append(
+            Config.SingleStem(length,
+                              bottom_diameter_x, bottom_diameter_y,
+                              middle_diameter_x, middle_diameter_y,
+                              top_diameter_x, top_diameter_y,
+                              bend))
 
     return stem_config_list
