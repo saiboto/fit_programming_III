@@ -1,18 +1,20 @@
 import Config
-import andom
+import random
 
 
-def run(input: Config.UserInput):
+def run(config: Config.UserInput):
 
     stem_config_list = []
 
-    for i in range(0, input.num_stems):
-        mid_diameter = random.gauss(input.middle_stem_diameter_mean, input.middle_stem_diameter_sd)
-        ellipticity = random.gauss(1, input.ellipticity_sd)
-        taper = random.gauss(input.stem_taper_mean, input.stem_taper_sd)
+    for i in range(0, config.num_stems):
+        mid_diameter = random.gauss(config.middle_stem_diameter_mean,
+                                    config.middle_stem_diameter_sd)
+        ellipticity = random.gauss(1, config.ellipticity_sd)
+        taper = random.gauss(config.stem_taper_mean,
+                             config.stem_taper_sd)
 
-        length = random.gauss(input.length_mean, input.length_sd)
-        bend = random.expovariate(1/(input.bend_mean*length))
+        length = random.gauss(config.length_mean, config.length_sd)
+        bend = random.expovariate(1 / (config.bend_mean * length))
 
         bottom_diameter_x = mid_diameter + (2/(taper * length))
         bottom_diameter_y = bottom_diameter_x * ellipticity
@@ -21,10 +23,11 @@ def run(input: Config.UserInput):
         top_diameter_x = mid_diameter - (2/(taper * length))
         top_diameter_y = top_diameter_x * ellipticity
 
-        stem_config_list.append(Config.SingleStem(length,
-                                                  bottom_diameter_x, bottom_diameter_y,
-                                                  middle_diameter_x, middle_diameter_y,
-                                                  top_diameter_x, top_diameter_y,
-                                                  bend))
+        stem_config_list.append(
+            Config.SingleStem(length,
+                              bottom_diameter_x, bottom_diameter_y,
+                              middle_diameter_x, middle_diameter_y,
+                              top_diameter_x, top_diameter_y,
+                              bend))
 
     return stem_config_list

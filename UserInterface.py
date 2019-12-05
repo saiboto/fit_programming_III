@@ -1,10 +1,10 @@
-"""Handles user input data.
+"""Handles user config data.
 
 Components
-    + Input -- Defines the information that can be included in the user input.
-    + Validator -- Validates user input.
+    + Input -- Defines the information that can be included in the user config.
+    + Validator -- Validates user config.
     + Distributor -- Overwrites any core components default config with user
-        input.
+        config.
 """
 
 import typing
@@ -13,7 +13,7 @@ import Config
 
 
 class Input:
-    """ Defines the information that can be included in the user input."""
+    """ Defines the information that can be included in the user config."""
 
     class RandomStemGeneration:
         """Defines the information necessary for random stem generation."""
@@ -57,7 +57,7 @@ class Input:
 
 
 class Validator:
-    """Validates user input."""
+    """Validates user config."""
 
     INVALID_LESS_THAN_OR_EQUAL_ZERO = (
         'The parameter "{0}" should be greater than zero, but was {1}.\n'
@@ -136,12 +136,12 @@ class Validator:
         return self._is_valid
 
     def print_reasons(self):
-        """Prints reasons for invalid user input to the console."""
+        """Prints reasons for invalid user config to the console."""
         print(self._error_messages)
 
 
 class Distributor:
-    """Overwrites any core components default config with user input."""
+    """Overwrites any core components default config with user config."""
 
     def __init__(self, user_input: Input):
         self._user_input = user_input
