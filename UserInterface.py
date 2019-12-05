@@ -141,7 +141,7 @@ class Validator:
 
 
 class Distributor:
-    """Overwrites any core components default config with user config."""
+    """Overwrites any core component's default config with user input."""
 
     def __init__(self, user_input: Input):
         self._user_input = user_input
