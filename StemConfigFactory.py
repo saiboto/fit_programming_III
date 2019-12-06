@@ -1,24 +1,26 @@
+import UserInterface
 import Config
-import andom
+import random
 
 
-def run(input: Config.UserInput):
+def run(user_input: UserInterface.Input.RandomStemGeneration):
 
     stem_config_list = []
 
-    for i in range(0, input.num_stems):
-        mid_diameter = random.gauss(input.middle_stem_diameter_mean, input.middle_stem_diameter_sd)
-        ellipticity = random.gauss(1, input.ellipticity_sd)
-        taper = random.gauss(input.stem_taper_mean, input.stem_taper_sd)
+    for i in range(0, user_input.num_stems):
+        mid_diameter = random.gauss(user_input.middle_stem_diameter_mean,
+                                    user_input.middle_stem_diameter_sd)
+        ellipticity = random.gauss(1, user_input.ellipticity_sd)
+        taper = random.gauss(user_input.stem_taper_mean, user_input.stem_taper_sd)
 
-        length = random.gauss(input.length_mean, input.length_sd)
-        bend = random.expovariate(1/(input.bend_mean*length))
+        length = random.gauss(user_input.length_mean, user_input.length_sd)
+        bend = random.expovariate(1 / (user_input.bend_mean * length)) / 100
 
-        bottom_diameter_x = mid_diameter + (2/(taper * length))
-        bottom_diameter_y = bottom_diameter_x * ellipticity
-        middle_diameter_x = mid_diameter
+        bottom_diameter_x = (mid_diameter + (2/(taper * length))) / 100
+        bottom_diameter_y = (bottom_diameter_x * ellipticity)
+        middle_diameter_x = mid_diameter / 100
         middle_diameter_y = middle_diameter_x * ellipticity
-        top_diameter_x = mid_diameter - (2/(taper * length))
+        top_diameter_x = (mid_diameter - (2/(taper * length))) / 100
         top_diameter_y = top_diameter_x * ellipticity
 
         stem_config_list.append(Config.SingleStem(length,
