@@ -37,7 +37,7 @@ for stem_config in stem_configs:
 
     for i in range(200):
         p.stepSimulation()
-        time.sleep(1/100)
+        # time.sleep(1/240)
 
 #
 # my_stems = []
