@@ -15,7 +15,7 @@ Random stem generation:
     standard deviation: 5
 
   # no unit; used for a distribution with mean one
-  Cross section deformation standard deviation: 0.03
+  Ellipticity standard deviation: 0.03
 
   # unit: centimeters per meter
   Stem taper:
