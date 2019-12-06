@@ -31,8 +31,6 @@ my_placement = Stem.Placement([0, 0, 2.5], [0, -math.pi * 0.5, 0])
 
 debug_text_id = p.addUserDebugText('', my_placement.position)
 
-a = stem_configs[0]
-
 my_stems = []
 for stem_config in stem_configs:
     my_stems.append(Stem.Stem(stem_config, placement=my_placement))
