@@ -1,5 +1,6 @@
 from typing import List
 import math
+import random
 
 import pybullet as p
 
@@ -69,20 +70,69 @@ class Slice:
         # midpoint formula too, is only approximate
 
 
-def _bend_function(x: float) -> float:
-    """Describes the bend of the stem.
+# def _bend_function(x: float, random_shift=0) -> float:
+#     """Describes the bend of the stem.
+#
+#     This should always be a function that returns values between 0 and
+#     1 for inputs between 0 and 1.
+#     """
+#     return (-math.cos((x + random_shift) * math.pi * 2) + 1) / 2  # single cos-wave
+#     # Try also:
+#     #   # polynomial double-bend
+#     #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
+#     #   # parabola
+#     #   return 4 * (-x**2 + x)
+#     #   # double cos-wave
+#     #   return (-math.cos(x * math.pi * 2) + 1) / 2
 
-    This should always be a function that returns values between 0 and
-    1 for inputs between 0 and 1.
+
+class _BendFunction:
+    """Provides a function for the bent shape of a stem."""
+
+    def __init__(self):
+        self._random_shift = random.random()
+
+    def calculate_for(self, x: float):
+        """Describes the bend of the stem.
+
+        This should always be a function that returns values between 0 and
+        1 for inputs between 0 and 1.
+        """
+
+        # single cos-wave
+        return (-math.cos((x + self._random_shift) * math.pi * 2) + 1) / 2
+        # Try also:
+        #   # polynomial double-bend
+        #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
+        #   # parabola
+        #   return 4 * (-x**2 + x)
+        #   # double cos-wave
+        #   return (-math.cos(x * math.pi * 2) + 1) / 2
+
+
+def _generate_bend_function():
+    """Returns a one-dimensional, mathematical function that calculates the
+    bend of a stem.
+
+    The returned function's signature is:
+    fun(x: float) -> float
+    and it returns a y value for the passed x value.
     """
-    return (-math.cos(x * math.pi) + 1) / 2  # single cos-wave
-    # Try also:
-    #   # polynomial double-bend
-    #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
-    #   # parabola
-    #   return 4 * (-x**2 + x)
-    #   # double cos-wave
-    #   return (-math.cos(x * math.pi * 2) + 1) / 2
+
+    random_element = random.random()
+
+    def bend_function(x: float):
+        # single cos-wave
+        return (-math.cos((x + random_element) * math.pi * 2) + 1) / 2
+        # Try also:
+        #   # polynomial double-bend
+        #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
+        #   # parabola
+        #   return 4 * (-x**2 + x)
+        #   # double cos-wave
+        #   return (-math.cos(x * math.pi * 2) + 1) / 2
+
+    return bend_function
 
 
 def _make_stem(config: Config.SingleStem) -> List[Slice]:
@@ -92,6 +142,8 @@ def _make_stem(config: Config.SingleStem) -> List[Slice]:
     Keyword arguments:
     config -- tree mesh configuration
     """
+
+    bend_function = _generate_bend_function()
 
     # from here: create rings
     rings = []
@@ -111,7 +163,7 @@ def _make_stem(config: Config.SingleStem) -> List[Slice]:
             y_radius = (config.middle_diameter_y * (2 - (2 * pos)) +
                         config.top_diameter_y * (2 * (pos - 0.5))) / 2
 
-        x_shift = _bend_function(pos) * config.bend
+        x_shift = bend_function(x=pos) * config.bend
         z = pos * config.length - (config.length / 2)
         r = Ring(x_radius, y_radius, config.n_sides, x_shift, z)
         rings.append(r)
