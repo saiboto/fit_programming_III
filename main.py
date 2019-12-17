@@ -9,6 +9,7 @@ import Stem
 import YamlUI
 import UserInterface
 import StemConfigFactory
+import Box
 
 
 user_input = YamlUI.load_user_input('simulation_settings.yaml')
@@ -27,7 +28,11 @@ p.setGravity(0, 0, -10)
 
 planeId = p.loadURDF("plane.urdf")
 
-my_placement = Stem.Placement([0, 0, 2.5], [0, -math.pi * 0.5, 0])
+box_config = Config.Box(height = 2, width = 1, depth= 3)
+box_id = Box.Box(box_config)
+
+x_placement = -box_config.width/2
+my_placement = Stem.Placement([x_placement, 1.5, 2.5], [-math.pi * 0.5, 0, 0])
 
 debug_text_id = p.addUserDebugText('', my_placement.position)
 

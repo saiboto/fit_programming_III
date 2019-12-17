@@ -81,6 +81,12 @@ class UserInput:
         self.stem_taper_sd = stem_taper_sd
         self.bend_mean = bend_mean
 
+class Box:
+    def __init__(self, height = 2.0, width = 4.0, depth = 3.0):
+        self.height = height
+        self.width = width
+        self.depth = depth
+
 
 class StemFactory:
     def __init__(self,
