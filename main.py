@@ -10,6 +10,7 @@ import YamlUI
 import UserInterface
 import StemConfigFactory
 import Box
+import Scanner
 
 
 user_input = YamlUI.load_user_input('simulation_settings.yaml')
@@ -28,11 +29,13 @@ p.setGravity(0, 0, -10)
 
 planeId = p.loadURDF("plane.urdf")
 
-box_config = Config.Box(height = 2, width = 1, depth= 3)
+box_config = Config.Box(height = 1, width = 1, depth= 3)
 box_id = Box.Box(box_config)
 
-x_placement = -box_config.width/2
-my_placement = Stem.Placement([x_placement, 1.5, 2.5], [-math.pi * 0.5, 0, 0])
+x_placement = -box_config.width / 2
+y_placement = box_config.depth / 2
+z_placement = box_config.height * 1.5
+my_placement = Stem.Placement([x_placement, y_placement, z_placement], [-math.pi * 0.5, 0, 0])
 
 debug_text_id = p.addUserDebugText('', my_placement.position)
 
@@ -40,9 +43,17 @@ my_stems = []
 for stem_config in stem_configs:
     my_stems.append(Stem.Stem(stem_config, placement=my_placement))
 
+
     for i in range(200):
         p.stepSimulation()
         # time.sleep(1/240)
+
+    #maybe change the following 3 lines to a different form of output:
+    front_area = Scanner.front_area(box_config)
+    net_volume = sum([stem.volume for stem in my_stems])
+    print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
+          '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
+    time.sleep(1)
 
 #
 # my_stems = []

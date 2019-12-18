@@ -1,7 +1,10 @@
 File paths:
 
 # unit: meters
-Width of pile: 4
+Pile delimination:
+  Width: 4
+  Height: 2
+  Depth: 3
 
 Random stem generation:
 

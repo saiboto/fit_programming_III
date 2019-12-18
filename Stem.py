@@ -23,6 +23,7 @@ class Stem:
         self._config = config
 
         meshes = _make_stem(self._config)
+        self.volume = sum([slice.volume for slice in meshes])
         self._pybullet_id = _create_stem_body(meshes, self._config, placement)
 
 
