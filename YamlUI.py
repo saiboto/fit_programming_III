@@ -17,6 +17,11 @@ def load_user_input(file_path):
         # https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load%28input%29-Deprecation
         yaml_content = yaml.load(file_descriptor, Loader=yaml.FullLoader)
 
+    yaml_box_extent = yaml_content['Pile extent']
+    yaml_box_extent['Width']
+    yaml_box_extent['Height']
+    yaml_box_extent['Depth']
+
     yaml_rand_stem = yaml_content['Random stem generation']
     random_stem_user_input = UserInterface.Input.RandomStemGeneration(
         num_stems=yaml_rand_stem['Number of stems'],
