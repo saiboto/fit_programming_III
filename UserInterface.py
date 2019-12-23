@@ -4,16 +4,33 @@ Components
     + Input -- Defines the information that can be included in the user input.
     + Validator -- Validates user input.
     + Distributor -- Overwrites any core components default config with user
-        input.
+    input.
 """
 
 import typing
 
 import Config
+import Validation
 
 
 class Input:
-    """ Defines the information that can be included in the user input."""
+    """Defines the information that can be included in the user input."""
+
+    class BoxExtent:
+        """Defines the information necessary for building the stem box."""
+
+        def __init__(self, width: float, height: float, depth: float):
+            """The constructor.
+
+            Parameters:
+            -------------------------
+            + width -- unit: meters
+            + height -- unit: meters
+            + depth -- unit: meters
+            """
+            self.width = width
+            self.height = height
+            self.depth = depth
 
     class RandomStemGeneration:
         """Defines the information necessary for random stem generation."""
@@ -28,18 +45,18 @@ class Input:
                      stem_taper_mean: float,
                      stem_taper_sd: float,
                      bend_mean: float):
-            """ Parameters:
+            """Parameters:
 
-                + num_stems -- Number of stems
-                + length_mean -- Mean stem length ; unit: meters
-                + length_sd -- Standard deviation of stem length ; unit: meters
-                + middle_stem_diameter_mean -- unit: meters
-                + middle_stem_diameter_sd -- unit: meters
-                + ellipticity_sd -- Standard deviation around a mean of one ;
-                    no unit
-                + stem_taper_mean -- unit: centimeters per meter
-                + stem_taper_sd -- unit: centimeters per meter
-                + bend_mean -- unit: centimeters per meter
+            + num_stems -- Number of stems
+            + length_mean -- Mean stem length ; unit: meters
+            + length_sd -- Standard deviation of stem length ; unit: meters
+            + middle_stem_diameter_mean -- unit: meters
+            + middle_stem_diameter_sd -- unit: meters
+            + ellipticity_sd -- Standard deviation around a mean of one ;
+                no unit
+            + stem_taper_mean -- unit: centimeters per meter
+            + stem_taper_sd -- unit: centimeters per meter
+            + bend_mean -- unit: centimeters per meter
             """
             self.num_stems = num_stems
             self.length_mean = length_mean
@@ -52,7 +69,9 @@ class Input:
             self.bend_mean = bend_mean
 
     def __init__(self,
+                 box_extent: BoxExtent,
                  random_stem_generation: RandomStemGeneration):
+        self.box_extent = box_extent
         self.random_stem_generation = random_stem_generation
 
 
