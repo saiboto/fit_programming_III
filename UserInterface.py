@@ -1,16 +1,16 @@
 """Handles user input data.
 
-Components
-    + Input -- Defines the information that can be included in the user input.
-    + Validator -- Validates user input.
-    + Distributor -- Overwrites any core components default config with user
+Public API:
+    + Validator -- Validates user input dictionaries.
+    + create_user_input -- Creates a user input object from a valid dictionary.
+    + Input -- Defines objects that contain complete user input data.
+    + Distributor -- Overwrites any core component's default config with user
     input.
 """
 
-import typing
+import cerberus
 
 import Config
-import Validation
 
 
 class Input:
@@ -68,95 +68,82 @@ class Input:
             self.stem_taper_sd = stem_taper_sd
             self.bend_mean = bend_mean
 
+    
+    schema = {
+        'box extent': {
+            'width': {'type': 'float', 'min': 1},
+            'height': {'type': 'float', 'min': 1},
+            'depth': {'type': 'float', 'min': 1}
+        },
+        'random stem generation': {
+            'number of stems': {'type': 'int', 'min': 1},
+            'stem length mean': {'type': 'float', 'min': 1},
+            'stem length standard deviation': {'type': 'float', 'min': 0}
+        }
+    }
+
     def __init__(self,
                  box_extent: BoxExtent,
                  random_stem_generation: RandomStemGeneration):
+        """The constructor.
+
+        Defines a schema readable by the cerberus validation framework. The
+        schema formulates assumptions about the user input data that can be
+        validated.
+        """
         self.box_extent = box_extent
         self.random_stem_generation = random_stem_generation
 
+        self.schema = {
+            'box extent': {
+                'width': {'type': 'float', 'min': 1},
+                'height': {'type': 'float', 'min': 1},
+                'depth': {'type': 'float', 'min': 1}
+            },
+            'random stem generation': {
+                'number of stems': {'type': 'int', 'min': 1},
+                'stem length mean': {'type': 'float', 'min': 1},
+                'stem length standard deviation': {'type': 'float', 'min': 0}
+            }
+        }
+
 
 class Validator:
-    """Validates user input."""
-
-    INVALID_LESS_THAN_OR_EQUAL_ZERO = (
-        'The parameter "{0}" should be greater than zero, but was {1}.\n'
-    )
-
-    INVALID_LESS_THAN_ZERO = (
-        'The parameter "{0}" should be equal to or greater than zero, but was '
-        '{1}.\n'
-    )
+    """Validates user input objects with their own schema."""
 
     def __init__(self, user_input: Input):
-        self._is_valid = True
-        self._error_messages = ""
 
-        def invalid_if_less_than_or_equal_zero(user_input_element: typing.Any,
-                                               input_element_name: str):
-            if user_input_element <= 0:
-                self._is_valid = False
-                self._error_messages +=\
-                    self.INVALID_LESS_THAN_OR_EQUAL_ZERO.format(
-                        input_element_name, user_input_element
-                    )
+        cerberus_validator = cerberus.Validator(user_input.schema)
 
-        def invalid_if_less_than_zero(user_input_element: typing.Any,
-                                      input_element_name: str):
-            if user_input_element < 0:
-                self._is_valid = False
-                self._error_messages +=\
-                    self.INVALID_LESS_THAN_ZERO.format(
-                        input_element_name, user_input_element
-                    )
+        box_ext = user_input.box_extent
+        rand_stem = user_input.random_stem_generation
 
-        invalid_if_less_than_or_equal_zero(
-            user_input.random_stem_generation.num_stems,
-            'number of stems'
-        )
+        user_input_dict = {
+            'box extent': {
+                'width': box_ext.width,
+                'height': box_ext.height,
+                'depth': box_ext.depth
+            },
+            'random stem generation': {
+                'number of stems': rand_stem.num_stems,
+                'stem length mean': rand_stem.length_mean,
+                'stem length standard deviation': rand_stem.length_sd
+            }
+        }
 
-        invalid_if_less_than_or_equal_zero(
-            user_input.random_stem_generation.length_mean,
-            'mean stem length'
-        )
-        invalid_if_less_than_zero(
-            user_input.random_stem_generation.length_sd,
-            'stem length standard deviation'
-        )
+        self._is_valid = cerberus_validator.validate(user_input_dict)
 
-        invalid_if_less_than_or_equal_zero(
-            user_input.random_stem_generation.middle_stem_diameter_mean,
-            'mean middle stem diameter'
-        )
-        invalid_if_less_than_zero(
-            user_input.random_stem_generation.middle_stem_diameter_sd,
-            'middle stem diameter standard deviation'
-        )
-
-        invalid_if_less_than_zero(
-            user_input.random_stem_generation.ellipticity_sd,
-            'ellipticity standard deviation'
-        )
-
-        invalid_if_less_than_or_equal_zero(
-            user_input.random_stem_generation.stem_taper_mean,
-            'mean stem taper'
-        )
-        invalid_if_less_than_zero(
-            user_input.random_stem_generation.stem_taper_sd,
-            'stem taper standard deviation'
-        )
-
-        invalid_if_less_than_zero(
-            user_input.random_stem_generation.bend_mean,
-            'mean bend of stem'
-        )
+        if self._is_valid:
+            self._invalidity_reasons = ''
+        else:
+            self._invalidity_reasons = cerberus_validator.errors
 
     def is_valid(self) -> bool:
         return self._is_valid
 
     def print_reasons(self):
         """Prints reasons for invalid user input to the console."""
-        print(self._error_messages)
+        print(self._invalidity_reasons)
 
 
 class Distributor:
