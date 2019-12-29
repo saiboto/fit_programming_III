@@ -68,70 +68,61 @@ class Input:
             self.stem_taper_sd = stem_taper_sd
             self.bend_mean = bend_mean
 
-    
     schema = {
-        'box extent': {
-            'width': {'type': 'float', 'min': 1},
-            'height': {'type': 'float', 'min': 1},
-            'depth': {'type': 'float', 'min': 1}
-        },
-        'random stem generation': {
-            'number of stems': {'type': 'int', 'min': 1},
-            'stem length mean': {'type': 'float', 'min': 1},
-            'stem length standard deviation': {'type': 'float', 'min': 0}
-        }
+        'box width': {'type': 'float', 'min': 1},
+        'box height': {'type': 'float', 'min': 1},
+        'box depth': {'type': 'float', 'min': 1},
+        'number of stems': {'type': 'integer', 'min': 1},
+        'mean stem length': {'type': 'float', 'min': 1},
+        'stem length standard deviation': {'type': 'float', 'min': 0},
+        'mean middle stem diameter': {'type': 'float', 'min': 1},
+        'middle stem diameter standard deviation': {'type': 'float', 'min': 0},
+        'ellipticity standard deviation': {'type': 'float', 'min': 0},
+        'mean stem taper': {'type': 'float', 'min': 1},
+        'stem taper standard deviation': {'type': 'float', 'min': 0},
+        'mean bend': {'type': 'float', 'min': 1}
     }
+
+    """Defines a data schema readable by the cerberus validation framework.
+    
+    The schema formulates assumptions about the user input data that can be
+    validated.
+    """
 
     def __init__(self,
                  box_extent: BoxExtent,
                  random_stem_generation: RandomStemGeneration):
-        """The constructor.
 
-        Defines a schema readable by the cerberus validation framework. The
-        schema formulates assumptions about the user input data that can be
-        validated.
-        """
         self.box_extent = box_extent
         self.random_stem_generation = random_stem_generation
 
-        self.schema = {
-            'box extent': {
-                'width': {'type': 'float', 'min': 1},
-                'height': {'type': 'float', 'min': 1},
-                'depth': {'type': 'float', 'min': 1}
-            },
-            'random stem generation': {
-                'number of stems': {'type': 'int', 'min': 1},
-                'stem length mean': {'type': 'float', 'min': 1},
-                'stem length standard deviation': {'type': 'float', 'min': 0}
-            }
-        }
-
 
 class Validator:
-    """Validates user input objects with their own schema."""
+    """Validates user input objects according to the user input schema."""
 
     def __init__(self, user_input: Input):
 
-        cerberus_validator = cerberus.Validator(user_input.schema)
+        cerberus_validator = cerberus.Validator(Input.schema)
 
         box_ext = user_input.box_extent
         rand_stem = user_input.random_stem_generation
 
-        user_input_dict = {
-            'box extent': {
-                'width': box_ext.width,
-                'height': box_ext.height,
-                'depth': box_ext.depth
-            },
-            'random stem generation': {
-                'number of stems': rand_stem.num_stems,
-                'stem length mean': rand_stem.length_mean,
-                'stem length standard deviation': rand_stem.length_sd
-            }
+        user_input_as_dict = {
+            'box width': box_ext.width,
+            'box height': box_ext.height,
+            'box depth': box_ext.depth,
+            'number of stems': rand_stem.num_stems,
+            'mean stem length': rand_stem.length_mean,
+            'stem length standard deviation': rand_stem.length_sd,
+            'mean middle stem diameter': rand_stem.middle_stem_diameter_mean,
+            'middle stem diameter standard deviation': rand_stem.middle_stem_diameter_sd,
+            'ellipticity standard deviation': rand_stem.ellipticity_sd,
+            'mean stem taper': rand_stem.stem_taper_mean,
+            'stem taper standard deviation': rand_stem.stem_taper_sd,
+            'mean bend': rand_stem.bend_mean
         }
 
-        self._is_valid = cerberus_validator.validate(user_input_dict)
+        self._is_valid = cerberus_validator.validate(user_input_as_dict)
 
         if self._is_valid:
             self._invalidity_reasons = ''
