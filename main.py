@@ -29,7 +29,11 @@ p.setGravity(0, 0, -10)
 
 planeId = p.loadURDF("plane.urdf")
 
-box_config = Config.Box(height=1, width=1, depth=3)
+box_config = Config.Box(
+    height=user_input.box_extent.height,
+    width=user_input.box_extent.width,
+    depth=user_input.box_extent.depth
+)
 box_id = Box.Box(box_config)
 
 x_placement = -box_config.width / 2
@@ -37,7 +41,14 @@ y_placement = box_config.depth / 2
 z_placement = box_config.height * 1.5
 my_placement = Stem.Placement([x_placement, y_placement, z_placement], [-math.pi * 0.5, 0, 0])
 
-debug_text_id = p.addUserDebugText('', my_placement.position)
+p.resetDebugVisualizerCamera(
+    cameraDistance=box_config.height + box_config.height * box_config.width * box_config.depth / 10,
+    cameraYaw=25,
+    cameraPitch=-40,
+    cameraTargetPosition=[x_placement, y_placement, 0]
+)
+
+# debug_text_id = p.addUserDebugText('', my_placement.position)
 
 my_stems = []
 for stem_config in stem_configs:
