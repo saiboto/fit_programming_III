@@ -25,9 +25,10 @@ physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
 # necessary for using objects of pybullet_data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
-p.setGravity(0, 0, -10)
-
 planeId = p.loadURDF("plane.urdf")
+p.changeDynamics(bodyUniqueId=planeId, linkIndex=-1, lateralFriction=50)
+
+p.setGravity(0, 0, -10)
 
 box_config = Config.Box(
     height=user_input.box_extent.height,
@@ -59,11 +60,11 @@ for stem_config in stem_configs:
         # time.sleep(1/240)
 
     # maybe change the following 3 lines to a different form of output:
-    front_area = Scanner.front_area(box_config)
-    net_volume = sum([stem.volume for stem in my_stems])
-    print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
-          '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
-    time.sleep(1)
+    # front_area = Scanner.front_area(box_config)
+    # net_volume = sum([stem.volume for stem in my_stems])
+    # print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
+    #       '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
+    # time.sleep(1)
 
 #
 # my_stems = []
