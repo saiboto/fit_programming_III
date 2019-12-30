@@ -43,7 +43,8 @@ z_placement = box_config.height * 1.5
 my_placement = Stem.Placement([x_placement, y_placement, z_placement], [-math.pi * 0.5, 0, 0])
 
 p.resetDebugVisualizerCamera(
-    cameraDistance=box_config.height + box_config.height * box_config.width * box_config.depth / 10,
+    cameraDistance= box_config.height + box_config.depth / 2 + box_config.width / 2,
+                #=box_config.height + box_config.height * box_config.width * box_config.depth / 10,
     cameraYaw=25,
     cameraPitch=-40,
     cameraTargetPosition=[x_placement, y_placement, 0]
