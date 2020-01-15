@@ -43,8 +43,8 @@ z_placement = box_config.height * 1.5
 my_placement = Stem.Placement([x_placement, y_placement, z_placement], [-math.pi * 0.5, 0, 0])
 
 p.resetDebugVisualizerCamera(
-    cameraDistance=box_config.height + box_config.height * box_config.width * box_config.depth / 10,
-    cameraYaw=25,
+    cameraDistance=box_config.height + box_config.depth /2 + box_config.width * / 2,
+    cameraYaw=10,
     cameraPitch=-40,
     cameraTargetPosition=[x_placement, y_placement, 0]
 )
@@ -60,28 +60,12 @@ for stem_config in stem_configs:
         # time.sleep(1/240)
 
     # maybe change the following 3 lines to a different form of output:
-    # front_area = Scanner.front_area(box_config)
-    # net_volume = sum([stem.volume for stem in my_stems])
-    # print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
-    #       '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
+    front_area = Scanner.front_area(box_config)
+    net_volume = sum([stem.volume for stem in my_stems])
+    print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
+          '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
     # time.sleep(1)
 
-#
-# my_stems = []
-# for i in range(500000):
-#     if i % 200 == 0:
-#         my_stems.append(Stem.Stem(my_single_stem_config, my_placement))
-#         debug_text_id = p.addUserDebugText(
-#             str(my_stems[-1]._pybullet_id),
-#             my_placement.position,
-#             replaceItemUniqueId=debug_text_id)
-#
-#     if i == 1150:
-#         p.resetBasePositionAndOrientation(my_stems[5]._pybullet_id,
-#                                           my_placement.position,
-#                                           my_placement.orientation)
-#
-#     p.stepSimulation()
-#     time.sleep(1/100)
+
 
 p.disconnect()
