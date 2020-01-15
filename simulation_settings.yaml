@@ -2,13 +2,13 @@ File paths:
 
 # unit: meters
 Pile extent:
-  Width: 3
+  Width: 4
   Height: 3
   Depth: 3
 
 Random stem generation:
 
-  Number of stems: 100
+  Number of stems: 200
 
   # unit: meters
   Length:

@@ -45,7 +45,7 @@ my_placement = Stem.Placement([x_placement, y_placement, z_placement], [-math.pi
 p.resetDebugVisualizerCamera(
     cameraDistance= box_config.height + box_config.depth / 2 + box_config.width / 2,
                 #=box_config.height + box_config.height * box_config.width * box_config.depth / 10,
-    cameraYaw=25,
+    cameraYaw=10,
     cameraPitch=-40,
     cameraTargetPosition=[x_placement, y_placement, 0]
 )
@@ -61,10 +61,11 @@ for stem_config in stem_configs:
         # time.sleep(1/240)
 
     # maybe change the following 3 lines to a different form of output:
-    # front_area = Scanner.front_area(box_config)
-    # net_volume = sum([stem.volume for stem in my_stems])
-    # print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
-    #       '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
+    front_area = Scanner.front_area(box_config)
+    net_volume = sum([stem.volume for stem in my_stems])
+    print(len(my_stems))
+    print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
+          '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
     # time.sleep(1)
 
 #
