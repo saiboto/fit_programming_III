@@ -33,3 +33,4 @@ def front_area(box_config):
     area = statistics.mean(polter_height_points) * box_config.width
 
     return area
+

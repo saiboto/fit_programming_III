@@ -17,9 +17,9 @@ class SingleStem:
                  n_sides=20,
                  n_meshes=10,
                  lateral_friction=0.2,
-                 spinning_friction=2,
+                 spinning_friction=0.5,
                  rolling_friction=0.1,
-                 restitution=0.2,
+                 restitution=0.1,
                  linear_damping=0.0):
 
         # stem measurements

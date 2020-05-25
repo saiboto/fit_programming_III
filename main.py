@@ -1,5 +1,6 @@
 import math
 import time
+import random
 
 import pybullet as p
 import pybullet_data
@@ -11,6 +12,7 @@ import UserInterface
 import StemConfigFactory
 import Box
 import Scanner
+import Forwarder1
 
 
 user_input = YamlUI.load_user_input('simulation_settings.yaml')
@@ -20,6 +22,7 @@ if not user_input_validator.is_valid():
     user_input_validator.print_reasons()
 
 stem_configs = StemConfigFactory.run(user_input.random_stem_generation)
+#UserInterface.writeStemList(stem_configs, "My_Stems.csv")
 
 physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
 # necessary for using objects of pybullet_data
@@ -56,34 +59,39 @@ my_stems = []
 for stem_config in stem_configs:
     my_stems.append(Stem.Stem(stem_config, placement=my_placement))
 
-    for i in range(200):
+iteration_results = [["Iteration", "Out Of Box", "Front Area", "Gross Volume", "Net Volume", "Deflation Factor"]]
+for iteration in range(user_input.iterations):
+
+    xyz_placements = Forwarder1.grid_placements(box_config, stem_configs)
+
+    for stem in my_stems:
+        placement = Stem.Placement(xyz_placements.pop(0),
+                                         [0, 0, 0])
+        stem.forward(placement)
+
+            #time.sleep(1/240)
+    for i in range(500):
         p.stepSimulation()
-        # time.sleep(1/240)
+        if i % 100 == 0:
+            print("..",i)
 
-    # maybe change the following 3 lines to a different form of output:
+        # maybe change the following 3 lines to a different form of output:
     front_area = Scanner.front_area(box_config)
-    net_volume = sum([stem.volume for stem in my_stems])
-    print(len(my_stems))
-    print("Front area: ", front_area, '\nGross volume: ', front_area * box_config.depth, '\nNet volume: ', net_volume,
-          '\nDeflation factor:', net_volume /(front_area * box_config.depth) )
-    # time.sleep(1)
+    net_volume = sum([stem.volume if stem.isInsideOfTheBox(box_config) else 0 for stem in my_stems])
+    gross_volume = front_area * box_config.depth
+    out_of_box = [stem.isInsideOfTheBox(box_config) for stem in my_stems].count(False)
+    if(front_area>0):
+        deflationfactor = net_volume /(front_area * box_config.depth)
+    else:
+        deflationfactor = "DivBy0Error"
+    print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
+          '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box)
+    iteration_results.append([iteration + 1, out_of_box, front_area, net_volume, gross_volume, deflationfactor])
 
-#
-# my_stems = []
-# for i in range(500000):
-#     if i % 200 == 0:
-#         my_stems.append(Stem.Stem(my_single_stem_config, my_placement))
-#         debug_text_id = p.addUserDebugText(
-#             str(my_stems[-1]._pybullet_id),
-#             my_placement.position,
-#             replaceItemUniqueId=debug_text_id)
-#
-#     if i == 1150:
-#         p.resetBasePositionAndOrientation(my_stems[5]._pybullet_id,
-#                                           my_placement.position,
-#                                           my_placement.orientation)
-#
-#     p.stepSimulation()
-#     time.sleep(1/100)
 
+    random.shuffle(my_stems)
+
+
+#UserInterface.writeResultFile(iteration_results, "Resulting_Measurements.csv")
 p.disconnect()
+

@@ -9,6 +9,7 @@ Public API:
 """
 
 import cerberus
+import csv
 
 import Config
 
@@ -91,10 +92,12 @@ class Input:
 
     def __init__(self,
                  box_extent: BoxExtent,
-                 random_stem_generation: RandomStemGeneration):
+                 random_stem_generation: RandomStemGeneration,
+                 iterations = 1):
 
         self.box_extent = box_extent
         self.random_stem_generation = random_stem_generation
+        self.iterations = iterations
 
 
 class Validator:
@@ -146,3 +149,23 @@ class Distributor:
     def insert_user_input_into_stem_factory_config(self, into: Config.SingleStem):
         """TODO"""
         raise NotImplementedError()
+
+
+
+def writeStemList(stem_configs, filename):
+    with open(filename, 'w', newline='') as f:
+        my_writer = csv.writer(f)
+
+        my_writer.writerow(["id", "length", "bottom_diam_x", "bottom_diam_y", "middle_diam_x", "middle_diam_y",
+                            "top_diam_x", "top_diam_y", "bend"])
+        index = 1
+        for stem_config in stem_configs:
+            my_writer.writerow([index, stem_config.length, stem_config.bottom_diameter_x, stem_config.bottom_diameter_y,
+                               stem_config.middle_diameter_x, stem_config.middle_diameter_y,
+                               stem_config.top_diameter_x, stem_config.top_diameter_y, stem_config.bend])
+            index = index + 1
+
+def writeResultFile(results, filename):
+    with open(filename, 'w', newline='') as f:
+        my_writer = csv.writer(f)
+        my_writer.writerows(results)

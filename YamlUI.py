@@ -32,6 +32,7 @@ def load_user_input(file_path) -> UserInterface.Input:
 
     try:
 
+        iterations = yaml_content['Number of iterations']
         box_extent = yaml_content['Pile extent']
         random_stem_gen = yaml_content['Random stem generation']
 
@@ -55,7 +56,8 @@ def load_user_input(file_path) -> UserInterface.Input:
                 stem_taper_sd=random_stem_gen
                 ['Stem taper']['standard deviation'],
                 bend_mean=random_stem_gen['Mean bend']
-            )
+            ),
+            iterations = iterations
         )
 
     except KeyError as original_exc:

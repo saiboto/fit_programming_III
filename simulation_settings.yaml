@@ -1,14 +1,15 @@
 File paths:
 
+Number of iterations: 1
 # unit: meters
 Pile extent:
-  Width: 4
-  Height: 3
+  Width: 3
+  Height: 2
   Depth: 3
 
 Random stem generation:
 
-  Number of stems: 200
+  Number of stems: 70
 
   # unit: meters
   Length:
@@ -20,13 +21,13 @@ Random stem generation:
     mean: 20
     standard deviation: 5
 
-  # no unit; used for a distribution with mean one
+  # no unit; factor for a distribution with mean one
   Ellipticity standard deviation: 0.03
 
   # unit: centimeters per meter
   Stem taper:
-    mean: 1
-    standard deviation: 0.3
+    mean: 0.0
+    standard deviation: 0.00
 
   # unit: centimeters per meter
   Mean bend: 2

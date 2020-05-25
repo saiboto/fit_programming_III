@@ -26,6 +26,23 @@ class Stem:
         self.volume = sum([slice.volume for slice in meshes])
         self._pybullet_id = _create_stem_body(meshes, self._config, placement)
 
+    def location(self):
+        return p.getBasePositionAndOrientation(self._pybullet_id)[0]
+
+    def isInsideOfTheBox(self, boxconfig):
+        if self.location()[0] < 0 and self.location()[0] > -boxconfig.width and self.location()[2] > 0 \
+            and self.location()[1] > 0 and self.location()[1] < boxconfig.depth:
+            return True
+        else:
+            return False
+
+    def remove(self):
+        p.removeBody(self._pybullet_id)
+
+    def forward(self, placement :Placement):
+        p.resetBasePositionAndOrientation(self._pybullet_id, placement.position, placement.orientation)
+
+
 
 class Ring:
     """Contains 3D-vertices that define an ellipsoidal disk.
@@ -146,6 +163,8 @@ def _make_stem(config: Config.SingleStem) -> List[Slice]:
 
     bend_function = _generate_bend_function()
 
+    if config.bend == 0:
+        config.n_meshes = 1
     # from here: create rings
     rings = []
     for i in range(0, config.n_meshes + 1):
