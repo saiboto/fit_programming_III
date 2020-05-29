@@ -22,9 +22,9 @@ if not user_input_validator.is_valid():
     user_input_validator.print_reasons()
 
 stem_configs = StemConfigFactory.run(user_input.random_stem_generation)
-#UserInterface.writeStemList(stem_configs, "My_Stems.csv")
+UserInterface.writeStemList(stem_configs, "My_Stems.csv")
 
-physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
+physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
 # necessary for using objects of pybullet_data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
@@ -72,8 +72,8 @@ for iteration in range(user_input.iterations):
             #time.sleep(1/240)
     for i in range(500):
         p.stepSimulation()
-        if i % 100 == 0:
-            print("..",i)
+     #   if i % 100 == 0:
+     #       print("..",i)
 
         # maybe change the following 3 lines to a different form of output:
     front_area = Scanner.front_area(box_config)
@@ -84,14 +84,14 @@ for iteration in range(user_input.iterations):
         deflationfactor = net_volume /(front_area * box_config.depth)
     else:
         deflationfactor = "DivBy0Error"
-    print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
-          '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box)
+    #print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
+    #      '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box)
     iteration_results.append([iteration + 1, out_of_box, front_area, net_volume, gross_volume, deflationfactor])
-
+    print(iteration)
 
     random.shuffle(my_stems)
 
 
-#UserInterface.writeResultFile(iteration_results, "Resulting_Measurements.csv")
+UserInterface.writeResultFile(iteration_results, "Resulting_Measurements.csv")
 p.disconnect()
 
