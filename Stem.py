@@ -22,9 +22,9 @@ class Stem:
     def __init__(self, config: Config.SingleStem, placement: Placement):
         self._config = config
 
-        meshes = _make_stem(self._config)
-        self.volume = sum([slice.volume for slice in meshes])
-        self._pybullet_id = _create_stem_body(meshes, self._config, placement)
+        self._meshes = _make_stem(self._config)
+        self.volume = sum([slice.volume for slice in self._meshes])
+        self._pybullet_id = _create_stem_body(self._meshes, self._config, placement)
 
     def location(self):
         return p.getBasePositionAndOrientation(self._pybullet_id)[0]
@@ -39,8 +39,18 @@ class Stem:
     def remove(self):
         p.removeBody(self._pybullet_id)
 
+    def reappear(self, placement: Placement):
+        self._pybullet_id = _create_stem_body(self._meshes, self._config, placement)
+
     def forward(self, placement :Placement):
         p.resetBasePositionAndOrientation(self._pybullet_id, placement.position, placement.orientation)
+        p.resetBaseVelocity(self._pybullet_id, [0,0,0], [0,0,0,0])
+
+    def speed(self):
+        velocity = p.getBaseVelocity(self._pybullet_id)
+        linear_velocity = math.sqrt(sum([x**2 for x in velocity[0]]))
+        angular_velocity = sum([abs(x) for x in velocity[1]])
+        return [linear_velocity, angular_velocity]
 
 
 

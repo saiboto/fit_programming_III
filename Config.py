@@ -16,9 +16,9 @@ class SingleStem:
                  bend=0.0,
                  n_sides=20,
                  n_meshes=10,
-                 lateral_friction=0.2,
-                 spinning_friction=0.5,
-                 rolling_friction=0.1,
+                 lateral_friction=0.02,
+                 spinning_friction=0.1,
+                 rolling_friction=0.02,
                  restitution=0.1,
                  linear_damping=0.0):
 

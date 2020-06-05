@@ -21,8 +21,14 @@ user_input_validator = UserInterface.Validator(user_input=user_input)
 if not user_input_validator.is_valid():
     user_input_validator.print_reasons()
 
-stem_configs = StemConfigFactory.run(user_input.random_stem_generation)
-UserInterface.writeStemList(stem_configs, "My_Stems.csv")
+try:
+    stem_configs = UserInterface.readStemList(user_input.stems_file_path)
+except:
+    print("No valid stem file was found at the given path.",
+          "A new stem set will be generated.")
+    filename = input("Please give file name:")
+    stem_configs = StemConfigFactory.run(user_input.random_stem_generation)
+    UserInterface.writeStemList(stem_configs, (filename + ".csv"))
 
 physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
 # necessary for using objects of pybullet_data
@@ -69,12 +75,16 @@ for iteration in range(user_input.iterations):
                                          [0, 0, 0])
         stem.forward(placement)
 
+    #time.sleep(2)
+
             #time.sleep(1/240)
-    for i in range(500):
+    for i in range(700):
         p.stepSimulation()
+        #time.sleep(1/100)
      #   if i % 100 == 0:
      #       print("..",i)
-
+    for stem in my_stems:
+        print(stem.speed())
         # maybe change the following 3 lines to a different form of output:
     front_area = Scanner.front_area(box_config)
     net_volume = sum([stem.volume if stem.isInsideOfTheBox(box_config) else 0 for stem in my_stems])
@@ -84,10 +94,10 @@ for iteration in range(user_input.iterations):
         deflationfactor = net_volume /(front_area * box_config.depth)
     else:
         deflationfactor = "DivBy0Error"
-    #print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
-    #      '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box)
+    print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
+          '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box)
     iteration_results.append([iteration + 1, out_of_box, front_area, net_volume, gross_volume, deflationfactor])
-    print(iteration)
+    print(iteration+1)
 
     random.shuffle(my_stems)
 

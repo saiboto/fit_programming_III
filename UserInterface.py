@@ -93,11 +93,13 @@ class Input:
     def __init__(self,
                  box_extent: BoxExtent,
                  random_stem_generation: RandomStemGeneration,
-                 iterations = 1):
+                 iterations = 1,
+                 stems_file_path = 'none'):
 
         self.box_extent = box_extent
         self.random_stem_generation = random_stem_generation
         self.iterations = iterations
+        self.stems_file_path = stems_file_path
 
 
 class Validator:
@@ -169,3 +171,30 @@ def writeResultFile(results, filename):
     with open(filename, 'w', newline='') as f:
         my_writer = csv.writer(f)
         my_writer.writerows(results)
+
+
+def readStemList(filepath):
+    stemconfigs = []
+    with open(filepath, newline='') as f:
+        reader = csv.reader(f, delimiter=',', quotechar= '|')
+        firstrow = True
+        for row in reader:
+            if firstrow:
+                header = row
+                firstrow = False
+                if not header == ["id", "length", "bottom_diam_x", "bottom_diam_y",
+                                  "middle_diam_x", "middle_diam_y", "top_diam_x",
+                                  "top_diam_y", "bend"]:
+                    raise ValueError("Invalid header!")
+            else:
+                stemconfigs.append(Config.SingleStem(length = float(row[1]),
+                                                 bottom_diameter_x= float(row[2]),
+                                                 bottom_diameter_y= float(row[3]),
+                                                 middle_diameter_x= float(row[4]),
+                                                 middle_diameter_y= float(row[5]),
+                                                 top_diameter_x= float(row[6]),
+                                                 top_diameter_y= float(row[7]),
+                                                 bend= float(row[8])))
+
+    return stemconfigs
+

@@ -12,7 +12,7 @@ def front_area(box_config):
 
     x_pos = min(0.05, box_config.width/100)
 
-    while x_pos < box_config.width:
+    while x_pos < box_config.width - step_width/2:
         ray_start_position = [-x_pos, box_config.depth*0.1, box_config.height * 2]
         ray_target_position = [-x_pos, box_config.depth*0.1, 0]
         testray = p.rayTest(ray_start_position, ray_target_position)
