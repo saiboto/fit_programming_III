@@ -12,7 +12,7 @@ import UserInterface
 import StemConfigFactory
 import Box
 import Scanner
-import Forwarder1
+import Forwarder
 
 
 user_input = YamlUI.load_user_input('simulation_settings.yaml')
@@ -68,7 +68,7 @@ for stem_config in stem_configs:
 iteration_results = [["Iteration", "Out Of Box", "Front Area", "Gross Volume", "Net Volume", "Deflation Factor"]]
 for iteration in range(user_input.iterations):
 
-    xyz_placements = Forwarder1.grid_placements(box_config, stem_configs)
+    xyz_placements = Forwarder.grid_placements(box_config, stem_configs)
 
     for stem in my_stems:
         placement = Stem.Placement(xyz_placements.pop(0),
