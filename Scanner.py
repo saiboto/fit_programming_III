@@ -2,35 +2,76 @@ import statistics
 
 import pybullet as p
 
+class Scanresult:
+
+    def __init__(self, front_heights, back_heights, box_overflow = False ):
+        self.front_heights = front_heights
+        self.back_heights = back_heights
+        self.box_overflow = box_overflow
+
+
+def scan(box_config):
+    polter_front_heights = []
+    polter_back_heights = []
+    box_overflow = False
+    step_width = min(0.1, box_config.width / 100)
+
+    x_pos = min(0.05, box_config.width / 100)
+
+    while x_pos < box_config.width - step_width / 2:
+        #front ray
+        f_ray_start_position = [-x_pos, box_config.depth * 0.1, box_config.height * 2]
+        f_ray_target_position = [-x_pos, box_config.depth * 0.1, 0]
+        frontray = p.rayTest(f_ray_start_position, f_ray_target_position)
+
+        f_hit_fraction = frontray[0][2]
+        f_hit_position = frontray[0][3]
+
+        if f_hit_fraction < 0.5:
+            box_overflow = True
+
+        polter_front_heights.append(f_hit_position[2])
+
+        #Back ray
+        b_ray_start_position = [-x_pos, box_config.depth * 0.95, box_config.height * 2]
+        b_ray_target_position = [-x_pos, box_config.depth * 0.95, 0]
+        backray = p.rayTest(b_ray_start_position, b_ray_target_position)
+
+        b_hit_fraction = backray[0][2]
+        b_hit_position = backray[0][3]
+
+        if b_hit_fraction < 0.5:
+            box_overflow = True
+
+        polter_back_heights.append(b_hit_position[2])
+        #print(f_hit_position, b_hit_position)
+        #p.addUserDebugText(".", textPosition = b_hit_position)
+
+        x_pos += step_width
+
+    res = Scanresult(polter_front_heights, polter_back_heights, box_overflow)
+
+    return res
+
 def front_area(box_config):
     '''Determines the approximate front area of the polter by casting vertical rays on it
     and finding their intersection with the stems. '''
 
-    polter_height_points =[]
-    box_overflow = False
-    step_width = min(0.1, box_config.width/100)
+    my_scan = scan(box_config)
 
-    x_pos = min(0.05, box_config.width/100)
 
-    while x_pos < box_config.width - step_width/2:
-        ray_start_position = [-x_pos, box_config.depth*0.1, box_config.height * 2]
-        ray_target_position = [-x_pos, box_config.depth*0.1, 0]
-        testray = p.rayTest(ray_start_position, ray_target_position)
-
-        hit_fraction = testray[0][2]
-        hit_position = testray[0][3]
-
-        if hit_fraction < 0.5:
-            box_overflow = True
-
-        polter_height_points.append(hit_position[2])
-
-        x_pos += step_width
-
-    if box_overflow == True:
+    if my_scan.box_overflow == True:
         print("WARNING: Box overflow! Too many stems for the size of the box!")
 
-    area = statistics.mean(polter_height_points) * box_config.width
+    area = statistics.mean(my_scan.front_heights) * box_config.width
 
     return area
 
+def max_height(box_config):
+
+    my_scan = scan(box_config)
+
+    print('max: ',  max(my_scan.front_heights), max(my_scan.back_heights), max(my_scan.front_heights + my_scan.back_heights))
+    print(my_scan.back_heights)
+
+    return max(my_scan.front_heights + my_scan.back_heights)

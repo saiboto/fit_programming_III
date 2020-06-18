@@ -50,6 +50,7 @@ x_placement = -box_config.width / 2
 y_placement = box_config.depth / 2
 z_placement = box_config.height * 1.5
 my_placement = Stem.Placement([x_placement, y_placement, z_placement], [-math.pi * 0.5, 0, 0])
+deposit_placement = Stem.Placement([x_placement, y_placement, -z_placement], [-math.pi * 0.5, 0, 0])
 
 p.resetDebugVisualizerCamera(
     cameraDistance= box_config.height + box_config.depth / 2 + box_config.width / 2,
@@ -68,23 +69,18 @@ for stem_config in stem_configs:
 iteration_results = [["Iteration", "Out Of Box", "Front Area", "Gross Volume", "Net Volume", "Deflation Factor"]]
 for iteration in range(user_input.iterations):
 
-    xyz_placements = Forwarder.grid_placements(box_config, stem_configs)
+    Forwarder.deposit(my_stems)
 
-    for stem in my_stems:
-        placement = Stem.Placement(xyz_placements.pop(0),
-                                         [0, 0, 0])
-        stem.forward(placement)
-
-    #time.sleep(2)
-
-            #time.sleep(1/240)
-    for i in range(700):
+    for i in range(50):
+        #time.sleep(1/10)
         p.stepSimulation()
-        #time.sleep(1/100)
-     #   if i % 100 == 0:
-     #       print("..",i)
-    for stem in my_stems:
-        print(stem.speed())
+
+    #Forwarder.grid_forward(my_stems, box_config)
+    Forwarder.rowwise_forward(my_stems, box_config)
+
+    #for stem in my_stems:
+    #    print(stem.speed())
+
         # maybe change the following 3 lines to a different form of output:
     front_area = Scanner.front_area(box_config)
     net_volume = sum([stem.volume if stem.isInsideOfTheBox(box_config) else 0 for stem in my_stems])
@@ -101,7 +97,5 @@ for iteration in range(user_input.iterations):
 
     random.shuffle(my_stems)
 
-
 UserInterface.writeResultFile(iteration_results, "Resulting_Measurements.csv")
 p.disconnect()
-

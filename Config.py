@@ -16,9 +16,10 @@ class SingleStem:
                  bend=0.0,
                  n_sides=20,
                  n_meshes=10,
-                 lateral_friction=0.02,
-                 spinning_friction=0.1,
-                 rolling_friction=0.02,
+                 density = 1000.0,
+                 lateral_friction=0.5,
+                 spinning_friction=0.5,
+                 rolling_friction=0.5,
                  restitution=0.1,
                  linear_damping=0.0):
 
@@ -35,6 +36,7 @@ class SingleStem:
         # 3d object creation stuff
         self.n_sides = n_sides
         self.n_meshes = n_meshes
+        self.density = density
         self.lateral_friction = lateral_friction
         self.spinning_friction = spinning_friction
         self.rolling_friction = rolling_friction
@@ -42,13 +44,8 @@ class SingleStem:
         self.linear_damping = linear_damping
 
 
-# class Polter:
-#     def __init__(self,
-#                  width, height):
-
-
 class UserInput:
-    """ Contains all information that a user can give to the program.
+    """ Contains all information that a user can give to the program for stem generation.
 
     Attributes
         + num_stems -- Number of stems
@@ -87,11 +84,6 @@ class Box:
         self.width = width
         self.depth = depth
 
-
-class StemFactory:
-    def __init__(self,
-                 ):
-        pass
 
 
 class PhysicsEngine:

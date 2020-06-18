@@ -20,11 +20,11 @@ class Placement:
 
 class Stem:
     def __init__(self, config: Config.SingleStem, placement: Placement):
-        self._config = config
+        self.config = config
 
-        self._meshes = _make_stem(self._config)
+        self._meshes = _make_stem(self.config)
         self.volume = sum([slice.volume for slice in self._meshes])
-        self._pybullet_id = _create_stem_body(self._meshes, self._config, placement)
+        self._pybullet_id = _create_stem_body(self._meshes, self.config, placement)
 
     def location(self):
         return p.getBasePositionAndOrientation(self._pybullet_id)[0]
@@ -36,15 +36,38 @@ class Stem:
         else:
             return False
 
-    def remove(self):
+    def remove(self): # currently not needed
         p.removeBody(self._pybullet_id)
 
-    def reappear(self, placement: Placement):
-        self._pybullet_id = _create_stem_body(self._meshes, self._config, placement)
+    def reappear(self, placement: Placement): #currently not needed
+        self._pybullet_id = _create_stem_body(self._meshes, self.config, placement)
 
-    def forward(self, placement :Placement):
-        p.resetBasePositionAndOrientation(self._pybullet_id, placement.position, placement.orientation)
-        p.resetBaseVelocity(self._pybullet_id, [0,0,0], [0,0,0,0])
+    def static(self, bool):
+        if bool == True:
+            for link_index in range(-1, self.config.n_meshes):
+                p.changeDynamics(bodyUniqueId=self._pybullet_id,
+                                 linkIndex=link_index,
+                                 mass=0)
+        else:
+            for link_index in range(-1, self.config.n_meshes - 1):
+                slice = self._meshes[link_index + 1]
+                p.changeDynamics(bodyUniqueId=self._pybullet_id,
+                                 linkIndex=link_index,
+                                 mass=slice.volume * self.config.density)
+
+    def deposit(self, deposit_place: Placement):
+        self.forward(deposit_place)
+        self.static(True)
+
+    def fetch(self, placement: Placement):
+        self.forward(placement)
+        self.static(False)
+
+    def forward(self, placement :Placement, xyz_velocity = [0,0,0]):
+        p.resetBasePositionAndOrientation(self._pybullet_id,
+                                          placement.position,
+                                          placement.orientation)
+        p.resetBaseVelocity(self._pybullet_id, xyz_velocity, [0,0,0,0])
 
     def speed(self):
         velocity = p.getBaseVelocity(self._pybullet_id)
@@ -219,9 +242,8 @@ def _create_stem_body(slices,
         )
         stem_collision_shape_ids.append(stem_col_shape_id)
 
-    density = 1000
 
-    my_base_mass = slices[0].volume * density
+    my_base_mass = slices[0].volume * config.density
     my_base_collision_shape_index = stem_collision_shape_ids[0]
     my_base_visual_shape_index = -1
     my_base_position = placement.position
@@ -229,7 +251,7 @@ def _create_stem_body(slices,
     my_base_inertial_frame_position = center_of_mass(slices)
 
     # TODO: create stem objects that each have their own mass.
-    my_link_masses = [stem_slice.volume * density for stem_slice in slices[1:]]
+    my_link_masses = [stem_slice.volume * config.density for stem_slice in slices[1:]]
     my_link_collision_shape_indices = stem_collision_shape_ids[1:]
     my_link_visual_shape_indices = [-1 for x in range(len(slices) - 1)]
     my_link_positions = [[0, 0, 0] for x in range(len(slices) - 1)]
