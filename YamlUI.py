@@ -16,7 +16,8 @@ def load_user_input(file_path) -> UserInterface.Input:
     """
 
     file_path = pathlib.Path(file_path)
-
+    print(file_path)
+    print(pathlib.Path.cwd())
     if not file_path.exists():
         raise RuntimeError(
             'Could not find file with simulation settings at path:\n"{0}"'.format(
