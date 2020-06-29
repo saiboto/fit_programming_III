@@ -14,6 +14,7 @@ import Box
 import Scanner
 import Forwarder
 
+UserInterface.resetcwd()
 
 user_input = YamlUI.load_user_input('simulation_settings.yaml')
 user_input_validator = UserInterface.Validator(user_input=user_input)
@@ -30,7 +31,8 @@ except:
     stem_configs = StemConfigFactory.run(user_input.random_stem_generation)
     UserInterface.writeStemList(stem_configs, (filename + ".csv"))
 
-physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
+physicsClient = p.connect(p.DIRECT)  #p.GUI or p.DIRECT for non-graphical version
+
 # necessary for using objects of pybullet_data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 

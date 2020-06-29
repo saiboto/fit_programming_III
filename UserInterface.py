@@ -10,6 +10,7 @@ Public API:
 
 import cerberus
 import csv
+import os
 
 import Config
 
@@ -198,3 +199,7 @@ def readStemList(filepath):
 
     return stemconfigs
 
+def resetcwd():
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
