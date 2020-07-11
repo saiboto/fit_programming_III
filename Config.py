@@ -1,5 +1,5 @@
 from typing import List
-
+import UserInterface
 
 class SingleStem:
     """Contains all information necessary to create a 3d stem object
@@ -13,14 +13,9 @@ class SingleStem:
                  middle_diameter_y: float,
                  top_diameter_x: float,
                  top_diameter_y: float,
+                 simulation_parameters: UserInterface.Input.SimulationParameters,
                  bend=0.0,
-                 n_sides=20,
-                 n_meshes=10,
                  density = 1000.0,
-                 lateral_friction=0.5,
-                 spinning_friction=0.5,
-                 rolling_friction=0.5,
-                 restitution=0.1,
                  linear_damping=0.0):
 
         # stem measurements
@@ -34,19 +29,19 @@ class SingleStem:
         self.bend = bend
 
         # 3d object creation stuff
-        self.n_sides = n_sides
-        self.n_meshes = n_meshes
+        self.n_sides = simulation_parameters.n_sides
+        self.n_meshes = simulation_parameters.n_meshes
         self.density = density
-        self.lateral_friction = lateral_friction
-        self.spinning_friction = spinning_friction
-        self.rolling_friction = rolling_friction
-        self.restitution = restitution
+        self.lateral_friction = simulation_parameters.lateral_friction
+        self.spinning_friction = simulation_parameters.spinning_friction
+        self.rolling_friction = simulation_parameters.rolling_friction
+        self.restitution = simulation_parameters.restitution
         self.linear_damping = linear_damping
 
 
 class UserInput:
     """ Contains all information that a user can give to the program for stem generation.
-
+    TODO: Find if this is used at all, or if it can be considered outdated
     Attributes
         + num_stems -- Number of stems
         + length_mean -- Mean stem length ; unit: meters

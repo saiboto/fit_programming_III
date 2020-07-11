@@ -9,8 +9,6 @@ Public API:
 """
 
 import cerberus
-import csv
-import os
 
 import Config
 
@@ -33,6 +31,31 @@ class Input:
             self.width = width
             self.height = height
             self.depth = depth
+
+    class SimulationParameters:
+        """Defines information necessary for the simulation mechanics. """
+
+        def __init__(self,
+                     n_sides =20,
+                     n_meshes = 10,
+                     lateral_friction =0.5,
+                     spinning_friction =0.5,
+                     rolling_friction = 0.5,
+                     restitution = 0.1,
+                     bend_function = "sin",
+                     random_turn = True,
+                     drop_algorithm = "default"):
+
+            self.n_sides = n_sides
+            self.n_meshes = n_meshes
+            self.lateral_friction = lateral_friction
+            self.spinning_friction = spinning_friction
+            self.rolling_friction = rolling_friction
+            self.restitution = restitution
+            self.bend_function = bend_function
+            self.random_turn = random_turn
+            self.drop_algorithm = drop_algorithm
+
 
     class RandomStemGeneration:
         """Defines the information necessary for random stem generation."""
@@ -93,12 +116,16 @@ class Input:
 
     def __init__(self,
                  box_extent: BoxExtent,
-                 random_stem_generation: RandomStemGeneration,
+                 settings_name = '',
+                 random_stem_generation = RandomStemGeneration(0,0,0,0,0,0,0,0,0),
+                 simulation_parameters = SimulationParameters(),
                  iterations = 1,
                  stems_file_path = 'none'):
 
+        self.settings_name=settings_name
         self.box_extent = box_extent
         self.random_stem_generation = random_stem_generation
+        self.simulation_parameters = simulation_parameters
         self.iterations = iterations
         self.stems_file_path = stems_file_path
 
@@ -149,57 +176,8 @@ class Distributor:
     def __init__(self, user_input: Input):
         self._user_input = user_input
 
-    def insert_user_input_into_stem_factory_config(self, into: Config.SingleStem):
+#    def insert_user_input_into_stem_factory_config(self, into: Config.SingleStem):
         """TODO"""
-        raise NotImplementedError()
+#        raise NotImplementedError()
 
 
-
-def writeStemList(stem_configs, filename):
-    with open(filename, 'w', newline='') as f:
-        my_writer = csv.writer(f)
-
-        my_writer.writerow(["id", "length", "bottom_diam_x", "bottom_diam_y", "middle_diam_x", "middle_diam_y",
-                            "top_diam_x", "top_diam_y", "bend"])
-        index = 1
-        for stem_config in stem_configs:
-            my_writer.writerow([index, stem_config.length, stem_config.bottom_diameter_x, stem_config.bottom_diameter_y,
-                               stem_config.middle_diameter_x, stem_config.middle_diameter_y,
-                               stem_config.top_diameter_x, stem_config.top_diameter_y, stem_config.bend])
-            index = index + 1
-
-def writeResultFile(results, filename):
-    with open(filename, 'w', newline='') as f:
-        my_writer = csv.writer(f)
-        my_writer.writerows(results)
-
-
-def readStemList(filepath):
-    stemconfigs = []
-    with open(filepath, newline='') as f:
-        reader = csv.reader(f, delimiter=',', quotechar= '|')
-        firstrow = True
-        for row in reader:
-            if firstrow:
-                header = row
-                firstrow = False
-                if not header == ["id", "length", "bottom_diam_x", "bottom_diam_y",
-                                  "middle_diam_x", "middle_diam_y", "top_diam_x",
-                                  "top_diam_y", "bend"]:
-                    raise ValueError("Invalid header!")
-            else:
-                stemconfigs.append(Config.SingleStem(length = float(row[1]),
-                                                 bottom_diameter_x= float(row[2]),
-                                                 bottom_diameter_y= float(row[3]),
-                                                 middle_diameter_x= float(row[4]),
-                                                 middle_diameter_y= float(row[5]),
-                                                 top_diameter_x= float(row[6]),
-                                                 top_diameter_y= float(row[7]),
-                                                 bend= float(row[8])))
-
-    return stemconfigs
-
-def resetcwd():
-    abspath = os.path.abspath(__file__)
-    dname = os.path.dirname(abspath)
-    os.chdir(dname)

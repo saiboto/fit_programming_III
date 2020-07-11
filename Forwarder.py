@@ -1,4 +1,6 @@
 import math
+import time
+
 import Config
 import Stem
 import Scanner
@@ -65,9 +67,7 @@ def grid_forward(stems: Stem.Stem,
 def rowwise_forward(stems, boxconfig, waittime = 40):
     stemconfigs = [stem.config for stem in stems]
     [horizontal_dist, vertical_dist] = distances(stemconfigs)
-
-    height = Scanner.max_height(boxconfig)
-
+    print(horizontal_dist, vertical_dist)
 # placement coordinates
     x = -boxconfig.width + horizontal_dist / 2
     y = boxconfig.depth / 2
@@ -75,9 +75,11 @@ def rowwise_forward(stems, boxconfig, waittime = 40):
 
     current_row = []
     for stem in stems:
+        print(x)
         placement = Stem.Placement([x,y,z], [0,0,0])
         stem.forward(placement, xyz_velocity = [0,0,-5])
         stem.static(False)
+        time.sleep(2)
 
         current_row.append(stem)
 
@@ -89,7 +91,7 @@ def rowwise_forward(stems, boxconfig, waittime = 40):
             for i in range(waittime):
                 p.stepSimulation()
             z = Scanner.max_height(boxconfig) + vertical_dist
-
+        time.sleep(1/10)
            # for the_stem in current_row:
             #    the_stem.static(True)
             current_row = []

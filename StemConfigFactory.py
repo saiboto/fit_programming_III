@@ -3,7 +3,8 @@ import Config
 import random
 
 
-def run(user_input: UserInterface.Input.RandomStemGeneration):
+def run(user_input: UserInterface.Input.RandomStemGeneration,
+        simulation_parameters: UserInterface.Input.SimulationParameters):
 
     stem_config_list = []
 
@@ -31,6 +32,6 @@ def run(user_input: UserInterface.Input.RandomStemGeneration):
                                                   bottom_diameter_x, bottom_diameter_y,
                                                   middle_diameter_x, middle_diameter_y,
                                                   top_diameter_x, top_diameter_y,
-                                                  bend))
+                                                  simulation_parameters, bend))
 
     return stem_config_list

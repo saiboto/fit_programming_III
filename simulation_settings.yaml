@@ -1,10 +1,10 @@
-Load stems from file path: My_Stems.csv
+Load stems from file path: MyStems2.csv
 # if no valid file path is provided, a new set of stems will be generated
 
 # unit: meters
 Pile extent:
-  Width: 3
-  Height: 1.8
+  Width: 6
+  Height: 2
   Depth: 3
 
 Number of iterations: 10

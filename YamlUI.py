@@ -7,7 +7,7 @@ import yaml
 import UserInterface
 
 
-def load_user_input(file_path) -> UserInterface.Input:
+def load_user_input(file_path): #-> List[UserInterface.Input]
     """Tries to create a user input object from the contents of a YAML file
     supplied by the user.
 
@@ -37,7 +37,7 @@ def load_user_input(file_path) -> UserInterface.Input:
         box_extent = yaml_content['Pile extent']
         random_stem_gen = yaml_content['Random stem generation']
 
-        return UserInterface.Input(
+        return [UserInterface.Input(
             UserInterface.Input.BoxExtent(
                 width=box_extent['Width'],
                 height=box_extent['Height'],
@@ -60,7 +60,7 @@ def load_user_input(file_path) -> UserInterface.Input:
             ),
             iterations = yaml_content['Number of iterations'],
             stems_file_path = yaml_content['Load stems from file path']
-        )
+        )]
 
     except KeyError as original_exc:
         raise ValueError(
