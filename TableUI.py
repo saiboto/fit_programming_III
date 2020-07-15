@@ -1,7 +1,7 @@
 import csv
 import os
 
-import Config
+import Config as C
 import UserInterface as UI
 
 def load_user_inputs(filepath):  #-> List[UI.Input]
@@ -23,23 +23,26 @@ def load_user_inputs(filepath):  #-> List[UI.Input]
                         print(header)
                         raise ValueError("Invalid header!")
                 else:
-                    box_extend = UI.Input.BoxExtent(float(row[3]), float(row[4]), float(row[5]))
+                    box_extend = C.Box(width= float(row[3]),
+                                       height=float(row[4]),
+                                       depth=float(row[5]))
                     settings_id = str(row[0])
                     iterations = int(row[2])
                     stems_file_path = str(row[1])
-                    simulation_parameters = UI.Input.SimulationParameters(n_sides=int(row[6]),
-                                                                          n_meshes=int(row[7]),
-                                                                          lateral_friction=float(row[8]),
-                                                                          spinning_friction=float(row[9]),
-                                                                          rolling_friction=float(row[10]),
-                                                                          restitution=float(row[11]),
-                                                                          bend_function=str(row[12]),
-                                                                          random_turn=bool(row[13]),
-                                                                          drop_algorithm=str(row[14]))
-
-                    user_inputs.append(UI.Input(box_extent=box_extend,
+                    mesh_parameters = C.MeshParameters(n_sides=int(row[6]),
+                                                              n_meshes=int(row[7]),
+                                                              bend_function=str(row[12]))
+                    physics_parameters = C.PhysicsParameters(lateral_friction=float(row[8]),
+                                                                    spinning_friction=float(row[9]),
+                                                                    rolling_friction=float(row[10]),
+                                                                    restitution=float(row[11]))
+                    forwarding_parameters = C.ForwardingParameters(forwarding_algorithm=str(row[14]),
+                                                                          random_turn= bool(row[13]))
+                    user_inputs.append(C.UserInput(box_extent=box_extend,
                                                 settings_name = settings_id,
-                                                simulation_parameters=simulation_parameters,
+                                                mesh_parameters= mesh_parameters,
+                                                physics_parameters= physics_parameters,
+                                                forwarding_parameters= forwarding_parameters,
                                                 iterations=iterations,
                                                 stems_file_path=stems_file_path))
 
@@ -74,7 +77,6 @@ def writeResultFile(results, filename):
 
 def ConfigsFromStemList(user_input):
     filepath = user_input.stems_file_path
-    simulation_parameters = user_input.simulation_parameters
     stemconfigs = []
     with open(filepath, newline='') as f:
         reader = csv.reader(f, delimiter=',', quotechar= '|')
@@ -88,15 +90,16 @@ def ConfigsFromStemList(user_input):
                                   "top_diam_y", "bend"]:
                     raise ValueError("Invalid header!")
             else:
-                stemconfigs.append(Config.SingleStem(length = float(row[1]),
-                                                 bottom_diameter_x= float(row[2]),
-                                                 bottom_diameter_y= float(row[3]),
-                                                 middle_diameter_x= float(row[4]),
-                                                 middle_diameter_y= float(row[5]),
-                                                 top_diameter_x= float(row[6]),
-                                                 top_diameter_y= float(row[7]),
-                                                 simulation_parameters= simulation_parameters,
-                                                 bend= float(row[8])))
+                stemconfigs.append(C.SingleStem(length = float(row[1]),
+                                                bottom_diameter_x= float(row[2]),
+                                                bottom_diameter_y= float(row[3]),
+                                                middle_diameter_x= float(row[4]),
+                                                middle_diameter_y= float(row[5]),
+                                                top_diameter_x= float(row[6]),
+                                                top_diameter_y= float(row[7]),
+                                                bend= float(row[8]),
+                                                mesh_parameters= user_input.mesh_parameters,
+                                                physics_parameters= user_input.physics_parameters))
 
     return stemconfigs
 

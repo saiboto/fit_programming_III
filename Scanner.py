@@ -70,8 +70,6 @@ def front_area(box_config):
 def max_height(box_config):
 
     my_scan = scan(box_config)
-
     #print('max: ',  max(my_scan.front_heights), max(my_scan.back_heights), max(my_scan.front_heights + my_scan.back_heights))
-    print(my_scan.back_heights)
-
+    #print(my_scan.back_heights)
     return max(my_scan.front_heights + my_scan.back_heights)

@@ -1,5 +1,6 @@
 import math
 import time
+import random
 
 import Config
 import Stem
@@ -50,13 +51,22 @@ def grid_placements(boxconfig : Config.Box,
 
 
 def grid_forward(stems: Stem.Stem,
-                 box_config: Config.Box):
+                 box_config: Config.Box,
+                 random_tailflip = True,
+                 random_turn = False):
     stem_configs = [stem.config for stem in stems]
     xyz_placements = grid_placements(box_config, stem_configs)
 
     for stem in stems:
+        tailflip = 0
+        if random_tailflip:
+            tailflip = random.randint(0,1)
+        if random_turn:
+            turn_angle = random.random() * math.pi * 2
+        else:
+            turn_angle = 0
         placement = Stem.Placement(xyz_placements.pop(0),
-                                         [0, 0, 0])
+                                         [math.pi * tailflip, turn_angle, 0])
         stem.forward(placement)
         stem.static(False)
 
@@ -64,7 +74,11 @@ def grid_forward(stems: Stem.Stem,
         p.stepSimulation()
 
 
-def rowwise_forward(stems, boxconfig, waittime = 40):
+def rowwise_forward(stems,
+                    boxconfig,
+                    waittime = 40,
+                    random_tailflip = True,
+                    random_turn = False):
     stemconfigs = [stem.config for stem in stems]
     [horizontal_dist, vertical_dist] = distances(stemconfigs)
     print(horizontal_dist, vertical_dist)
@@ -75,11 +89,16 @@ def rowwise_forward(stems, boxconfig, waittime = 40):
 
     current_row = []
     for stem in stems:
-        print(x)
-        placement = Stem.Placement([x,y,z], [0,0,0])
+        tailflip = 0
+        if random_tailflip:
+            tailflip = random.randint(0,1)
+        if random_turn:
+            turn_angle = random.random() * math.pi * 2
+        else:
+            turn_angle = 0
+        placement = Stem.Placement([x,y,z], [math.pi * tailflip, turn_angle,0])
         stem.forward(placement, xyz_velocity = [0,0,-5])
         stem.static(False)
-        time.sleep(2)
 
         current_row.append(stem)
 
@@ -91,12 +110,38 @@ def rowwise_forward(stems, boxconfig, waittime = 40):
             for i in range(waittime):
                 p.stepSimulation()
             z = Scanner.max_height(boxconfig) + vertical_dist
-        time.sleep(1/10)
            # for the_stem in current_row:
             #    the_stem.static(True)
             current_row = []
 
     for i in range(waittime):
+        p.stepSimulation()
+
+#TODO: Einen schöneren Weg finden, dass ich nicht jedem Forwarder random_turn und random_tailflip einzeln übergeben muss, um dann immer die gleichen Rechnungen ausuführen
+def simple_forward(stems,
+                   boxconfig,
+                   waittime = 100,
+                   random_tailflip = False,
+                   random_turn = False):
+    x = -boxconfig.width / 2
+    y = boxconfig.depth / 2
+    z = boxconfig.height * 1.5
+
+    for stem in stems:
+        tailflip = 0
+        if random_tailflip:
+            tailflip = random.randint(0, 1)
+        if random_turn:
+            turn_angle = random.random() * math.pi * 2
+        else:
+            turn_angle = 0
+        my_placement = Stem.Placement([x, y, z], [math.pi * tailflip, turn_angle, 0])
+        stem.forward(my_placement)
+        stem.static(False)
+        time.sleep(2) #TODO: ggf. auskommentieren/löschen
+        for i in range(waittime):
+            p.stepSimulation()
+    for i in range(waittime*2):
         p.stepSimulation()
 
 
@@ -109,3 +154,23 @@ def deposit(stems):
         place = Stem.Placement([0,0,z], [0, 0,0])
         stem.forward(place)
         stem.static(True)
+
+def work(my_stems: Stem.Stem,
+         box_config: Config.Box ,
+         forwarding_parameters: Config.ForwardingParameters):
+    algorithm_name = forwarding_parameters.forwarding_algorithm
+    random_turn = forwarding_parameters.random_turn
+
+    deposit(my_stems)
+
+    if algorithm_name in ["grid", "Grid", "grid_forward", "Grid_forward"]:
+        grid_forward(my_stems, box_config, random_turn=random_turn)
+    elif algorithm_name in ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]:
+        rowwise_forward(my_stems, box_config, random_turn=random_turn)
+    elif algorithm_name in ["simple", "Simple", "stemwise", "stem_wise"]:
+        simple_forward(my_stems, box_config, random_turn=random_turn)
+    else:
+        print("WARNING: ", algorithm_name, ' is not a valid forwarding algorithm name. '
+                'Algorithm names include "grid", "rowwise" and "simple". '
+                ' For now, rowwise forwrder will be used.')
+        rowwise_forward(my_stems, box_config, random_turn=random_turn )

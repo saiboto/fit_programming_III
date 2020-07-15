@@ -1,3 +1,4 @@
 settings_id,stem_file,iterations_number,pile_width,pile_height,pile_depth,n_sides,n_meshes,lateral_friction,spinning_friction,rolling_friction,restitution,bend_function,random_turn,drop_algorithm
-1,My_Stems2.csv,2,2,1,3,20,10,0,0,0,0.1,sin,TRUE,“default”
-2,My_Stems2.csv,10,1,1,3,5,10,0.5,0.5,0.5,0.1,sin,FALSE,“default”
+1,My_Stems2.csv,3,3,1,3,20,10,0,0,0,0.1,shifted sin,TRUE,simple
+2,My_Stems2.csv,3,3,1,3,5,10,0.5,0.5,0.5,0.1,4th order poly,FALSE,simple 
+3,My_Stems2.csv,10,3,1,3,100,30,0.5,0.5,0.5,0.1,2,FALSE,non

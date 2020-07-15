@@ -29,7 +29,7 @@ class Stem:
     def location(self):
         return p.getBasePositionAndOrientation(self._pybullet_id)[0]
 
-    def isInsideOfTheBox(self, boxconfig):
+    def is_inside_of_the_box(self, boxconfig):
         if self.location()[0] < 0 and self.location()[0] > -boxconfig.width and self.location()[2] > 0 \
             and self.location()[1] > 0 and self.location()[1] < boxconfig.depth:
             return True
@@ -121,47 +121,7 @@ class Slice:
         # midpoint formula too, is only approximate
 
 
-# def _bend_function(x: float, random_shift=0) -> float:
-#     """Describes the bend of the stem.
-#
-#     This should always be a function that returns values between 0 and
-#     1 for inputs between 0 and 1.
-#     """
-#     return (-math.cos((x + random_shift) * math.pi * 2) + 1) / 2  # single cos-wave
-#     # Try also:
-#     #   # polynomial double-bend
-#     #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
-#     #   # parabola
-#     #   return 4 * (-x**2 + x)
-#     #   # double cos-wave
-#     #   return (-math.cos(x * math.pi * 2) + 1) / 2
-
-
-class _BendFunction:
-    """Provides a function for the bent shape of a stem."""
-
-    def __init__(self):
-        self._random_shift = random.random()
-
-    def calculate_for(self, x: float):
-        """Describes the bend of the stem.
-
-        This should always be a function that returns values between 0 and
-        1 for inputs between 0 and 1.
-        """
-
-        # single cos-wave
-        return (-math.cos((x + self._random_shift) * math.pi * 2) + 1) / 2
-        # Try also:
-        #   # polynomial double-bend
-        #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
-        #   # parabola
-        #   return 4 * (-x**2 + x)
-        #   # double cos-wave
-        #   return (-math.cos(x * math.pi * 2) + 1) / 2
-
-
-def _generate_bend_function():
+def _generate_bend_function(type_name = "shifted sin"):
     """Returns a one-dimensional, mathematical function that calculates the
     bend of a stem.
 
@@ -173,15 +133,23 @@ def _generate_bend_function():
     random_element = random.random()
 
     def bend_function(x: float):
-        # single cos-wave
-        return (-math.cos((x + random_element) * math.pi * 2) + 1) / 2
-        # Try also:
+        if type_name == "shifted sin":
+            # single cos-wave
+            return (-math.cos((x + random_element) * math.pi * 2) + 1) / 2
+        elif type_name == "sin":
+            # cos wave without shift
+            return (-math.cos(x * math.pi * 2) + 1) / 2
+        elif type_name == "double sin":
+            # double cos wave
+            return (-math.cos(x * math.pi * 2) + 1) / 2
+        elif type_name == "parabola":
+            # 2nd oder polynomial
+            return 4 * (-x ** 2 + x)
+        elif type_name == "4th order poly":
         #   # polynomial double-bend
-        #   return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
-        #   # parabola
-        #   return 4 * (-x**2 + x)
-        #   # double cos-wave
-        #   return (-math.cos(x * math.pi * 2) + 1) / 2
+            return (x**4 - 2 * x**3 + (5/4) * x**2 - (1/4) * x) * (-64)
+        else:
+            return 0
 
     return bend_function
 
@@ -194,7 +162,7 @@ def _make_stem(config: Config.SingleStem) -> List[Slice]:
     config -- tree mesh configuration
     """
 
-    bend_function = _generate_bend_function()
+    bend_function = _generate_bend_function(config.bend_function)
 
     if config.bend == 0:
         config.n_meshes = 1
@@ -311,6 +279,6 @@ def center_of_mass(slices):
         center = weighted_midpoint(center, slices[i].midpoint,
                                    weight1=mass,
                                    weight2=slices[i].volume)
-        mass += slices[0].volume
+        mass += slices[i].volume
 
     return center

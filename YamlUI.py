@@ -4,7 +4,7 @@ import os #testweise
 
 import yaml
 
-import UserInterface
+import Config as C
 
 
 def load_user_input(file_path): #-> List[UserInterface.Input]
@@ -37,13 +37,14 @@ def load_user_input(file_path): #-> List[UserInterface.Input]
         box_extent = yaml_content['Pile extent']
         random_stem_gen = yaml_content['Random stem generation']
 
-        return [UserInterface.Input(
-            UserInterface.Input.BoxExtent(
+        return [C.UserInput(
+            C.Box(
                 width=box_extent['Width'],
                 height=box_extent['Height'],
                 depth=box_extent['Depth']
             ),
-            UserInterface.Input.RandomStemGeneration(
+            "",
+            C.RandomStemGeneration(
                 num_stems=random_stem_gen['Number of stems'],
                 length_mean=random_stem_gen['Length']['mean'],
                 length_sd=random_stem_gen['Length']['standard deviation'],
