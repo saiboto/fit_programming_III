@@ -2,7 +2,6 @@ import csv
 import os
 
 import Config as C
-import UserInterface as UI
 
 def load_user_inputs(filepath):  #-> List[UI.Input]
     user_inputs = []

@@ -1,4 +1,3 @@
-import UserInterface
 import Config as C
 import random
 

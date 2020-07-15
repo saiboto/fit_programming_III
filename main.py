@@ -9,7 +9,6 @@ import pybullet_data
 import Config
 import Stem
 import YamlUI
-import UserInterface
 import StemConfigFactory
 import Box
 import Scanner

@@ -1,5 +1,4 @@
 from typing import List
-import UserInterface
 
 
 # The following Classes are all incorporated in the UserInput
