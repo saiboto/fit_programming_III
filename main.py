@@ -22,9 +22,9 @@ user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
 
 for user_input in user_inputs:
 
-    user_input_validator = UserInterface.Validator(user_input=user_input)
-    if not user_input_validator.is_valid():
-        user_input_validator.print_reasons()
+    #user_input_validator = UserInterface.Validator(user_input=user_input)
+    #if not user_input_validator.is_valid():
+    #    user_input_validator.print_reasons()
 
     try:
         stem_configs = TableUI.ConfigsFromStemList(user_input)
