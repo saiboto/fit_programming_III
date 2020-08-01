@@ -174,3 +174,8 @@ def work(my_stems: Stem.Stem,
                 'Algorithm names include "grid", "rowwise" and "simple". '
                 ' For now, rowwise forwrder will be used.')
         rowwise_forward(my_stems, box_config, random_turn=random_turn )
+
+def algorithm_list():
+    return (["grid", "Grid", "grid_forward", "Grid_forward"]
+            + ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]
+            + ["simple", "Simple", "stemwise", "stem_wise"])

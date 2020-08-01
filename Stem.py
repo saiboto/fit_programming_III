@@ -153,6 +153,8 @@ def _generate_bend_function(type_name = "shifted sin"):
 
     return bend_function
 
+def bend_function_names():
+    return ["shifted sin", "sin", "double sin", "parabola", "4th order poly"]
 
 def _make_stem(config: Config.SingleStem) -> List[Slice]:
     """Create an array of n_meshes near cylindrical meshes, that

@@ -2,6 +2,8 @@ import csv
 import os
 
 import Config as C
+from Forwarder import algorithm_list
+from Stem import bend_function_names
 
 def load_user_inputs(filepath):  #-> List[UI.Input]
     user_inputs = []
@@ -25,17 +27,17 @@ def load_user_inputs(filepath):  #-> List[UI.Input]
                     box_extend = C.Box(width= float(row[3]),
                                        height=float(row[4]),
                                        depth=float(row[5]))
-                    settings_id = str(row[0])
+                    settings_id = str(row[0]).strip()
                     iterations = int(row[2])
                     stems_file_path = str(row[1])
                     mesh_parameters = C.MeshParameters(n_sides=int(row[6]),
                                                               n_meshes=int(row[7]),
-                                                              bend_function=str(row[12]))
+                                                              bend_function=str(row[12]).strip())
                     physics_parameters = C.PhysicsParameters(lateral_friction=float(row[8]),
                                                                     spinning_friction=float(row[9]),
                                                                     rolling_friction=float(row[10]),
                                                                     restitution=float(row[11]))
-                    forwarding_parameters = C.ForwardingParameters(forwarding_algorithm=str(row[14]),
+                    forwarding_parameters = C.ForwardingParameters(forwarding_algorithm=str(row[14]).strip(),
                                                                           random_turn= bool(row[13]))
                     user_inputs.append(C.UserInput(box_extent=box_extend,
                                                 settings_name = settings_id,
@@ -45,11 +47,62 @@ def load_user_inputs(filepath):  #-> List[UI.Input]
                                                 iterations=iterations,
                                                 stems_file_path=stems_file_path))
 
+        validate(user_inputs)
         return user_inputs
     except KeyError as original_exc:
         raise ValueError(
             'Reading simulation settings table not successful!'
         ) from original_exc
+
+
+def validate(user_inputs):
+    print("Simulation settings table was read successfully.\n"
+          "Validating usability...")
+    warning = False
+    settings_ids = [user_input.settings_name for user_input in user_inputs]
+    if (len(set(settings_ids)) != len(settings_ids)):
+        print("Settings IDs are not unique. Some results will be overwritten!")
+        warning = True
+
+    invalid_filenames = []
+    for user_input in user_inputs:
+        try:
+            test = ConfigsFromStemList(user_input)
+        except:
+            invalid_filenames.append(user_input.stems_file_path)
+    if invalid_filenames != []:
+        print("The following stem files could not be read successfully:\n",
+              set(invalid_filenames))
+        warning = True
+
+    algorithm_names = list(set([user_input.forwarding_parameters.forwarding_algorithm
+                                for user_input in user_inputs]))
+    invalid_algorithm_names = []
+    for name in algorithm_names:
+        if not(name in algorithm_list()):
+            invalid_algorithm_names.append(name)
+    if invalid_algorithm_names != []:
+        print("The following are no valid forwarding algorithm names:\n",
+              set(invalid_algorithm_names))
+        warning = True
+
+    bendf_names = list(set([user_input.mesh_parameters.bend_function
+                            for user_input in user_inputs]))
+    invalid_bendf_names = []
+    for name in bendf_names:
+        if not(name in bend_function_names()):
+            invalid_bendf_names.append(name)
+    if invalid_bendf_names != []:
+        print("The following are no valid bend function names:",
+              set(invalid_bendf_names))
+        warning = True
+
+    if warning == True:
+        input("If you want to continue in spite of the above problems, press ENTER.")
+    else:
+        print("Input table valid.")
+
+
 # Up to here, the functionality is somewhat equivalent to YamlUI.
 # Now come come additional functions that are needed for table interaction
 #   even if the module YamlUI is used.
