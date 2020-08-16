@@ -7,9 +7,13 @@ import Stem
 import Scanner
 import pybullet as p
 
+
 def distances(stemconfigs):
-    diams = []
-    dists = []
+    ''' Determines the minimum distances for stems in the following grid_placement
+    or rowwise_forward, which is needed to ensure that stems do not overlap
+    each other at spawn time'''
+    diameters = []
+    distances = []
     for stemconfig in stemconfigs:
         diam = max(stemconfig.bottom_diameter_x,
                    stemconfig.bottom_diameter_y,
@@ -17,15 +21,14 @@ def distances(stemconfigs):
                    stemconfig.middle_diameter_y,
                    stemconfig.top_diameter_x,
                    stemconfig.top_diameter_y)
-        diams.append(diam)
-        dists.append(diam + stemconfig.bend * 2)
+        diameters.append(diam)
+        distances.append(diam + stemconfig.bend * 2)
 
-    return [max(dists), max(diams)]
+    return [max(distances), max(diameters)]
 
 def grid_placements(boxconfig : Config.Box,
                     stemconfigs: Config.SingleStem) : #-> List[Config.PlacedStem]
-
-
+        ''' Will be used for grid_forward'''
         [horizontal_distance, vertical_distance] = distances(stemconfigs)
 
         if boxconfig.width < horizontal_distance:
@@ -78,14 +81,18 @@ def rowwise_forward(stems,
                     boxconfig,
                     waittime = 40,
                     random_tailflip = True,
-                    random_turn = False):
+                    random_turn = False,
+                    trapezoid_sides = False,
+                    side_spacing = 0.0,):
     stemconfigs = [stem.config for stem in stems]
     [horizontal_dist, vertical_dist] = distances(stemconfigs)
     print(horizontal_dist, vertical_dist)
 # placement coordinates
-    x = -boxconfig.width + horizontal_dist / 2
-    y = boxconfig.depth / 2
     z = vertical_dist
+    y = boxconfig.depth / 2
+    trapezoid_incline = z * trapezoid_sides #* math.tan(math.pi/6) # s.u.
+    x = -boxconfig.width + side_spacing + horizontal_dist / 2 + trapezoid_incline
+
 
     current_row = []
     for stem in stems:
@@ -105,17 +112,30 @@ def rowwise_forward(stems,
         #next placement
         x = x + horizontal_dist
         #row completion:
-        if x > (-horizontal_dist / 2):
-            x = x - boxconfig.width + horizontal_dist
+        if x > (-horizontal_dist / 2 - side_spacing - trapezoid_incline):
+            x = x - boxconfig.width + horizontal_dist + 2 * side_spacing + 2 * trapezoid_incline
             for i in range(waittime):
                 p.stepSimulation()
+                time.sleep(1/10) #TODO: löschen
             z = Scanner.max_height(boxconfig) + vertical_dist
-           # for the_stem in current_row:
+            #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
+            trapezoid_incline = z * trapezoid_sides
+            p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
+            #for the_stem in current_row:
             #    the_stem.static(True)
             current_row = []
 
-    for i in range(waittime):
-        p.stepSimulation()
+    for i in range(15):
+        if max([stem.speed()[0] for stem in stems]) > 0.2:
+            print("max. stem speed: " , max([stem.speed()[0] for stem in stems]))
+            for i in range(waittime):
+                p.stepSimulation()
+                time.sleep(1/100) #TODO: löschen
+        else:
+            break
+
+    for stem in stems: #TODO: auskommentieren
+        print(stem.angle())
 
 #TODO: Einen schöneren Weg finden, dass ich nicht jedem Forwarder random_turn und random_tailflip einzeln übergeben muss, um dann immer die gleichen Rechnungen ausuführen
 def simple_forward(stems,
@@ -138,7 +158,6 @@ def simple_forward(stems,
         my_placement = Stem.Placement([x, y, z], [math.pi * tailflip, turn_angle, 0])
         stem.forward(my_placement)
         stem.static(False)
-        time.sleep(2) #TODO: ggf. auskommentieren/löschen
         for i in range(waittime):
             p.stepSimulation()
     for i in range(waittime*2):
@@ -146,6 +165,9 @@ def simple_forward(stems,
 
 
 def deposit(stems):
+    '''Moves the stems below the deliminating plane, as it requires less
+    computation time to move them out of the way and back, compared to
+    having them disappear and reappear.'''
     z = 0
     for stem in stems:
         z -= max(abs(stem.config.bottom_diameter_y),
@@ -169,13 +191,17 @@ def work(my_stems: Stem.Stem,
         rowwise_forward(my_stems, box_config, random_turn=random_turn)
     elif algorithm_name in ["simple", "Simple", "stemwise", "stem_wise"]:
         simple_forward(my_stems, box_config, random_turn=random_turn)
+    elif algorithm_name in ["trapezoid", "spaced rowwise"]:
+        space = min(box_config.width/4, 2.0)
+        rowwise_forward(my_stems, box_config, random_turn=random_turn, side_spacing=space, trapezoid_sides=True)
     else:
         print("WARNING: ", algorithm_name, ' is not a valid forwarding algorithm name. '
-                'Algorithm names include "grid", "rowwise" and "simple". '
-                ' For now, rowwise forwrder will be used.')
+                'Algorithm names include "grid", "rowwise", "trapezoid" and "simple". '
+                ' For now, rowwise forwarder will be used.')
         rowwise_forward(my_stems, box_config, random_turn=random_turn )
 
 def algorithm_list():
     return (["grid", "Grid", "grid_forward", "Grid_forward"]
             + ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]
-            + ["simple", "Simple", "stemwise", "stem_wise"])
+            + ["simple", "Simple", "stemwise", "stem_wise"]
+            + ["trapezoid", "spaced rowwise"])

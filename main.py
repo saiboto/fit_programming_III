@@ -40,13 +40,16 @@ for user_input in user_inputs:
     # necessary for using objects of pybullet_data
     p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
-    planeId = p.loadURDF("plane.urdf")
+    planeId = p.loadURDF("plane.urdf", basePosition=[-14,0,0])
     p.changeDynamics(bodyUniqueId=planeId, linkIndex=-1, lateralFriction=50)
 
     p.setGravity(0, 0, -10)
 
     box_config = user_input.box_extent
+    if user_input.forwarding_parameters.forwarding_algorithm == "trapezoid":
+        box_config = Box.resize(stem_configs, box_config)
     box_id = Box.Box(box_config)
+    #swing_id = Box.create_swing(box_config) #for debugging and experimenting only
 
     x_placement = -box_config.width / 2
     y_placement = box_config.depth / 2
@@ -68,7 +71,7 @@ for user_input in user_inputs:
     for stem_config in stem_configs:
         my_stems.append(Stem.Stem(stem_config, placement=my_placement))
 
-    iteration_results = [["Iteration", "Out Of Box", "Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Start time", "Finish Time"]]
+    iteration_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Start time", "Finish Time"]]
     for iteration in range(user_input.iterations):
         start_time = datetime.datetime.now()
 
@@ -80,17 +83,19 @@ for user_input in user_inputs:
         net_volume = sum([stem.volume if stem.is_inside_of_the_box(box_config) else 0 for stem in my_stems])
         gross_volume = front_area * box_config.depth
         out_of_box = [stem.is_inside_of_the_box(box_config) for stem in my_stems].count(False)
+        dislocated = [stem.is_dislocated(box_config) for stem in my_stems].count(True)
         if(front_area>0):
             deflationfactor = net_volume /(front_area * box_config.depth)
         else:
             deflationfactor = "DivBy0Error"
+        print(iteration + 1)
         print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
-              '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box)
+              '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box,
+              "\ndislocated:", dislocated)
         finish_time = datetime.datetime.now()
-        iteration_results.append([iteration + 1, out_of_box, front_area, net_volume,
-                                  gross_volume, deflationfactor, start_time, finish_time])
-        print(iteration+1)
-        time.sleep(3)
+        iteration_results.append([iteration + 1, out_of_box, dislocated, front_area,
+                                  gross_volume, net_volume, deflationfactor,
+                                  start_time, finish_time])
         random.shuffle(my_stems)
 
     print(user_input.settings_name)

@@ -25,9 +25,19 @@ class Stem:
         self._meshes = _make_stem(self.config)
         self.volume = sum([slice.volume for slice in self._meshes])
         self._pybullet_id = _create_stem_body(self._meshes, self.config, placement)
+        self.center_of_mass = center_of_mass(self._meshes)
+        print(self.center_of_mass) #TODO: löschen
 
     def location(self):
         return p.getBasePositionAndOrientation(self._pybullet_id)[0]
+
+    def angle(self):
+        orientation = p.getEulerFromQuaternion(p.getBasePositionAndOrientation(self._pybullet_id)[1])
+        x = orientation[0] % math.pi
+        y = orientation[2] % math.pi
+        a = min(x, math.pi-x)
+        b = min(y, math.pi-y)
+        return a + b #TODO: Herausfinden, wie die richtige Formel ist, mit der man den aus zwei Rotationen resultierenden Winkel zur Z-Achse errechnet
 
     def is_inside_of_the_box(self, boxconfig):
         if self.location()[0] < 0 and self.location()[0] > -boxconfig.width and self.location()[2] > 0 \
@@ -35,6 +45,13 @@ class Stem:
             return True
         else:
             return False
+
+    def is_dislocated(self, boxconfig):
+        if self.angle() < math.pi / 4 and \
+            boxconfig.depth * 0.4 < self.location()[1] < boxconfig.depth * 0.6:
+            return False
+        else:
+            return True
 
     def remove(self): # currently not needed
         p.removeBody(self._pybullet_id)
@@ -114,7 +131,7 @@ class Slice:
                        (ring1.x_radius**2 + ring1.x_radius * ring2.x_radius +
                         ring2.x_radius**2) * (ring1.y_radius / ring1.x_radius))
         # volume is only precise for slices where ellipticity is the same on
-        # all rings
+        # all rings (which is the case for randomly generated stems)
         self.midpoint = weighted_midpoint(ring1.center, ring2.center,
                                           weight1=2*ring1.x_radius*ring1.y_radius + ring2.x_radius*ring2.y_radius,
                                           weight2=2*ring2.x_radius*ring2.y_radius + ring1.x_radius*ring1.y_radius)
@@ -218,9 +235,10 @@ def _create_stem_body(slices,
     my_base_visual_shape_index = -1
     my_base_position = placement.position
     my_base_orientation = placement.orientation
-    my_base_inertial_frame_position = center_of_mass(slices)
+    my_base_inertial_frame_position = center_of_mass(slices) #TODO: find out how to correctly impement center_of_mass, as to not alter the inherent rotation axis
+    #my_base_inertial_frame_position = slices[0].midpoint
+    #my_base_inertial_frame_position = [0,0,0]
 
-    # TODO: create stem objects that each have their own mass.
     my_link_masses = [stem_slice.volume * config.density for stem_slice in slices[1:]]
     my_link_collision_shape_indices = stem_collision_shape_ids[1:]
     my_link_visual_shape_indices = [-1 for x in range(len(slices) - 1)]
