@@ -128,10 +128,11 @@ def writeResultFile(results, filename):
 
 
 def ConfigsFromStemList(user_input):
-    filepath = user_input.stems_file_path
+    filepath = "Stems/" + user_input.stems_file_path
+    print(filepath)
     stemconfigs = []
     with open(filepath, newline='') as f:
-        reader = csv.reader(f, delimiter=',', quotechar= '|')
+        reader = csv.reader(f, delimiter=',')
         firstrow = True
         for row in reader:
             if firstrow:

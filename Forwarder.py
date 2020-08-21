@@ -116,7 +116,7 @@ def rowwise_forward(stems,
             x = x - boxconfig.width + horizontal_dist + 2 * side_spacing + 2 * trapezoid_incline
             for i in range(waittime):
                 p.stepSimulation()
-                time.sleep(1/10) #TODO: löschen
+                #time.sleep(1/10) #TODO: löschen
             z = Scanner.max_height(boxconfig) + vertical_dist
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
             trapezoid_incline = z * trapezoid_sides

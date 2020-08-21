@@ -17,8 +17,8 @@ import TableUI
 
 TableUI.resetcwd()
 
-#user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
-user_inputs = TableUI.load_user_inputs("Config.csv")
+user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
+#user_inputs = TableUI.load_user_inputs("Config.csv")
 
 for user_input in user_inputs:
 
@@ -99,6 +99,6 @@ for user_input in user_inputs:
         random.shuffle(my_stems)
 
     print(user_input.settings_name)
-    resultfilename = "Resulting_Measurements" + user_input.settings_name + ".csv"
+    resultfilename = "Results/Results" + user_input.settings_name + ".csv"
     TableUI.writeResultFile(iteration_results, resultfilename)
     p.disconnect()

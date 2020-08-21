@@ -1,17 +1,17 @@
-Load stems from file path: My_Stemnnms.csv
+Load stems from file path: My200-0-0-18p050.csv
 # if no valid file path is provided, a new set of stems will be generated
 
 # unit: meters
 Pile extent:
   Width: 6
-  Height: 2
+  Height: 5
   Depth: 3
 
 Number of iterations: 10
 
 Random stem generation:
 
-  Number of stems: 600
+  Number of stems: 200
 
   # unit: meters
   Length:
@@ -21,15 +21,15 @@ Random stem generation:
   # unit: centimeters
   Middle stem diameter:
     mean: 15
-    standard deviation: 3
+    standard deviation: 8
 
   # no unit; factor for a distribution with mean one
   Ellipticity standard deviation: 0.03
 
   # unit: centimeters per meter
   Stem taper:
-    mean: 1
-    standard deviation: 0.2
+    mean: 2
+    standard deviation: 0.0
 
   # unit: centimeters per meter
   Mean bend: 0.0
