@@ -17,13 +17,13 @@ import TableUI
 
 TableUI.resetcwd()
 
-user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
-#user_inputs = TableUI.load_user_inputs("Config.csv")
+# user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
+user_inputs = TableUI.load_user_inputs("Settings.csv")
 
 for user_input in user_inputs:
 
-    #user_input_validator = UserInterface.Validator(user_input=user_input)
-    #if not user_input_validator.is_valid():
+    # user_input_validator = UserInterface.Validator(user_input=user_input)
+    # if not user_input_validator.is_valid():
     #    user_input_validator.print_reasons()
 
     try:
@@ -70,13 +70,16 @@ for user_input in user_inputs:
     my_stems = []
     for stem_config in stem_configs:
         my_stems.append(Stem.Stem(stem_config, placement=my_placement))
+    #for stem in my_stems:                   #as I was trying to find out why unbent stems seem to have no more than 20 vertices per ring, even if specified otherwise
+    #    print(stem.meshes[0].ring1.n_sides)
+    #    print(stem.meshes[0].ring1.vertices)
 
-    iteration_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Start time", "Finish Time"]]
+    iteration_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (s)"]]
     for iteration in range(user_input.iterations):
         start_time = datetime.datetime.now()
 
         #user_input.simulation_parameters.drop_algorithm = "simple" # only for testing of random_turn
-        Forwarder.work(my_stems, box_config, user_input.forwarding_parameters)
+        this_forwarding = Forwarder.Forwarding(my_stems, box_config, user_input.forwarding_parameters)
 
             # maybe change the following 3 lines to a different form of output:
         front_area = Scanner.front_area(box_config)
@@ -93,9 +96,10 @@ for user_input in user_inputs:
               '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box,
               "\ndislocated:", dislocated)
         finish_time = datetime.datetime.now()
+        duration = (finish_time - start_time).total_seconds()
         iteration_results.append([iteration + 1, out_of_box, dislocated, front_area,
                                   gross_volume, net_volume, deflationfactor,
-                                  start_time, finish_time])
+                                  duration])
         random.shuffle(my_stems)
 
     print(user_input.settings_name)

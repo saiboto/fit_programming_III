@@ -31,14 +31,14 @@ def load_user_inputs(filepath):  #-> List[UI.Input]
                     iterations = int(row[2])
                     stems_file_path = str(row[1])
                     mesh_parameters = C.MeshParameters(n_sides=int(row[6]),
-                                                              n_meshes=int(row[7]),
-                                                              bend_function=str(row[12]).strip())
+                                                       n_meshes=int(row[7]),
+                                                       bend_function=str(row[12]).strip())
                     physics_parameters = C.PhysicsParameters(lateral_friction=float(row[8]),
-                                                                    spinning_friction=float(row[9]),
-                                                                    rolling_friction=float(row[10]),
-                                                                    restitution=float(row[11]))
+                                                             spinning_friction=float(row[9]),
+                                                             rolling_friction=float(row[10]),
+                                                             restitution=float(row[11]))
                     forwarding_parameters = C.ForwardingParameters(forwarding_algorithm=str(row[14]).strip(),
-                                                                          random_turn= bool(row[13]))
+                                                                   random_turn= bool(row[13]))
                     user_inputs.append(C.UserInput(box_extent=box_extend,
                                                 settings_name = settings_id,
                                                 mesh_parameters= mesh_parameters,
@@ -100,7 +100,7 @@ def validate(user_inputs):
     if warning == True:
         input("If you want to continue in spite of the above problems, press ENTER.")
     else:
-        print("Input table valid.")
+        print("Settings input table valid.")
 
 
 # Up to here, the functionality is somewhat equivalent to YamlUI.

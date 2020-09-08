@@ -1,17 +1,48 @@
 import math
 import time
 import random
+import datetime
 
-import Config
+import Config as C
 import Stem
 import Scanner
 import pybullet as p
 
+class Forwarding:
+    def __init__(self, stem_list, box_config, forwarding_parameters):
+        self.stems = stem_list
+        self.box_config = box_config
+        self._algorithm_name = forwarding_parameters.forwarding_algorithm
+        self.random_turn = forwarding_parameters.random_turn
+        self.random_tailflip = forwarding_parameters.random_tailflip
 
-def distances(stemconfigs):
+        self.distances = distances(stem_list)
+        self._starting_time = datetime.datetime.now()
+
+        deposit(self.stems)
+
+        if self._algorithm_name in ["grid", "Grid", "grid_forward", "Grid_forward"]:
+            grid_forward(self)
+        elif self._algorithm_name in ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]:
+            rowwise_forward(self)
+        elif self._algorithm_name in ["simple", "Simple", "stemwise", "stem_wise"]:
+            simple_forward(self)
+        elif self._algorithm_name in ["trapezoid", "spaced rowwise"]:
+            space = min(box_config.width / 4, 2.0)
+            rowwise_forward(self, side_spacing=space, trapezoid_sides=True)
+        else:
+            print("WARNING: ", self._algorithm_name, ' is not a valid forwarding algorithm name. '
+            'Algorithm names include "grid", "rowwise", "trapezoid" and "simple". '
+            ' For now, rowwise forwarder will be used.')
+            rowwise_forward(self)
+
+
+def distances(my_stems):
     ''' Determines the minimum distances for stems in the following grid_placement
     or rowwise_forward, which is needed to ensure that stems do not overlap
     each other at spawn time'''
+    stemconfigs = [stem.config for stem in my_stems]
+
     diameters = []
     distances = []
     for stemconfig in stemconfigs:
@@ -26,14 +57,14 @@ def distances(stemconfigs):
 
     return [max(distances), max(diameters)]
 
-def grid_placements(boxconfig : Config.Box,
-                    stemconfigs: Config.SingleStem) : #-> List[Config.PlacedStem]
+
+def grid_placements(this_forwarding: Forwarding) : #-> List[Config.PlacedStem]
         ''' Will be used for grid_forward'''
-        [horizontal_distance, vertical_distance] = distances(stemconfigs)
+        [horizontal_distance, vertical_distance] = this_forwarding.distances
+        boxconfig = this_forwarding.box_config
 
         if boxconfig.width < horizontal_distance:
             print("\nBox too narrow!")  #irgendwie fehler melden
-
 
         # placement coordinates
         x = -boxconfig.width + horizontal_distance / 2
@@ -41,7 +72,7 @@ def grid_placements(boxconfig : Config.Box,
         z = vertical_distance
 
         xyz_placements = []
-        for stemconfig in stemconfigs:
+        for stem in this_forwarding.stems:
             xyz_placements.append([x,y,z])
 
             # update placement
@@ -53,18 +84,14 @@ def grid_placements(boxconfig : Config.Box,
         return xyz_placements
 
 
-def grid_forward(stems: Stem.Stem,
-                 box_config: Config.Box,
-                 random_tailflip = True,
-                 random_turn = False):
-    stem_configs = [stem.config for stem in stems]
-    xyz_placements = grid_placements(box_config, stem_configs)
+def grid_forward(this_forwarding: Forwarding):
+    xyz_placements = grid_placements(this_forwarding)
 
-    for stem in stems:
+    for stem in this_forwarding.stems:
         tailflip = 0
-        if random_tailflip:
+        if this_forwarding.random_tailflip:
             tailflip = random.randint(0,1)
-        if random_turn:
+        if this_forwarding.random_turn:
             turn_angle = random.random() * math.pi * 2
         else:
             turn_angle = 0
@@ -77,16 +104,14 @@ def grid_forward(stems: Stem.Stem,
         p.stepSimulation()
 
 
-def rowwise_forward(stems,
-                    boxconfig,
+def rowwise_forward(this_forwarding: Forwarding,
                     waittime = 40,
-                    random_tailflip = True,
-                    random_turn = False,
                     trapezoid_sides = False,
                     side_spacing = 0.0,):
-    stemconfigs = [stem.config for stem in stems]
-    [horizontal_dist, vertical_dist] = distances(stemconfigs)
-    print(horizontal_dist, vertical_dist)
+    boxconfig = this_forwarding.box_config
+    stems = this_forwarding.stems
+    [horizontal_dist, vertical_dist] = this_forwarding.distances
+    #print(horizontal_dist, vertical_dist)
 # placement coordinates
     z = vertical_dist
     y = boxconfig.depth / 2
@@ -97,9 +122,9 @@ def rowwise_forward(stems,
     current_row = []
     for stem in stems:
         tailflip = 0
-        if random_tailflip:
+        if this_forwarding.random_tailflip:
             tailflip = random.randint(0,1)
-        if random_turn:
+        if this_forwarding.random_turn:
             turn_angle = random.random() * math.pi * 2
         else:
             turn_angle = 0
@@ -130,28 +155,22 @@ def rowwise_forward(stems,
             print("max. stem speed: " , max([stem.speed()[0] for stem in stems]))
             for i in range(waittime):
                 p.stepSimulation()
-                time.sleep(1/100) #TODO: löschen
         else:
             break
 
-    for stem in stems: #TODO: auskommentieren
-        print(stem.angle())
+def simple_forward(this_forwarding: Forwarding,
+                   waittime = 100):
+    boxconfig = this_forwarding.box_config
 
-#TODO: Einen schöneren Weg finden, dass ich nicht jedem Forwarder random_turn und random_tailflip einzeln übergeben muss, um dann immer die gleichen Rechnungen ausuführen
-def simple_forward(stems,
-                   boxconfig,
-                   waittime = 100,
-                   random_tailflip = False,
-                   random_turn = False):
     x = -boxconfig.width / 2
     y = boxconfig.depth / 2
     z = boxconfig.height * 1.5
 
-    for stem in stems:
+    for stem in this_forwarding.stems:
         tailflip = 0
-        if random_tailflip:
+        if this_forwarding.random_tailflip:
             tailflip = random.randint(0, 1)
-        if random_turn:
+        if this_forwarding.random_turn:
             turn_angle = random.random() * math.pi * 2
         else:
             turn_angle = 0
@@ -177,28 +196,6 @@ def deposit(stems):
         stem.forward(place)
         stem.static(True)
 
-def work(my_stems: Stem.Stem,
-         box_config: Config.Box ,
-         forwarding_parameters: Config.ForwardingParameters):
-    algorithm_name = forwarding_parameters.forwarding_algorithm
-    random_turn = forwarding_parameters.random_turn
-
-    deposit(my_stems)
-
-    if algorithm_name in ["grid", "Grid", "grid_forward", "Grid_forward"]:
-        grid_forward(my_stems, box_config, random_turn=random_turn)
-    elif algorithm_name in ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]:
-        rowwise_forward(my_stems, box_config, random_turn=random_turn)
-    elif algorithm_name in ["simple", "Simple", "stemwise", "stem_wise"]:
-        simple_forward(my_stems, box_config, random_turn=random_turn)
-    elif algorithm_name in ["trapezoid", "spaced rowwise"]:
-        space = min(box_config.width/4, 2.0)
-        rowwise_forward(my_stems, box_config, random_turn=random_turn, side_spacing=space, trapezoid_sides=True)
-    else:
-        print("WARNING: ", algorithm_name, ' is not a valid forwarding algorithm name. '
-                'Algorithm names include "grid", "rowwise", "trapezoid" and "simple". '
-                ' For now, rowwise forwarder will be used.')
-        rowwise_forward(my_stems, box_config, random_turn=random_turn )
 
 def algorithm_list():
     return (["grid", "Grid", "grid_forward", "Grid_forward"]

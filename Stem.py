@@ -26,7 +26,8 @@ class Stem:
         self.volume = sum([slice.volume for slice in self._meshes])
         self._pybullet_id = _create_stem_body(self._meshes, self.config, placement)
         self.center_of_mass = center_of_mass(self._meshes)
-        print(self.center_of_mass) #TODO: löschen
+        #print(self.center_of_mass) #TODO: löschen
+        self.meshes = self._meshes #TODO: löschen
 
     def location(self):
         return p.getBasePositionAndOrientation(self._pybullet_id)[0]

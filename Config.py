@@ -40,9 +40,11 @@ class PhysicsParameters:
 class ForwardingParameters:
     def __init__(self,
                  forwarding_algorithm="rowwise",
-                 random_turn=True):
+                 random_turn=True,
+                 random_tailflip = True):
         self.forwarding_algorithm = forwarding_algorithm
         self.random_turn = random_turn
+        self.random_tailflip = random_tailflip
 
 
 class RandomStemGeneration:
