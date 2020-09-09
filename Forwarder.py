@@ -8,33 +8,82 @@ import Stem
 import Scanner
 import pybullet as p
 
-class Forwarding:
-    def __init__(self, stem_list, box_config, forwarding_parameters):
-        self.stems = stem_list
-        self.box_config = box_config
-        self._algorithm_name = forwarding_parameters.forwarding_algorithm
-        self.random_turn = forwarding_parameters.random_turn
-        self.random_tailflip = forwarding_parameters.random_tailflip
 
-        self.distances = distances(stem_list)
+
+class Forwarding:
+    def step_simulation(self):
+        p.stepSimulation()
+        self._tics_count += 1
+
+    def __init__(self, my_stems, box_config, forwarding_parameters):
+        self.stems = my_stems
+        self.box_config = box_config
+        self.parameters = forwarding_parameters
+
+        self.distances = distances(my_stems)
         self._starting_time = datetime.datetime.now()
+        self._tics_count = 0
 
         deposit(self.stems)
+        wait = choose_and_execute_forwarder(self)
 
-        if self._algorithm_name in ["grid", "Grid", "grid_forward", "Grid_forward"]:
-            grid_forward(self)
-        elif self._algorithm_name in ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]:
-            rowwise_forward(self)
-        elif self._algorithm_name in ["simple", "Simple", "stemwise", "stem_wise"]:
-            simple_forward(self)
-        elif self._algorithm_name in ["trapezoid", "spaced rowwise"]:
-            space = min(box_config.width / 4, 2.0)
-            rowwise_forward(self, side_spacing=space, trapezoid_sides=True)
+        self.waited_loops = wait.now(self)
+
+        self._finish_time = datetime.datetime.now()
+
+
+
+    def return_results(self):
+        box_config = self.box_config
+        front_area = Scanner.front_area(box_config)
+        net_volume = sum([stem.volume if stem.is_inside_of_the_box(box_config)
+                          else 0 for stem in self.stems])
+        gross_volume = front_area * box_config.depth
+        out_of_box = [stem.is_inside_of_the_box(box_config)
+                      for stem in self.stems].count(False)
+        dislocated = [stem.is_dislocated(box_config) for stem in self.stems].count(True)
+        if (front_area > 0):
+            deflationfactor = net_volume / (front_area * box_config.depth)
         else:
-            print("WARNING: ", self._algorithm_name, ' is not a valid forwarding algorithm name. '
-            'Algorithm names include "grid", "rowwise", "trapezoid" and "simple". '
-            ' For now, rowwise forwarder will be used.')
-            rowwise_forward(self)
+            deflationfactor = "DivBy0Error"
+
+        duration = (self._finish_time - self._starting_time).total_seconds()
+
+        return [out_of_box, dislocated, front_area,
+                gross_volume, net_volume, deflationfactor,
+                duration, self.waited_loops, self._tics_count]
+
+
+
+class Waiting:
+    def __init__(self, min_waitingtime,
+                 max_loops, waitingtime_per_loop,
+                 static_threshold):
+        self.min_waitingtime = min_waitingtime
+        self.max_loops = max_loops
+        self.waitingtime_per_loop = waitingtime_per_loop
+        self.static_threshold = static_threshold
+
+
+    def now(self, fwd: Forwarding):
+        for i in range(self.min_waitingtime):
+            fwd.step_simulation()
+        loop_count = 0
+        while loop_count < self.max_loops:
+            if max([stem.speed()[0] for stem in fwd.stems]) > self.static_threshold:
+                for i in range(self.waitingtime_per_loop):
+                    fwd.step_simulation()
+                loop_count += 1
+            else:
+                break
+        return loop_count
+
+
+def evaluate(fwd: Forwarding):
+
+
+    return 0
+
 
 
 def distances(my_stems):
@@ -89,19 +138,18 @@ def grid_forward(this_forwarding: Forwarding):
 
     for stem in this_forwarding.stems:
         tailflip = 0
-        if this_forwarding.random_tailflip:
+        if this_forwarding.parameters.random_tailflip:
             tailflip = random.randint(0,1)
-        if this_forwarding.random_turn:
+        if this_forwarding.parameters.random_turn:
             turn_angle = random.random() * math.pi * 2
         else:
             turn_angle = 0
         placement = Stem.Placement(xyz_placements.pop(0),
-                                         [math.pi * tailflip, turn_angle, 0])
+                                   [math.pi * tailflip, turn_angle, 0])
         stem.forward(placement)
         stem.static(False)
 
-    for i in range(700):
-        p.stepSimulation()
+    return Waiting(min_waitingtime=100, max_loops=20, waitingtime_per_loop=50, static_threshold=1.5)
 
 
 def rowwise_forward(this_forwarding: Forwarding,
@@ -122,9 +170,9 @@ def rowwise_forward(this_forwarding: Forwarding,
     current_row = []
     for stem in stems:
         tailflip = 0
-        if this_forwarding.random_tailflip:
+        if this_forwarding.parameters.random_tailflip:
             tailflip = random.randint(0,1)
-        if this_forwarding.random_turn:
+        if this_forwarding.parameters.random_turn:
             turn_angle = random.random() * math.pi * 2
         else:
             turn_angle = 0
@@ -140,7 +188,8 @@ def rowwise_forward(this_forwarding: Forwarding,
         if x > (-horizontal_dist / 2 - side_spacing - trapezoid_incline):
             x = x - boxconfig.width + horizontal_dist + 2 * side_spacing + 2 * trapezoid_incline
             for i in range(waittime):
-                p.stepSimulation()
+                this_forwarding.step_simulation()
+
                 #time.sleep(1/10) #TODO: löschen
             z = Scanner.max_height(boxconfig) + vertical_dist
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
@@ -150,13 +199,8 @@ def rowwise_forward(this_forwarding: Forwarding,
             #    the_stem.static(True)
             current_row = []
 
-    for i in range(15):
-        if max([stem.speed()[0] for stem in stems]) > 0.2:
-            print("max. stem speed: " , max([stem.speed()[0] for stem in stems]))
-            for i in range(waittime):
-                p.stepSimulation()
-        else:
-            break
+    return Waiting(min_waitingtime=40, max_loops=15, waitingtime_per_loop=50, static_threshold=0.2)
+
 
 def simple_forward(this_forwarding: Forwarding,
                    waittime = 100):
@@ -168,9 +212,9 @@ def simple_forward(this_forwarding: Forwarding,
 
     for stem in this_forwarding.stems:
         tailflip = 0
-        if this_forwarding.random_tailflip:
+        if this_forwarding.parameters.random_tailflip:
             tailflip = random.randint(0, 1)
-        if this_forwarding.random_turn:
+        if this_forwarding.parameters.random_turn:
             turn_angle = random.random() * math.pi * 2
         else:
             turn_angle = 0
@@ -178,10 +222,9 @@ def simple_forward(this_forwarding: Forwarding,
         stem.forward(my_placement)
         stem.static(False)
         for i in range(waittime):
-            p.stepSimulation()
-    for i in range(waittime*2):
-        p.stepSimulation()
+            this_forwarding.step_simulation()
 
+    return Waiting(min_waitingtime=200, max_loops=0, waitingtime_per_loop=100, static_threshold=1.0)
 
 def deposit(stems):
     '''Moves the stems below the deliminating plane, as it requires less
@@ -195,6 +238,27 @@ def deposit(stems):
         place = Stem.Placement([0,0,z], [0, 0,0])
         stem.forward(place)
         stem.static(True)
+
+def choose_and_execute_forwarder(fwd: Forwarding):
+    algorithm =  fwd.parameters.forwarding_algorithm
+    if algorithm in ["grid", "Grid", "grid_forward", "Grid_forward"]:
+        return grid_forward(fwd)
+
+    elif algorithm in ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]:
+        return rowwise_forward(fwd)
+
+    elif algorithm in ["simple", "Simple", "stemwise", "stem_wise"]:
+        return simple_forward(fwd)
+
+    elif algorithm in ["trapezoid", "spaced rowwise"]:
+        space = min(fwd.box_config.width / 4, 2.0)
+        return rowwise_forward(fwd, side_spacing=space, trapezoid_sides=True)
+
+    else:
+        print("WARNING: ", algorithm, ' is not a valid forwarding algorithm name. '
+        'Algorithm names include "grid", "rowwise", "trapezoid" and "simple". '
+        ' For now, rowwise forwarder will be used.')
+        return rowwise_forward(fwd)
 
 
 def algorithm_list():

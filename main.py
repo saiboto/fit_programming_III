@@ -74,32 +74,12 @@ for user_input in user_inputs:
     #    print(stem.meshes[0].ring1.n_sides)
     #    print(stem.meshes[0].ring1.vertices)
 
-    iteration_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (s)"]]
+    iteration_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (sec.)", "Waiting Loops", "Duration (tics)"]]
     for iteration in range(user_input.iterations):
-        start_time = datetime.datetime.now()
 
-        #user_input.simulation_parameters.drop_algorithm = "simple" # only for testing of random_turn
         this_forwarding = Forwarder.Forwarding(my_stems, box_config, user_input.forwarding_parameters)
 
-            # maybe change the following 3 lines to a different form of output:
-        front_area = Scanner.front_area(box_config)
-        net_volume = sum([stem.volume if stem.is_inside_of_the_box(box_config) else 0 for stem in my_stems])
-        gross_volume = front_area * box_config.depth
-        out_of_box = [stem.is_inside_of_the_box(box_config) for stem in my_stems].count(False)
-        dislocated = [stem.is_dislocated(box_config) for stem in my_stems].count(True)
-        if(front_area>0):
-            deflationfactor = net_volume /(front_area * box_config.depth)
-        else:
-            deflationfactor = "DivBy0Error"
-        print(iteration + 1)
-        print("Front area: ", front_area, '\nGross volume: ',gross_volume , '\nNet volume: ', net_volume,
-              '\nDeflation factor:', deflationfactor, "\nStems outside of the box: ", out_of_box,
-              "\ndislocated:", dislocated)
-        finish_time = datetime.datetime.now()
-        duration = (finish_time - start_time).total_seconds()
-        iteration_results.append([iteration + 1, out_of_box, dislocated, front_area,
-                                  gross_volume, net_volume, deflationfactor,
-                                  duration])
+        iteration_results.append([iteration + 1] + this_forwarding.return_results())
         random.shuffle(my_stems)
 
     print(user_input.settings_name)
