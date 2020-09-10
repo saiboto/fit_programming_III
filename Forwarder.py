@@ -76,15 +76,7 @@ class Waiting:
                 loop_count += 1
             else:
                 break
-        time.sleep(5) # TODO: löschen
         return loop_count
-
-
-def evaluate(fwd: Forwarding):
-
-
-    return 0
-
 
 
 def distances(my_stems):
@@ -191,7 +183,6 @@ def rowwise_forward(this_forwarding: Forwarding,
             for i in range(waittime):
                 this_forwarding.step_simulation()
 
-                #time.sleep(1/10) #TODO: löschen
             z = Scanner.max_height(boxconfig) + vertical_dist
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
             trapezoid_incline = z * trapezoid_sides

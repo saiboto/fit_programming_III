@@ -82,8 +82,6 @@ class Stem:
         self.static(False)
 
     def forward(self, placement :Placement, xyz_velocity = [0,0,0], tailflip = False):
-        print(placement.position)
-        print(self.center_of_mass)
         x = placement.position[0]
         z = placement.position[2]
         if tailflip:
