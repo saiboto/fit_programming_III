@@ -76,6 +76,7 @@ class Waiting:
                 loop_count += 1
             else:
                 break
+        time.sleep(5) # TODO: löschen
         return loop_count
 
 
@@ -146,7 +147,7 @@ def grid_forward(this_forwarding: Forwarding):
             turn_angle = 0
         placement = Stem.Placement(xyz_placements.pop(0),
                                    [math.pi * tailflip, turn_angle, 0])
-        stem.forward(placement)
+        stem.forward(placement, tailflip)
         stem.static(False)
 
     return Waiting(min_waitingtime=100, max_loops=20, waitingtime_per_loop=50, static_threshold=1.5)
@@ -177,7 +178,7 @@ def rowwise_forward(this_forwarding: Forwarding,
         else:
             turn_angle = 0
         placement = Stem.Placement([x,y,z], [math.pi * tailflip, turn_angle,0])
-        stem.forward(placement, xyz_velocity = [0,0,-5])
+        stem.forward(placement, xyz_velocity = [0,0,-5], tailflip= tailflip)
         stem.static(False)
 
         current_row.append(stem)
@@ -219,7 +220,7 @@ def simple_forward(this_forwarding: Forwarding,
         else:
             turn_angle = 0
         my_placement = Stem.Placement([x, y, z], [math.pi * tailflip, turn_angle, 0])
-        stem.forward(my_placement)
+        stem.forward(my_placement, tailflip)
         stem.static(False)
         for i in range(waittime):
             this_forwarding.step_simulation()

@@ -81,9 +81,18 @@ class Stem:
         self.forward(placement)
         self.static(False)
 
-    def forward(self, placement :Placement, xyz_velocity = [0,0,0]):
+    def forward(self, placement :Placement, xyz_velocity = [0,0,0], tailflip = False):
+        print(placement.position)
+        print(self.center_of_mass)
+        x = placement.position[0]
+        z = placement.position[2]
+        if tailflip:
+            y = placement.position[1] + self.center_of_mass[2]
+        else:
+            y = placement.position[1] - self.center_of_mass[2]
         p.resetBasePositionAndOrientation(self._pybullet_id,
-                                          placement.position,
+                                          [x,y,z],
+   #                                       placement.position,
                                           placement.orientation)
         p.resetBaseVelocity(self._pybullet_id, xyz_velocity, [0,0,0,0])
 
