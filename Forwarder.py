@@ -11,6 +11,8 @@ import pybullet as p
 
 
 class Forwarding:
+    '''represents the creation of one polter,
+    including letting the simulation calculate after placing the stems'''
     def step_simulation(self):
         p.stepSimulation()
         self._tics_count += 1
@@ -56,9 +58,18 @@ class Forwarding:
 
 
 class Waiting:
-    def __init__(self, min_waitingtime,
-                 max_loops, waitingtime_per_loop,
+    '''Defines the time which the simulation is left calculating after all stems have appeared.'''
+    def __init__(self,
+                 min_waitingtime,
+                 max_loops,
+                 waitingtime_per_loop,
                  static_threshold):
+        '''
+        min_waitingtime: The minimum number of tics which the simulation is left to calculate, regardless of if it is still moving or not
+        max_loops: The maximum number of times the simulation is waiting for the stems to come to rest, before stopping the simulation anyway
+        waitingtime_per_loop: The number of tics per waiting loop. A waiting loop will only be initiated if the stems in the polter are still moving.
+        static_threshold: When the maximum movement speed for any stem falls below this value, the polter will be considered motionless, and no other waiting loop will be initiated
+        '''
         self.min_waitingtime = min_waitingtime
         self.max_loops = max_loops
         self.waitingtime_per_loop = waitingtime_per_loop
@@ -108,7 +119,6 @@ def grid_placements(this_forwarding: Forwarding) : #-> List[Config.PlacedStem]
         if boxconfig.width < horizontal_distance:
             print("\nBox too narrow!")  #irgendwie fehler melden
 
-        # placement coordinates
         x = -boxconfig.width + horizontal_distance / 2
         y = boxconfig.depth / 2
         z = vertical_distance
@@ -117,7 +127,6 @@ def grid_placements(this_forwarding: Forwarding) : #-> List[Config.PlacedStem]
         for stem in this_forwarding.stems:
             xyz_placements.append([x,y,z])
 
-            # update placement
             x = x + horizontal_distance
             if x > (-horizontal_distance / 2):
                 x = x - boxconfig.width + horizontal_distance
@@ -152,8 +161,7 @@ def rowwise_forward(this_forwarding: Forwarding,
     boxconfig = this_forwarding.box_config
     stems = this_forwarding.stems
     [horizontal_dist, vertical_dist] = this_forwarding.distances
-    #print(horizontal_dist, vertical_dist)
-# placement coordinates
+
     z = vertical_dist
     y = boxconfig.depth / 2
     trapezoid_incline = z * trapezoid_sides #* math.tan(math.pi/6) # s.u.
@@ -186,9 +194,7 @@ def rowwise_forward(this_forwarding: Forwarding,
             z = Scanner.max_height(boxconfig) + vertical_dist
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
             trapezoid_incline = z * trapezoid_sides
-            p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
-            #for the_stem in current_row:
-            #    the_stem.static(True)
+            #p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
             current_row = []
 
     return Waiting(min_waitingtime=40, max_loops=15, waitingtime_per_loop=50, static_threshold=0.2)

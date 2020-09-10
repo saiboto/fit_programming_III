@@ -243,9 +243,7 @@ def _create_stem_body(slices,
     my_base_visual_shape_index = -1
     my_base_position = placement.position
     my_base_orientation = placement.orientation
-    my_base_inertial_frame_position = center_of_mass(slices) #TODO: find out how to correctly impement center_of_mass, as to not alter the inherent rotation axis
-    #my_base_inertial_frame_position = slices[0].midpoint
-    #my_base_inertial_frame_position = [0,0,0]
+    my_base_inertial_frame_position = center_of_mass(slices)
 
     my_link_masses = [stem_slice.volume * config.density for stem_slice in slices[1:]]
     my_link_collision_shape_indices = stem_collision_shape_ids[1:]

@@ -6,6 +6,8 @@ from Forwarder import algorithm_list
 from Stem import bend_function_names
 
 def load_user_inputs(filepath):  #-> List[UI.Input]
+    '''Generates a list of Input class objects,
+    based on a simulation settings csv file'''
     user_inputs = []
     try:
         with open(filepath, newline='') as f:
@@ -112,13 +114,22 @@ def writeStemList(stem_configs, filename):
     with open(filename, 'w', newline='') as f:
         my_writer = csv.writer(f)
 
-        my_writer.writerow(["id", "length", "bottom_diam_x", "bottom_diam_y", "middle_diam_x", "middle_diam_y",
-                            "top_diam_x", "top_diam_y", "bend"])
+        my_writer.writerow(["id", "length",
+                            "bottom_diam_x", "bottom_diam_y",
+                            "middle_diam_x", "middle_diam_y",
+                            "top_diam_x", "top_diam_y",
+                            "bend"])
         index = 1
         for stem_config in stem_configs:
-            my_writer.writerow([index, stem_config.length, stem_config.bottom_diameter_x, stem_config.bottom_diameter_y,
-                               stem_config.middle_diameter_x, stem_config.middle_diameter_y,
-                               stem_config.top_diameter_x, stem_config.top_diameter_y, stem_config.bend])
+            my_writer.writerow([index,
+                                stem_config.length,
+                                stem_config.bottom_diameter_x,
+                                stem_config.bottom_diameter_y,
+                                stem_config.middle_diameter_x,
+                                stem_config.middle_diameter_y,
+                                stem_config.top_diameter_x,
+                                stem_config.top_diameter_y,
+                                stem_config.bend])
             index = index + 1
 
 def writeResultFile(results, filename):
@@ -138,9 +149,11 @@ def ConfigsFromStemList(user_input):
             if firstrow:
                 header = row
                 firstrow = False
-                if not header == ["id", "length", "bottom_diam_x", "bottom_diam_y",
-                                  "middle_diam_x", "middle_diam_y", "top_diam_x",
-                                  "top_diam_y", "bend"]:
+                if not header == ["id", "length",
+                                  "bottom_diam_x", "bottom_diam_y",
+                                  "middle_diam_x", "middle_diam_y",
+                                  "top_diam_x", "top_diam_y",
+                                  "bend"]:
                     raise ValueError("Invalid header!")
             else:
                 stemconfigs.append(C.SingleStem(length = float(row[1]),
