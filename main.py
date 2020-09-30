@@ -65,7 +65,7 @@ for user_input in user_inputs:
     for stem_config in stem_configs:
         my_stems.append(Stem.Stem(stem_config, placement=my_placement))
 
-    iteration_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (sec.)", "Waiting Loops", "Duration (tics)"]]
+    iteration_results = [["Iteration", "Out Of Box", "Dislocated(any)", "Dislocated(position)", "Dislocated(angle)","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (sec.)", "Waiting Loops", "Duration (tics)"]]
     for iteration in range(user_input.iterations):
         this_forwarding = Forwarder.Forwarding(my_stems, box_config, user_input.forwarding_parameters)
         iteration_results.append([iteration + 1] + this_forwarding.return_results())

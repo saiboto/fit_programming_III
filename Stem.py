@@ -26,8 +26,6 @@ class Stem:
         self.volume = sum([slice.volume for slice in self._meshes])
         self._pybullet_id = _create_stem_body(self._meshes, self.config, placement)
         self.center_of_mass = center_of_mass(self._meshes)
-        #print(self.center_of_mass) #TODO: löschen
-        self.meshes = self._meshes #TODO: löschen
 
     def location(self):
         return p.getBasePositionAndOrientation(self._pybullet_id)[0]
@@ -50,6 +48,18 @@ class Stem:
     def is_dislocated(self, boxconfig):
         if self.angle() < math.pi / 4 and \
             boxconfig.depth * 0.4 < self.location()[1] < boxconfig.depth * 0.6:
+            return False
+        else:
+            return True
+
+    def is_dislocated_by_position(self, boxconfig):
+        if boxconfig.depth * 0.4 < self.location()[1] < boxconfig.depth * 0.6:
+            return False
+        else:
+            return True
+
+    def is_dislocated_by_angle(self):
+        if self.angle() < math.pi / 4:
             return False
         else:
             return True
@@ -91,7 +101,6 @@ class Stem:
             y = placement.position[1] - self.center_of_mass[2]
         p.resetBasePositionAndOrientation(self._pybullet_id,
                                           [x,y,z],
-   #                                       placement.position,
                                           placement.orientation)
         p.resetBaseVelocity(self._pybullet_id, xyz_velocity, [0,0,0,0])
 

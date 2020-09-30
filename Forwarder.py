@@ -43,7 +43,9 @@ class Forwarding:
         gross_volume = front_area * box_config.depth
         out_of_box = [stem.is_inside_of_the_box(box_config)
                       for stem in self.stems].count(False)
-        dislocated = [stem.is_dislocated(box_config) for stem in self.stems].count(True)
+        dislocated_any = [stem.is_dislocated(box_config) for stem in self.stems].count(True)
+        dislocated_position = [stem.is_dislocated_by_position(box_config) for stem in self.stems].count(True)
+        dislocated_angle = [stem.is_dislocated_by_angle() for stem in self.stems].count(True)
         if (front_area > 0):
             deflationfactor = net_volume / (front_area * box_config.depth)
         else:
@@ -51,8 +53,8 @@ class Forwarding:
 
         duration = (self._finish_time - self._starting_time).total_seconds()
 
-        return [out_of_box, dislocated, front_area,
-                gross_volume, net_volume, deflationfactor,
+        return [out_of_box, dislocated_any, dislocated_position, dislocated_angle,
+                front_area, gross_volume, net_volume, deflationfactor,
                 duration, self.waited_loops, self._tics_count]
 
 
