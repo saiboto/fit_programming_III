@@ -155,7 +155,7 @@ def grid_forward(this_forwarding: Forwarding):
 
 
 def rowwise_forward(this_forwarding: Forwarding,
-                    waittime = 40,
+                    waittime = 100, #TODO: Wieder auf 40 ändern, falls das mit static nicht funktioniert
                     trapezoid_sides = False,
                     side_spacing = 0.0,):
     boxconfig = this_forwarding.box_config
@@ -195,6 +195,9 @@ def rowwise_forward(this_forwarding: Forwarding,
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
             trapezoid_incline = z * trapezoid_sides
             #p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
+            for this_stem in current_row: #TODO: This is an experiment. see if it works
+                this_stem.static(True)
+
             current_row = []
 
     return Waiting(min_waitingtime=40, max_loops=15, waitingtime_per_loop=50, static_threshold=0.2)

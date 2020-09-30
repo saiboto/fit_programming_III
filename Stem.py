@@ -66,6 +66,7 @@ class Stem:
                 p.changeDynamics(bodyUniqueId=self._pybullet_id,
                                  linkIndex=link_index,
                                  mass=0)
+                p.resetBaseVelocity(self._pybullet_id, [0,0,0], [0,0,0,0])
         else:
             for link_index in range(-1, self.config.n_meshes - 1):
                 slice = self._meshes[link_index + 1]

@@ -33,6 +33,7 @@ def scan(box_config):
         polter_front_heights.append(f_hit_position[2])
 
         #Back ray
+        x_pos += step_width /3 #TODO: löschen
         b_ray_start_position = [-x_pos, box_config.depth * 0.95, box_config.height * 2]
         b_ray_target_position = [-x_pos, box_config.depth * 0.95, 0]
         backray = p.rayTest(b_ray_start_position, b_ray_target_position)
@@ -47,10 +48,10 @@ def scan(box_config):
         #print(f_hit_position, b_hit_position)
         #p.addUserDebugText(".", textPosition = b_hit_position)
 
-        x_pos += step_width
+        x_pos += 2*step_width /3
 
     res = Scanresult(polter_front_heights, polter_back_heights, box_overflow)
-
+    print(statistics.mean(polter_front_heights), statistics.mean(polter_back_heights))
     return res
 
 def front_area(box_config):
