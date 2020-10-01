@@ -145,7 +145,7 @@ def create_swing(config: Config.Box) -> int:
 
 def resize(stemconfigs, boxconfig):
     '''Adjusts the size of the bounding box.
-    When using the trapezoid forwarder, it is important to have a box of sufficient size,
+     When using the trapezoid forwarder, it is important to have a box of sufficient size,
      because otherwise the algorithm may run into an infinite loop, when,
      due to the inclination of the shape, the polter has reached a triangular shape.'''
     total_cross_section_area = sum([stemconfig.bottom_diameter_x * stemconfig.bottom_diameter_y * math.pi / 4

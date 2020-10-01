@@ -23,6 +23,7 @@ def scan(box_config):
         f_ray_start_position = [-x_pos, box_config.depth * 0.1, box_config.height * 2]
         f_ray_target_position = [-x_pos, box_config.depth * 0.1, 0]
         frontray = p.rayTest(f_ray_start_position, f_ray_target_position)
+        p.addUserDebugLine(f_ray_start_position, f_ray_target_position)
 
         f_hit_fraction = frontray[0][2]
         f_hit_position = frontray[0][3]
@@ -34,7 +35,7 @@ def scan(box_config):
 
         #Back ray
         x_pos += step_width /3 #TODO: löschen
-        b_ray_start_position = [-x_pos, box_config.depth * 0.95, box_config.height * 2]
+        b_ray_start_position = [-x_pos, box_config.depth * 0.95, box_config.height * 10]
         b_ray_target_position = [-x_pos, box_config.depth * 0.95, 0]
         backray = p.rayTest(b_ray_start_position, b_ray_target_position)
 

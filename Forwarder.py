@@ -157,16 +157,21 @@ def grid_forward(this_forwarding: Forwarding):
 
 
 def rowwise_forward(this_forwarding: Forwarding,
-                    waittime = 100, #TODO: Wieder auf 40 ändern, falls das mit static nicht funktioniert
+                    waittime = 40,
                     trapezoid_sides = False,
-                    side_spacing = 0.0,):
+                    side_spacing = 0.0,
+                    freeze = False):
+    '''this_forwarding contains the general information of the Forwarding instance
+        waittime describes the number of tics between the dropping of two consecutive rows
+
+        freeze sets all stems to static once the next row comes in'''
     boxconfig = this_forwarding.box_config
     stems = this_forwarding.stems
     [horizontal_dist, vertical_dist] = this_forwarding.distances
 
     z = vertical_dist
     y = boxconfig.depth / 2
-    trapezoid_incline = z * trapezoid_sides #* math.tan(math.pi/6) # s.u.
+    trapezoid_incline = (z - vertical_dist) * trapezoid_sides #* math.tan(math.pi/6) # s.u.
     x = -boxconfig.width + side_spacing + horizontal_dist / 2 + trapezoid_incline
 
 
@@ -190,15 +195,17 @@ def rowwise_forward(this_forwarding: Forwarding,
         #row completion:
         if x > (-horizontal_dist / 2 - side_spacing - trapezoid_incline):
             x = x - boxconfig.width + horizontal_dist + 2 * side_spacing + 2 * trapezoid_incline
+            print("x: ", x, " trapezoid_incline: ", trapezoid_incline, " side spacing: ", side_spacing, " dist: ", horizontal_dist) #TODO: löschen
             for i in range(waittime):
                 this_forwarding.step_simulation()
 
             z = Scanner.max_height(boxconfig) + vertical_dist
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
-            trapezoid_incline = z * trapezoid_sides
+            trapezoid_incline = min((z - vertical_dist) * trapezoid_sides , (boxconfig.width - 2*side_spacing - 2*horizontal_dist) / 2 )
             #p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
-            for this_stem in current_row: #TODO: This is an experiment. see if it works
-                this_stem.static(True)
+            if freeze == True:
+                for this_stem in current_row:
+                    this_stem.static(True)
 
             current_row = []
 
@@ -242,8 +249,9 @@ def deposit(stems):
         stem.forward(place)
         stem.static(True)
 
+
 def choose_and_execute_forwarder(fwd: Forwarding):
-    algorithm =  fwd.parameters.forwarding_algorithm
+    algorithm = fwd.parameters.forwarding_algorithm
     if algorithm in ["grid", "Grid", "grid_forward", "Grid_forward"]:
         return grid_forward(fwd)
 
@@ -257,6 +265,13 @@ def choose_and_execute_forwarder(fwd: Forwarding):
         space = min(fwd.box_config.width / 4, 2.0)
         return rowwise_forward(fwd, side_spacing=space, trapezoid_sides=True)
 
+    elif algorithm in ["rowwise-freeze" , "rowwise_freeze"]:
+        return rowwise_forward(fwd, waittime= 120, freeze = True)
+
+    elif algorithm in ["trapezoid-freeze" , "trapezoid_freeze"]:
+        space = min(fwd.box_config.width / 4, 2.0)
+        return rowwise_forward(fwd, waittime= 120, side_spacing=space, trapezoid_sides=True, freeze= True)
+
     else:
         print("WARNING: ", algorithm, ' is not a valid forwarding algorithm name. '
         'Algorithm names include "grid", "rowwise", "trapezoid" and "simple". '
@@ -268,4 +283,6 @@ def algorithm_list():
     return (["grid", "Grid", "grid_forward", "Grid_forward"]
             + ["rowwise", "row-wise", "Rowwise", "rowwise_forward"]
             + ["simple", "Simple", "stemwise", "stem_wise"]
-            + ["trapezoid", "spaced rowwise"])
+            + ["trapezoid", "spaced rowwise"]
+            + ["rowwise-freeze" , "rowwise_freeze"]
+            + ["trapezoid-freeze" , "trapezoid_freeze"])

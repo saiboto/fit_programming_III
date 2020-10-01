@@ -1,2 +1,2 @@
-Iteration,Out Of Box,Dislocated,Front Area,Gross Volume,Net Volume,Deflation Factor,Duation (sec.),Waiting Loops,Duration (tics)
-1,0,16,6.531699913446399,19.595099740339197,12.220181032567993,0.6236345410077743,412.43779,11,2510
+Iteration,Out Of Box,Dislocated(any),Dislocated(position),Dislocated(angle),Front Area,Gross Volume,Net Volume,Deflation Factor,Duation (sec.),Waiting Loops,Duration (tics)
+1,0,8,0,8,4.9553283380519675,14.865985014155903,10.659046919288139,0.7170091258089004,142.550139,5,770

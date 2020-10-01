@@ -42,7 +42,7 @@ for user_input in user_inputs:
     p.setGravity(0, 0, -10)
 
     box_config = user_input.box_extent
-    if user_input.forwarding_parameters.forwarding_algorithm == "trapezoid":
+    if user_input.forwarding_parameters.forwarding_algorithm in ["trapezoid", "trapezoid_freeze", "trapezoid-freeze"]:
         box_config = Box.resize(stem_configs, box_config)
     box_id = Box.Box(box_config)
     #swing_id = Box.create_swing(box_config) #for debugging and experimenting only
