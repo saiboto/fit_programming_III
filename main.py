@@ -1,3 +1,4 @@
+import sys
 import math
 import time
 import random
@@ -18,11 +19,12 @@ import TableUI
 TableUI.resetcwd()
 
 #user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
-user_inputs = TableUI.load_user_inputs("Settings.csv")
+user_inputs = TableUI.load_user_inputs("Settings.csv", sys.argv)
 
 all_results = []
 
 for user_input in user_inputs:
+    print(user_input.settings_name)
     try:
         stem_configs = TableUI.ConfigsFromStemList(user_input)
     except:
@@ -32,7 +34,7 @@ for user_input in user_inputs:
         stem_configs = StemConfigFactory.run(user_input)
         TableUI.writeStemList(stem_configs, (filename + ".csv"))
 
-    physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
+    physicsClient = p.connect(p.DIRECT)  #p.GUI or p.DIRECT for non-graphical version
 
     # necessary for using objects of pybullet_data
     p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -70,8 +72,9 @@ for user_input in user_inputs:
         this_forwarding = Forwarder.Forwarding(my_stems, box_config, user_input.forwarding_parameters)
         iteration_results.append([iteration + 1] + this_forwarding.return_results())
         random.shuffle(my_stems)
+        print(iteration, "/", user_input.iterations, end= ', ')
 
-    print(user_input.settings_name)
+    print(" ")
     resultfilename = "Results/Results" + user_input.settings_name + ".csv"
     TableUI.writeResultFile(iteration_results, resultfilename)
     all_results = all_results + [i + [user_input.settings_name] for i in iteration_results[1:]]

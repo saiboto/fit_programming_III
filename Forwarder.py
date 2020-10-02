@@ -194,8 +194,7 @@ def rowwise_forward(this_forwarding: Forwarding,
         x = x + horizontal_dist
         #row completion:
         if x > (-horizontal_dist / 2 - side_spacing - trapezoid_incline):
-            x = x - boxconfig.width + horizontal_dist + 2 * side_spacing + 2 * trapezoid_incline
-            print("x: ", x, " trapezoid_incline: ", trapezoid_incline, " side spacing: ", side_spacing, " dist: ", horizontal_dist) #TODO: löschen
+            x = x - boxconfig.width + horizontal_dist * (0.8 + random.random()/2) + 2 * side_spacing + 2 * trapezoid_incline
             for i in range(waittime):
                 this_forwarding.step_simulation()
 

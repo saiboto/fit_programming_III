@@ -5,9 +5,11 @@ import Config as C
 from Forwarder import algorithm_list
 from Stem import bend_function_names
 
-def load_user_inputs(filepath):  #-> List[UI.Input]
+def load_user_inputs(filepath, call_arguments):  #-> List[UI.Input]
     '''Generates a list of Input class objects,
     based on a simulation settings csv file'''
+
+    # first the table is read
     user_inputs = []
     try:
         with open(filepath, newline='') as f:
@@ -50,6 +52,7 @@ def load_user_inputs(filepath):  #-> List[UI.Input]
                                                 stems_file_path=stems_file_path))
 
         validate(user_inputs)
+        user_inputs = reduce(user_inputs, call_arguments)
         return user_inputs
     except KeyError as original_exc:
         raise ValueError(
@@ -104,6 +107,41 @@ def validate(user_inputs):
     else:
         print("Settings input table valid.")
 
+
+def reduce(user_inputs, call_arguments):
+    '''This function checks if any valid restriction
+    to a subset of the lines of Settings.csv was given in the function call,
+    in which case it reduces the user inputs to the chosen lines'''
+    if len(call_arguments) == 2:
+        arg = call_arguments[1]
+        new_user_inputs = [user_input for user_input in user_inputs if user_input.settings_name == arg]
+        if new_user_inputs == []:
+            raise ValueError(
+                "Call argument is not a settings id!"
+            )
+    elif len(call_arguments) == 3:
+        arg1 = call_arguments[1]
+        arg2 = call_arguments[2]
+        if all([arg in [user_input.settings_name for user_input in user_inputs]
+                for arg in [arg1, arg2]]) and \
+                ([user_input.settings_name for user_input in user_inputs].index(arg1) < \
+                 [user_input.settings_name for user_input in user_inputs].index(arg2)):
+            new_user_inputs = user_inputs
+            while(new_user_inputs[0].settings_name != arg1):
+                new_user_inputs.pop(0)
+            while(new_user_inputs[-1].settings_name != arg2):
+                new_user_inputs.pop(-1)
+        else:
+            raise IndexError(
+                "Both arguments must be settings IDs \nand the first must occur before the second in Settings.csv"
+            )
+    elif len(call_arguments) == 1:
+        new_user_inputs = user_inputs
+    else:
+        raise IndexError(
+            "Give one or two settings names as arguments!"
+        )
+    return new_user_inputs
 
 # Up to here, the functionality is somewhat equivalent to YamlUI.
 # Now come come additional functions that are needed for table interaction

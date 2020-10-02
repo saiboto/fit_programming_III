@@ -2,6 +2,7 @@ import statistics
 
 import pybullet as p
 
+
 class Scanresult:
 
     def __init__(self, front_heights, back_heights, box_overflow = False ):
@@ -20,18 +21,18 @@ def scan(box_config):
 
     while x_pos < box_config.width - step_width / 2:
         #front ray
-        f_ray_start_position = [-x_pos, box_config.depth * 0.1, box_config.height * 2]
+        f_ray_start_position = [-x_pos, box_config.depth * 0.1, box_config.height * 10]
         f_ray_target_position = [-x_pos, box_config.depth * 0.1, 0]
         frontray = p.rayTest(f_ray_start_position, f_ray_target_position)
-        p.addUserDebugLine(f_ray_start_position, f_ray_target_position)
 
         f_hit_fraction = frontray[0][2]
         f_hit_position = frontray[0][3]
 
-        if f_hit_fraction < 0.5:
+        if f_hit_fraction < 0.1:
             box_overflow = True
 
         polter_front_heights.append(f_hit_position[2])
+
 
         #Back ray
         x_pos += step_width /3 #TODO: löschen
@@ -42,7 +43,7 @@ def scan(box_config):
         b_hit_fraction = backray[0][2]
         b_hit_position = backray[0][3]
 
-        if b_hit_fraction < 0.5:
+        if b_hit_fraction < 0.1:
             box_overflow = True
 
         polter_back_heights.append(b_hit_position[2])
@@ -52,7 +53,7 @@ def scan(box_config):
         x_pos += 2*step_width /3
 
     res = Scanresult(polter_front_heights, polter_back_heights, box_overflow)
-    print(statistics.mean(polter_front_heights), statistics.mean(polter_back_heights))
+    #print(statistics.mean(polter_front_heights), statistics.mean(polter_back_heights))
     return res
 
 def front_area(box_config):
