@@ -110,7 +110,7 @@ def validate(user_inputs):
 
 def reduce(user_inputs, call_arguments):
     '''This function checks if any valid restriction
-    to a subset of the lines of Settings.csv was given in the function call,
+    to a subset of the lines of Settings.csv was given in the call of main.py,
     in which case it reduces the user inputs to the chosen lines'''
     if len(call_arguments) == 2:
         arg = call_arguments[1]

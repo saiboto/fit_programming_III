@@ -131,7 +131,7 @@ def grid_placements(this_forwarding: Forwarding) : #-> List[Config.PlacedStem]
 
             x = x + horizontal_distance
             if x > (-horizontal_distance / 2):
-                x = x - boxconfig.width + horizontal_distance
+                x = x - boxconfig.width + horizontal_distance * (1 + random.random())
                 z = z + vertical_distance
 
         return xyz_placements
