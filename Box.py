@@ -155,27 +155,27 @@ def resize(stemconfigs, boxconfig):
     polter_height = min(boxconfig.height, (boxconfig.width - 2 * side_spacing) / 2)
     available_front_area = (boxconfig.width - 2 * side_spacing) * polter_height - polter_height ** 2  # under the assumption of an inclination of 45 deg.
 
-    print("potential: ", potential_front_area, "available: ", available_front_area)
+    #print("potential: ", potential_front_area, "available: ", available_front_area)
     if potential_front_area > available_front_area:
         A = potential_front_area
         h = boxconfig.height
         if boxconfig.width < 8:
             if h > math.sqrt(A/3): #TODO: fix formula! The relevant variable is new_width, not the old one
-                print("case11")
+                #print("case11")
                 new_width = math.sqrt(A/3)*8
                 h = math.sqrt(A/3)
             else:
-                print("case12")
+                #print("case12")
                 new_width = 2 * (A + h**2) / h
         else:
             if 8 + math.sqrt(16 + 16 / 3 * A) < (h + 1 ) / 4:
-                print("case21")
+                #print("case21")
                 new_width = 8 + math.sqrt(16 + 16 / 3 * A)
                 h = 4 * (8 + math.sqrt(16 + 16 / 3 * A)) - 1
             else:
-                print("case22")
+                #print("case22")
                 new_width = (A + h**2) / h + 4
-        print("new_width: ", new_width)
+        #print("new_width: ", new_width) #TODO: delete debugging comments
         return Config.Box(height= h, width= new_width, depth= boxconfig.depth)
 
     else:
