@@ -38,6 +38,9 @@ class Stem:
         b = min(y, math.pi-y)
         return a + b #TODO: Herausfinden, wie die richtige Formel ist, mit der man den aus zwei Rotationen resultierenden Winkel zur Z-Achse errechnet
 
+    def angles(self):
+        return p.getEulerFromQuaternion(p.getBasePositionAndOrientation(self._pybullet_id)[1])
+
     def is_inside_of_the_box(self, boxconfig):
         if self.location()[0] < 0 and self.location()[0] > -boxconfig.width and self.location()[2] > 0 \
             and self.location()[1] > 0 and self.location()[1] < boxconfig.depth:

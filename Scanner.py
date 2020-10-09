@@ -1,4 +1,6 @@
 import statistics
+import time
+import math
 
 import pybullet as p
 
@@ -56,18 +58,19 @@ def scan(box_config):
     #print(statistics.mean(polter_front_heights), statistics.mean(polter_back_heights))
     return res
 
-def front_area(box_config):
+def front_area(box_config, back_area = False):
     '''Determines the approximate front area of the polter by casting vertical rays on it
     and finding their intersection with the stems. '''
 
     my_scan = scan(box_config)
 
-
     if my_scan.box_overflow == True:
         print("WARNING: Box overflow! Too many stems for the size of the box!")
 
-    area = statistics.mean(my_scan.front_heights) * box_config.width
-
+    if back_area == False:
+        area = statistics.mean(my_scan.front_heights) * box_config.width
+    else:
+        area = statistics.mean(my_scan.back_heights) * box_config.width
     return area
 
 def max_height(box_config):
@@ -76,3 +79,20 @@ def max_height(box_config):
     #print('max: ',  max(my_scan.front_heights), max(my_scan.back_heights), max(my_scan.front_heights + my_scan.back_heights))
     #print(my_scan.back_heights)
     return max(my_scan.front_heights + my_scan.back_heights)
+
+def face_area(this_forwarding):
+    stems = this_forwarding.stems
+
+    front_face_area = 0
+    back_face_area = 0
+    for stem in stems:
+        orientation2 = (math.pi*(-0.5) < stem.angles()[2] < math.pi/2)
+        orientation1 = (math.pi*(-0.5) < stem.angles()[0] < math.pi/2)
+        tailflip = (orientation1 == orientation2)
+        if stem.is_inside_of_the_box(this_forwarding.box_config) and tailflip: # checks if the bottom or the top of the stem are facing to the front
+            front_face_area += stem.config.top_diameter_x * stem.config.top_diameter_y * math.pi / 4
+            back_face_area += stem.config.bottom_diameter_x * stem.config.bottom_diameter_y * math.pi / 4
+        elif stem.is_inside_of_the_box(this_forwarding.box_config) and tailflip == False:
+            front_face_area += stem.config.bottom_diameter_x * stem.config.bottom_diameter_y * math.pi / 4
+            back_face_area += stem.config.top_diameter_x * stem.config.top_diameter_y * math.pi / 4
+    return [front_face_area, back_face_area]

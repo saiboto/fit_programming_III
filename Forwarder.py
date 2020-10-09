@@ -24,6 +24,7 @@ class Forwarding:
 
         self.distances = distances(my_stems)
         self._starting_time = datetime.datetime.now()
+        self._stem_face_area = 0.0
         self._tics_count = 0
 
         deposit(self.stems)
@@ -38,6 +39,7 @@ class Forwarding:
     def return_results(self):
         box_config = self.box_config
         front_area = Scanner.front_area(box_config)
+        back_area = Scanner.front_area(box_config, back_area = True)
         net_volume = sum([stem.volume if stem.is_inside_of_the_box(box_config)
                           else 0 for stem in self.stems])
         gross_volume = front_area * box_config.depth
@@ -51,10 +53,12 @@ class Forwarding:
         else:
             deflationfactor = "DivBy0Error"
 
+        [front_face_area, back_face_area] = Scanner.face_area(self)
         duration = (self._finish_time - self._starting_time).total_seconds()
 
         return [out_of_box, dislocated_any, dislocated_position, dislocated_angle,
                 front_area, gross_volume, net_volume, deflationfactor,
+                back_area, front_face_area, back_face_area,
                 duration, self.waited_loops, self._tics_count]
 
 

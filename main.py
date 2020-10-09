@@ -19,7 +19,7 @@ import TableUI
 TableUI.resetcwd()
 
 #user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
-user_inputs = TableUI.load_user_inputs("Settings.csv", sys.argv)
+user_inputs = TableUI.load_user_inputs("Settings.csv",sys.argv)
 
 all_results = []
 
@@ -34,7 +34,7 @@ for user_input in user_inputs:
         stem_configs = StemConfigFactory.run(user_input)
         TableUI.writeStemList(stem_configs, (filename + ".csv"))
 
-    physicsClient = p.connect(p.DIRECT)  #p.GUI or p.DIRECT for non-graphical version
+    physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
 
     # necessary for using objects of pybullet_data
     p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -67,7 +67,7 @@ for user_input in user_inputs:
     for stem_config in stem_configs:
         my_stems.append(Stem.Stem(stem_config, placement=my_placement))
 
-    iteration_results = [["Iteration", "Out Of Box", "Dislocated(any)", "Dislocated(position)", "Dislocated(angle)","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (sec.)", "Waiting Loops", "Duration (tics)"]]
+    iteration_results = TableUI.emptyIterationsTable()
     for iteration in range(user_input.iterations):
         this_forwarding = Forwarder.Forwarding(my_stems, box_config, user_input.forwarding_parameters)
         iteration_results.append([iteration + 1] + this_forwarding.return_results())
@@ -80,5 +80,5 @@ for user_input in user_inputs:
     all_results = all_results + [i + [user_input.settings_name] for i in iteration_results[1:]]
     p.disconnect()
 resultfilename = "Results/All_Results" + str(datetime.datetime.now()) + ".csv"
-all_results = [["Iteration", "Out Of Box", "Dislocated","Front Area", "Gross Volume", "Net Volume", "Deflation Factor", "Duation (sec.)", "Waiting Loops", "Duration (tics)", "Settings_name"]] + all_results
+all_results = TableUI.emptyIterationsTable(allresults=True) + all_results
 TableUI.writeResultFile(all_results, resultfilename)
