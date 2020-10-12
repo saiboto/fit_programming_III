@@ -11,11 +11,11 @@ def load_user_inputs(call_arguments):  #-> List[UI.Input]
     if len(call_arguments) >= 2:
         filename = call_arguments[1]
         if filename[-4:] == ".csv":
-            filepath = filename
+            filepath = "Settings/" + filename
         else:
-            filepath = filename + ".csv"
+            filepath = "Settings/" + filename + ".csv"
     elif len(call_arguments) == 1:
-        filepath = "Settings.csv"
+        filepath = "Settings/Settings.csv"
     else:
         raise ValueError("No argument!?!")
 
@@ -119,7 +119,7 @@ def validate(user_inputs):
         print("Settings input table valid.")
 
 
-def reduce(user_inputs, call_arguments): #TODO:löschen
+def reduce(user_inputs, call_arguments):
     '''This function checks if any valid restriction
     to a subset of the lines of the settings table was given in the call of main.py,
     in which case it reduces the user inputs to the chosen lines'''
@@ -146,7 +146,7 @@ def reduce(user_inputs, call_arguments): #TODO:löschen
             raise IndexError(
                 "2nd and 3rd argument must be settings IDs \nand the first must occur before the second in the settings table!"
             )
-    elif len(call_arguments) == 1:
+    elif len(call_arguments) in [1,2]:
         new_user_inputs = user_inputs
     else:
         raise IndexError(

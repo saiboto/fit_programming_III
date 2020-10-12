@@ -1,5 +1,4 @@
 import statistics
-import time
 import math
 
 import pybullet as p
@@ -49,7 +48,7 @@ def scan(box_config):
         polter_front_heights.append(f_hit_position[2])
 
         #Back ray
-        x_pos += step_width /3 #TODO: löschen
+        x_pos += step_width /3
         b_ray_start_position = [-x_pos, box_config.depth * 0.95, box_config.height * 10]
         b_ray_target_position = [-x_pos, box_config.depth * 0.95, 0]
         backray = p.rayTest(b_ray_start_position, b_ray_target_position)

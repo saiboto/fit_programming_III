@@ -17,8 +17,6 @@ import Forwarder
 import TableUI
 
 TableUI.resetcwd()
-
-#user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
 user_inputs = TableUI.load_user_inputs(sys.argv)
 
 all_results = []
@@ -31,7 +29,7 @@ for user_input in user_inputs:
         print("No valid stem file was found at the given path.")
 
 
-    physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
+    physicsClient = p.connect(p.DIRECT)  #p.GUI or p.DIRECT for non-graphical version
 
     # necessary for using objects of pybullet_data
     p.setAdditionalSearchPath(pybullet_data.getDataPath())

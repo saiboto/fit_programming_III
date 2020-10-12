@@ -1,5 +1,4 @@
 import math
-import time
 import random
 import datetime
 
@@ -203,7 +202,6 @@ def rowwise_forward(this_forwarding: Forwarding,
                 this_forwarding.step_simulation()
 
             z = Scanner.Scan(boxconfig).max_height() + vertical_dist
-            #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
             trapezoid_incline = min((z - vertical_dist) * trapezoid_sides , (boxconfig.width - 2*side_spacing - 2*horizontal_dist) / 2 )
             #p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
             if freeze == True:
