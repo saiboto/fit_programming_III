@@ -38,8 +38,8 @@ class Forwarding:
 
     def return_results(self):
         box_config = self.box_config
-        front_area = Scanner.front_area(box_config)
-        back_area = Scanner.front_area(box_config, back_area = True)
+        my_scan = Scanner.Scan(box_config)
+        front_area = my_scan.front_area()
         net_volume = sum([stem.volume if stem.is_inside_of_the_box(box_config)
                           else 0 for stem in self.stems])
         gross_volume = front_area * box_config.depth
@@ -58,7 +58,7 @@ class Forwarding:
 
         return [out_of_box, dislocated_any, dislocated_position, dislocated_angle,
                 front_area, gross_volume, net_volume, deflationfactor,
-                back_area, front_face_area, back_face_area,
+                my_scan.back_area(), front_face_area, back_face_area,
                 duration, self.waited_loops, self._tics_count]
 
 
@@ -202,7 +202,7 @@ def rowwise_forward(this_forwarding: Forwarding,
             for i in range(waittime):
                 this_forwarding.step_simulation()
 
-            z = Scanner.max_height(boxconfig) + vertical_dist
+            z = Scanner.Scan(boxconfig).max_height() + vertical_dist
             #trapezoid_incline = z * trapezoid_sides * math.tan(math.pi / 6) #TODO: Find out which factor is reasonable
             trapezoid_incline = min((z - vertical_dist) * trapezoid_sides , (boxconfig.width - 2*side_spacing - 2*horizontal_dist) / 2 )
             #p.addUserDebugLine([x,0,z],[(-horizontal_dist/2 - side_spacing - trapezoid_incline),0,z])
