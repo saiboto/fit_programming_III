@@ -224,14 +224,14 @@ def emptyIterationsTable(allresults = False):
         return [["Iteration", "Out Of Box", "Dislocated(any)",
                  "Dislocated(position)", "Dislocated(angle)","Front Area",
                  "Gross Volume", "Net Volume", "Deflation Factor", "Back area",
-                 "Front Face Area", "Back Face Area" , "Duation (sec.)",
-                 "Waiting Loops", "Duration (tics)", "Settings ID"]]
+                 "Front Face Area", "Back Face Area" , "Box overflow",
+                 "Duration (sec.)", "Waiting Loops", "Duration (tics)", "Settings ID"]]
     else:
         return [["Iteration", "Out Of Box", "Dislocated(any)",
                  "Dislocated(position)", "Dislocated(angle)","Front Area",
                  "Gross Volume", "Net Volume", "Deflation Factor", "Back area",
-                 "Front Face Area", "Back Face Area" , "Duation (sec.)",
-                 "Waiting Loops", "Duration (tics)"]]
+                 "Front Face Area", "Back Face Area" , "Box overflow" ,
+                 "Duration (sec.)", "Waiting Loops", "Duration (tics)"]]
 
 def resetcwd():
     abspath = os.path.abspath(__file__)

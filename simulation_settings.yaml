@@ -1,13 +1,4 @@
-Load stems from file path: My200-0-0-18p050.csv
-# if no valid file path is provided, a new set of stems will be generated
-
-# unit: meters
-Pile extent:
-  Width: 6
-  Height: 5
-  Depth: 3
-
-Number of iterations: 10
+File name: My200-0-0-siebzehn.csv
 
 Random stem generation:
 

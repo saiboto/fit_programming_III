@@ -102,7 +102,6 @@ class UserInput:
     def __init__(self,
                  box_extent: Box,
                  settings_name="1",
-                 random_stem_generation= RandomStemGeneration(0, 0, 0, 0, 0, 0, 0, 0, 0),
                  physics_parameters= PhysicsParameters(),
                  mesh_parameters= MeshParameters(),
                  forwarding_parameters= ForwardingParameters(),
@@ -110,7 +109,6 @@ class UserInput:
                  stems_file_path='none'):
         self.settings_name = settings_name
         self.box_extent = box_extent
-        self.random_stem_generation = random_stem_generation
         self.physics_parameters = physics_parameters
         self.mesh_parameters = mesh_parameters
         self.forwarding_parameters = forwarding_parameters

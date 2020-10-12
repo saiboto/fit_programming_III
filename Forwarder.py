@@ -58,7 +58,7 @@ class Forwarding:
 
         return [out_of_box, dislocated_any, dislocated_position, dislocated_angle,
                 front_area, gross_volume, net_volume, deflationfactor,
-                my_scan.back_area(), front_face_area, back_face_area,
+                my_scan.back_area(), front_face_area, back_face_area, my_scan.box_overflow,
                 duration, self.waited_loops, self._tics_count]
 
 

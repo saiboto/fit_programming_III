@@ -1,9 +1,11 @@
 import Config as C
 import random
+import YamlUI
+import TableUI
 
 
-def run(user_input: C.UserInput):
-    stem_generation = user_input.random_stem_generation
+def make_configs(stem_generation):
+    user_input = stem_generation
 
     stem_config_list = []
 
@@ -31,7 +33,15 @@ def run(user_input: C.UserInput):
                                              bottom_diameter_x, bottom_diameter_y,
                                              middle_diameter_x, middle_diameter_y,
                                              top_diameter_x, top_diameter_y, bend,
-                                             mesh_parameters=user_input.mesh_parameters,
-                                             physics_parameters= user_input.physics_parameters))
+                                             mesh_parameters= C.MeshParameters(),
+                                             physics_parameters= C.PhysicsParameters()
+                                             ))
 
     return stem_config_list
+
+
+[filename, random_stem_generation_input] = YamlUI.load_user_input('simulation_settings.yaml')
+
+stem_configs = make_configs(random_stem_generation_input)
+
+TableUI.writeStemList(stem_configs, ("Stems/" + filename + ".csv"))

@@ -4,3 +4,7 @@ To call via terminal:
 
 	settings_table: optional; The name of the csv table to specify the simulation parameters. Default is Settings.csv
 	restriction_to_lines: optional; settings_table must be specfied in order to enable this option; arguments must be names of Settings_ID's given in the settings table. If one argument is given: only this line of the settings table will be used. If two arguments are given: the lines of the settings table between (including) the first and the second argument will be used. If no argument is given: All lines will be used. 
+
+
+>> python3 StemFactory.py
+	Generates Stem set according to simulation_settings.yaml

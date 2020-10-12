@@ -43,7 +43,7 @@ def scan(box_config):
         f_hit_fraction = frontray[0][2]
         f_hit_position = frontray[0][3]
 
-        if f_hit_fraction < 0.1:
+        if f_hit_fraction < 0.9:
             box_overflow = True
 
         polter_front_heights.append(f_hit_position[2])
@@ -57,7 +57,7 @@ def scan(box_config):
         b_hit_fraction = backray[0][2]
         b_hit_position = backray[0][3]
 
-        if b_hit_fraction < 0.1:
+        if b_hit_fraction < 0.9:
             box_overflow = True
 
         polter_back_heights.append(b_hit_position[2])

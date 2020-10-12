@@ -10,7 +10,7 @@ import pybullet_data
 import Config
 import Stem
 import YamlUI
-import StemConfigFactory
+import StemFactory
 import Box
 import Scanner
 import Forwarder
@@ -28,11 +28,8 @@ for user_input in user_inputs:
     try:
         stem_configs = TableUI.ConfigsFromStemList(user_input)
     except:
-        print("No valid stem file was found at the given path.",
-              "A new stem set will be generated.")
-        filename = input("Please give file name:")
-        stem_configs = StemConfigFactory.run(user_input)
-        TableUI.writeStemList(stem_configs, (filename + ".csv"))
+        print("No valid stem file was found at the given path.")
+
 
     physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
 

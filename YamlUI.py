@@ -1,13 +1,11 @@
 import pathlib
-import os #testweise
-
 
 import yaml
 
 import Config as C
 
 
-def load_user_input(file_path): #-> List[UserInterface.Input]
+def load_user_input(file_path):
     """Tries to create a user input object from the contents of a YAML file
     supplied by the user.
 
@@ -34,36 +32,27 @@ def load_user_input(file_path): #-> List[UserInterface.Input]
 
     try:
 
-        box_extent = yaml_content['Pile extent']
+        file_name = yaml_content['File name']
         random_stem_gen = yaml_content['Random stem generation']
 
-        return [C.UserInput(
-            C.Box(
-                width=box_extent['Width'],
-                height=box_extent['Height'],
-                depth=box_extent['Depth']
-            ),
-            "",
-            C.RandomStemGeneration(
-                num_stems=random_stem_gen['Number of stems'],
-                length_mean=random_stem_gen['Length']['mean'],
-                length_sd=random_stem_gen['Length']['standard deviation'],
-                middle_stem_diameter_mean=random_stem_gen
-                ['Middle stem diameter']['mean'],
-                middle_stem_diameter_sd=random_stem_gen
-                ['Middle stem diameter']['standard deviation'],
-                ellipticity_sd=random_stem_gen
-                ['Ellipticity standard deviation'],
-                stem_taper_mean=random_stem_gen['Stem taper']['mean'],
-                stem_taper_sd=random_stem_gen
-                ['Stem taper']['standard deviation'],
-                bend_mean=random_stem_gen['Mean bend']
-            ),
-            iterations = yaml_content['Number of iterations'],
-            stems_file_path = yaml_content['Load stems from file path']
-        )]
+        return [file_name,
+                C.RandomStemGeneration(
+                    num_stems=random_stem_gen['Number of stems'],
+                    length_mean=random_stem_gen['Length']['mean'],
+                    length_sd=random_stem_gen['Length']['standard deviation'],
+                    middle_stem_diameter_mean=random_stem_gen
+                    ['Middle stem diameter']['mean'],
+                    middle_stem_diameter_sd=random_stem_gen
+                    ['Middle stem diameter']['standard deviation'],
+                    ellipticity_sd=random_stem_gen
+                    ['Ellipticity standard deviation'],
+                    stem_taper_mean=random_stem_gen['Stem taper']['mean'],
+                    stem_taper_sd=random_stem_gen
+                    ['Stem taper']['standard deviation'],
+                    bend_mean=random_stem_gen['Mean bend']
+            )]
 
     except KeyError as original_exc:
         raise ValueError(
-            'Not all necessary keys present for user input creation!'
+            'Not all necessary keys present for stem set creation!'
         ) from original_exc
