@@ -5,9 +5,20 @@ import Config as C
 from Forwarder import algorithm_list
 from Stem import bend_function_names
 
-def load_user_inputs(filepath, call_arguments):  #-> List[UI.Input]
+def load_user_inputs(call_arguments):  #-> List[UI.Input]
     '''Generates a list of Input class objects,
     based on a simulation settings csv file'''
+    if len(call_arguments) >= 2:
+        filename = call_arguments[1]
+        if filename[-4:] == ".csv":
+            filepath = filename
+        else:
+            filepath = filename + ".csv"
+    elif len(call_arguments) == 1:
+        filepath = "Settings.csv"
+    else:
+        raise ValueError("No argument!?!")
+
 
     # first the table is read
     user_inputs = []
@@ -66,7 +77,7 @@ def validate(user_inputs):
     warning = False
     settings_ids = [user_input.settings_name for user_input in user_inputs]
     if (len(set(settings_ids)) != len(settings_ids)):
-        print("Settings IDs are not unique. Some results will be overwritten!")
+        print("Settings IDs are not unique!")
         warning = True
 
     invalid_filenames = []
@@ -108,20 +119,20 @@ def validate(user_inputs):
         print("Settings input table valid.")
 
 
-def reduce(user_inputs, call_arguments):
+def reduce(user_inputs, call_arguments): #TODO:löschen
     '''This function checks if any valid restriction
-    to a subset of the lines of Settings.csv was given in the call of main.py,
+    to a subset of the lines of the settings table was given in the call of main.py,
     in which case it reduces the user inputs to the chosen lines'''
-    if len(call_arguments) == 2:
-        arg = call_arguments[1]
+    if len(call_arguments) == 3:
+        arg = call_arguments[2]
         new_user_inputs = [user_input for user_input in user_inputs if user_input.settings_name == arg]
         if new_user_inputs == []:
             raise ValueError(
                 "Call argument is not a settings id!"
             )
-    elif len(call_arguments) == 3:
-        arg1 = call_arguments[1]
-        arg2 = call_arguments[2]
+    elif len(call_arguments) == 4:
+        arg1 = call_arguments[2]
+        arg2 = call_arguments[3]
         if all([arg in [user_input.settings_name for user_input in user_inputs]
                 for arg in [arg1, arg2]]) and \
                 ([user_input.settings_name for user_input in user_inputs].index(arg1) < \
@@ -133,7 +144,7 @@ def reduce(user_inputs, call_arguments):
                 new_user_inputs.pop(-1)
         else:
             raise IndexError(
-                "Both arguments must be settings IDs \nand the first must occur before the second in Settings.csv"
+                "2nd and 3rd argument must be settings IDs \nand the first must occur before the second in the settings table!"
             )
     elif len(call_arguments) == 1:
         new_user_inputs = user_inputs

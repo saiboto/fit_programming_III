@@ -13,6 +13,8 @@ class Scanresult:
         self.box_overflow = box_overflow
 
 
+
+
 def scan(box_config):
     polter_front_heights = []
     polter_back_heights = []
@@ -73,6 +75,7 @@ def front_area(box_config, back_area = False):
         area = statistics.mean(my_scan.back_heights) * box_config.width
     return area
 
+
 def max_height(box_config):
 
     my_scan = scan(box_config)
@@ -80,7 +83,15 @@ def max_height(box_config):
     #print(my_scan.back_heights)
     return max(my_scan.front_heights + my_scan.back_heights)
 
+
 def face_area(this_forwarding):
+    '''
+    Args:
+        this_forwarding: Forwarder.Forwarding
+    Returns:
+        The sum of the area of the stem cross sections facing front
+        and the sum of the area of the stem cross sections at the back end.
+    '''
     stems = this_forwarding.stems
 
     front_face_area = 0

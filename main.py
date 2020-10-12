@@ -19,7 +19,7 @@ import TableUI
 TableUI.resetcwd()
 
 #user_inputs = YamlUI.load_user_input('simulation_settings.yaml')
-user_inputs = TableUI.load_user_inputs("Settings.csv",sys.argv)
+user_inputs = TableUI.load_user_inputs(sys.argv)
 
 all_results = []
 
