@@ -1,0 +1,21 @@
+Iteration,Out Of Box,Dislocated(any),Dislocated(position),Dislocated(angle),Front Area,Gross Volume,Net Volume,Deflation Factor,Back area,Front Face Area,Back Face Area,Box overflow,Duration (sec.),Waiting Loops,Duration (tics)
+1,200,69,56,62,0.0,0.0,0,DivBy0Error,0.0,0,0,False,45.086185,15,8790
+2,200,67,51,57,0.0,0.0,0,DivBy0Error,0.0,0,0,False,44.710758,15,8790
+3,200,93,80,82,0.0,0.0,0,DivBy0Error,0.0,0,0,False,65.726434,15,8790
+4,200,73,67,58,0.0,0.0,0,DivBy0Error,0.0,0,0,False,62.693809,15,8790
+5,200,62,46,53,0.0,0.0,0,DivBy0Error,0.0,0,0,False,40.442722,15,8790
+6,200,81,68,71,0.0,0.0,0,DivBy0Error,0.0,0,0,False,45.062578,15,8790
+7,200,61,56,51,0.0,0.0,0,DivBy0Error,0.0,0,0,False,45.419874,15,8790
+8,200,84,75,68,0.0,0.0,0,DivBy0Error,0.0,0,0,False,48.552507,15,8790
+9,200,80,66,67,0.0,0.0,0,DivBy0Error,0.0,0,0,False,50.001584,15,8790
+10,200,69,55,63,0.0,0.0,0,DivBy0Error,0.0,0,0,False,42.720222,15,8790
+11,200,110,98,82,0.0,0.0,0,DivBy0Error,0.0,0,0,False,60.845029,15,8790
+12,200,72,61,60,0.0,0.0,0,DivBy0Error,0.0,0,0,False,63.184492,15,8790
+13,200,65,57,56,0.0,0.0,0,DivBy0Error,0.0,0,0,False,42.685211,15,8790
+14,200,86,70,70,0.0,0.0,0,DivBy0Error,0.0,0,0,False,84.773272,15,8790
+15,200,66,54,55,0.0,0.0,0,DivBy0Error,0.0,0,0,False,46.382413,15,8790
+16,200,91,74,79,0.0,0.0,0,DivBy0Error,0.0,0,0,False,47.975115,15,8790
+17,200,87,71,71,0.0,0.0,0,DivBy0Error,0.0,0,0,False,65.059725,15,8790
+18,200,53,41,48,0.0,0.0,0,DivBy0Error,0.0,0,0,False,38.124287,15,8790
+19,200,77,63,66,0.0,0.0,0,DivBy0Error,0.0,0,0,False,52.97117,15,8790
+20,200,57,45,48,0.0,0.0,0,DivBy0Error,0.0,0,0,False,47.069452,15,8790
