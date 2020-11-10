@@ -65,7 +65,7 @@ for user_input in user_inputs:
     iteration_results = TableUI.emptyIterationsTable()
     for iteration in range(user_input.iterations):
         this_forwarding = Forwarder.Forwarding(my_stems, box_config, user_input.forwarding_parameters)
-        iteration_results.append([iteration + 1] + this_forwarding.return_results())
+        iteration_results.append([iteration + 1] + this_forwarding.return_results(print_to_console = True))
         random.shuffle(my_stems)
         print(iteration, "/", user_input.iterations, end= ', ')
 

@@ -35,7 +35,7 @@ class Forwarding:
 
 
 
-    def return_results(self):
+    def return_results(self, print_to_console = False):
         box_config = self.box_config
         my_scan = Scanner.Scan(box_config)
         front_area = my_scan.front_area()
@@ -54,6 +54,9 @@ class Forwarding:
 
         [front_face_area, back_face_area] = Scanner.face_area(self)
         duration = (self._finish_time - self._starting_time).total_seconds()
+
+        if print_to_console == True:
+            print("Out of Box: ", out_of_box, "  Defl.: ", deflationfactor)
 
         return [out_of_box, dislocated_any, dislocated_position, dislocated_angle,
                 front_area, gross_volume, net_volume, deflationfactor,
