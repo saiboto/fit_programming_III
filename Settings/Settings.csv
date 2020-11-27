@@ -1,3 +1,2 @@
 settings_id,stem_file,iterations_number,pile_width,pile_height,pile_depth,n_sides,n_meshes,lateral_friction,spinning_friction,rolling_friction,restitution,bend_function,random_turn,drop_algorithm
-03,MySmallMixedStemsx2.csv,3,8,2,3,20,10,0.5,0.5,0.5,0.1,shifted sin,TRUE,trapezoid
-02,MySmallMixedStems.csv,1,4,2,3,20,10,0.5,0.5,0.5,0.1,shifted sin,TRUE,rowwise
+02,MySmallMixedStemsx3.csv,1,4,2,3,20,10,0.5,0.5,0.5,0.1,shifted sin,TRUE,rowwise

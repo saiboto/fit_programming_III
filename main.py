@@ -29,7 +29,7 @@ for user_input in user_inputs:
         print("No valid stem file was found at the given path.")
 
 
-    physicsClient = p.connect(p.DIRECT)  #p.GUI or p.DIRECT for non-graphical version
+    physicsClient = p.connect(p.GUI)  #p.GUI or p.DIRECT for non-graphical version
 
     # necessary for using objects of pybullet_data
     p.setAdditionalSearchPath(pybullet_data.getDataPath())

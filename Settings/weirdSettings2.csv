@@ -1,0 +1,817 @@
+"settings_id","stem_file","iterations_number","pile_width","pile_height","pile_depth","n_sides","n_meshes","lateral_friction","spinning_friction","rolling_friction","restitution","bend_function","random_turn","drop_algorithm","intended.con"
+1663,"My200-6-2-0.csv",20,4,2,3,30,12,0.85,0.85,0.85,0,"shifted sin",TRUE,"grid",1645
+1664,"My200-6-2-0.csv",20,12,2,3,30,12,0.85,0.85,0.85,0,"shifted sin",TRUE,"trapezoid",1646
+1665,"My200-6-2-0.csv",20,12,2,3,30,12,0.85,0.85,0.85,0,"shifted sin",TRUE,"trapezoid-freeze",1647
+1672,"My200-8-2-0.csv",20,4,2,3,30,12,0.85,0.85,0.85,0,"shifted sin",TRUE,"grid",1654
+1673,"My200-8-2-0.csv",20,12,2,3,30,12,0.85,0.85,0.85,0,"shifted sin",TRUE,"trapezoid",1655
+1674,"My200-8-2-0.csv",20,12,2,3,30,12,0.85,0.85,0.85,0,"shifted sin",TRUE,"trapezoid-freeze",1656
+1795,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"grid",1777
+1796,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise",1778
+1797,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",1779
+1798,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid",1780
+1799,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",1781
+1800,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"grid",1782
+1801,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise",1783
+1802,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",1784
+1803,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"trapezoid",1785
+1804,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",1786
+1805,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"grid",1787
+1806,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise",1788
+1807,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",1789
+1808,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid",1790
+1809,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",1791
+1810,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"grid",1792
+1811,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise",1793
+1812,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",1794
+1975,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"grid",1957
+1976,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise",1958
+1977,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",1959
+1978,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid",1960
+1979,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",1961
+1980,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"grid",1962
+1981,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise",1963
+1982,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",1964
+1983,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"trapezoid",1965
+1984,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",1966
+1985,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"grid",1967
+1986,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise",1968
+1987,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",1969
+1988,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid",1970
+1989,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",1971
+1990,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"grid",1972
+1991,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise",1973
+1992,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",1974
+2155,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"grid",2137
+2156,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise",2138
+2157,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2139
+2158,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid",2140
+2159,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2141
+2160,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"grid",2142
+2161,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise",2143
+2162,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2144
+2163,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"trapezoid",2145
+2164,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",2146
+2165,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"grid",2147
+2166,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise",2148
+2167,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2149
+2168,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid",2150
+2169,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2151
+2170,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"grid",2152
+2171,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise",2153
+2172,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2154
+2335,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"grid",2317
+2336,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise",2318
+2337,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2319
+2338,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid",2320
+2339,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2321
+2340,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"grid",2322
+2341,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise",2323
+2342,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2324
+2343,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"trapezoid",2325
+2344,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",2326
+2345,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"grid",2327
+2346,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise",2328
+2347,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2329
+2348,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid",2330
+2349,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2331
+2350,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"grid",2332
+2351,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise",2333
+2352,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2334
+2515,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"grid",2497
+2516,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise",2498
+2517,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2499
+2518,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid",2500
+2519,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2501
+2520,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"grid",2502
+2521,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise",2503
+2522,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2504
+2523,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"trapezoid",2505
+2524,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",2506
+2525,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"grid",2507
+2526,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise",2508
+2527,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2509
+2528,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid",2510
+2529,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2511
+2530,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"grid",2512
+2531,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise",2513
+2532,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2514
+2695,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"grid",2677
+2696,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise",2678
+2697,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2679
+2698,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid",2680
+2699,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2681
+2700,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"grid",2682
+2701,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise",2683
+2702,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2684
+2703,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"trapezoid",2685
+2704,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",2686
+2705,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"grid",2687
+2706,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise",2688
+2707,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2689
+2708,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid",2690
+2709,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2691
+2710,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"grid",2692
+2711,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise",2693
+2712,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2694
+2875,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"grid",2857
+2876,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise",2858
+2877,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2859
+2878,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid",2860
+2879,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2861
+2880,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"grid",2862
+2881,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise",2863
+2882,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2864
+2883,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"trapezoid",2865
+2884,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",2866
+2885,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"grid",2867
+2886,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise",2868
+2887,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",2869
+2888,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid",2870
+2889,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",2871
+2890,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"grid",2872
+2891,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise",2873
+2892,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",2874
+3055,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"grid",3037
+3056,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise",3038
+3057,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",3039
+3058,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid",3040
+3059,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",3041
+3060,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"grid",3042
+3061,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise",3043
+3062,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",3044
+3063,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"trapezoid",3045
+3064,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",3046
+3065,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"grid",3047
+3066,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise",3048
+3067,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",3049
+3068,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid",3050
+3069,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",3051
+3070,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"grid",3052
+3071,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise",3053
+3072,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",3054
+3235,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"grid",3217
+3236,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise",3218
+3237,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",3219
+3238,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid",3220
+3239,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",3221
+3240,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"grid",3222
+3241,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise",3223
+3242,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",3224
+3243,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"trapezoid",3225
+3244,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"trapezoid-freeze",3226
+3245,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"grid",3227
+3246,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise",3228
+3247,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"rowwise-freeze",3229
+3248,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid",3230
+3249,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",FALSE,"trapezoid-freeze",3231
+3250,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"grid",3232
+3251,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise",3233
+3252,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"4th order poly",TRUE,"rowwise-freeze",3234
+3415,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",FALSE,"grid",3397
+3416,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",FALSE,"rowwise",3398
+3417,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3399
+3418,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",FALSE,"trapezoid",3400
+3419,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3401
+3420,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",TRUE,"grid",3402
+3421,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",TRUE,"rowwise",3403
+3422,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3404
+3423,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",TRUE,"trapezoid",3405
+3424,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",3406
+3425,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",FALSE,"grid",3407
+3426,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",FALSE,"rowwise",3408
+3427,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3409
+3428,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",FALSE,"trapezoid",3410
+3429,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3411
+3430,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",TRUE,"grid",3412
+3431,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",TRUE,"rowwise",3413
+3432,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3414
+3595,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",FALSE,"grid",3577
+3596,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",FALSE,"rowwise",3578
+3597,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3579
+3598,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",FALSE,"trapezoid",3580
+3599,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3581
+3600,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",TRUE,"grid",3582
+3601,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",TRUE,"rowwise",3583
+3602,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3584
+3603,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",TRUE,"trapezoid",3585
+3604,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",3586
+3605,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",FALSE,"grid",3587
+3606,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",FALSE,"rowwise",3588
+3607,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3589
+3608,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",FALSE,"trapezoid",3590
+3609,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3591
+3610,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",TRUE,"grid",3592
+3611,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",TRUE,"rowwise",3593
+3612,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3594
+3775,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",FALSE,"grid",3757
+3776,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",FALSE,"rowwise",3758
+3777,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3759
+3778,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",FALSE,"trapezoid",3760
+3779,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3761
+3780,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",TRUE,"grid",3762
+3781,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",TRUE,"rowwise",3763
+3782,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3764
+3783,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",TRUE,"trapezoid",3765
+3784,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",3766
+3785,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",FALSE,"grid",3767
+3786,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",FALSE,"rowwise",3768
+3787,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3769
+3788,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",FALSE,"trapezoid",3770
+3789,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3771
+3790,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",TRUE,"grid",3772
+3791,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",TRUE,"rowwise",3773
+3792,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3774
+3955,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",FALSE,"grid",3937
+3956,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",FALSE,"rowwise",3938
+3957,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3939
+3958,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",FALSE,"trapezoid",3940
+3959,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3941
+3960,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",TRUE,"grid",3942
+3961,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",TRUE,"rowwise",3943
+3962,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3944
+3963,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",TRUE,"trapezoid",3945
+3964,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",3946
+3965,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",FALSE,"grid",3947
+3966,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",FALSE,"rowwise",3948
+3967,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",FALSE,"rowwise-freeze",3949
+3968,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",FALSE,"trapezoid",3950
+3969,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",3951
+3970,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",TRUE,"grid",3952
+3971,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",TRUE,"rowwise",3953
+3972,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"double sin",TRUE,"rowwise-freeze",3954
+4135,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",FALSE,"grid",4117
+4136,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",FALSE,"rowwise",4118
+4137,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4119
+4138,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",FALSE,"trapezoid",4120
+4139,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4121
+4140,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",TRUE,"grid",4122
+4141,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",TRUE,"rowwise",4123
+4142,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4124
+4143,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",TRUE,"trapezoid",4125
+4144,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",4126
+4145,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",FALSE,"grid",4127
+4146,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",FALSE,"rowwise",4128
+4147,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4129
+4148,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",FALSE,"trapezoid",4130
+4149,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4131
+4150,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",TRUE,"grid",4132
+4151,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",TRUE,"rowwise",4133
+4152,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4134
+4315,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",FALSE,"grid",4297
+4316,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",FALSE,"rowwise",4298
+4317,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4299
+4318,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",FALSE,"trapezoid",4300
+4319,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4301
+4320,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",TRUE,"grid",4302
+4321,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",TRUE,"rowwise",4303
+4322,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4304
+4323,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",TRUE,"trapezoid",4305
+4324,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",4306
+4325,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",FALSE,"grid",4307
+4326,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",FALSE,"rowwise",4308
+4327,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4309
+4328,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",FALSE,"trapezoid",4310
+4329,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4311
+4330,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",TRUE,"grid",4312
+4331,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",TRUE,"rowwise",4313
+4332,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4314
+4495,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",FALSE,"grid",4477
+4496,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",FALSE,"rowwise",4478
+4497,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4479
+4498,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",FALSE,"trapezoid",4480
+4499,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4481
+4500,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",TRUE,"grid",4482
+4501,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",TRUE,"rowwise",4483
+4502,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4484
+4503,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",TRUE,"trapezoid",4485
+4504,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",4486
+4505,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",FALSE,"grid",4487
+4506,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",FALSE,"rowwise",4488
+4507,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4489
+4508,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",FALSE,"trapezoid",4490
+4509,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4491
+4510,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",TRUE,"grid",4492
+4511,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",TRUE,"rowwise",4493
+4512,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4494
+4675,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",FALSE,"grid",4657
+4676,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",FALSE,"rowwise",4658
+4677,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4659
+4678,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",FALSE,"trapezoid",4660
+4679,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4661
+4680,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",TRUE,"grid",4662
+4681,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",TRUE,"rowwise",4663
+4682,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4664
+4683,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",TRUE,"trapezoid",4665
+4684,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",4666
+4685,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",FALSE,"grid",4667
+4686,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",FALSE,"rowwise",4668
+4687,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4669
+4688,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",FALSE,"trapezoid",4670
+4689,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4671
+4690,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",TRUE,"grid",4672
+4691,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",TRUE,"rowwise",4673
+4692,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4674
+4855,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",FALSE,"grid",4837
+4856,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",FALSE,"rowwise",4838
+4857,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4839
+4858,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",FALSE,"trapezoid",4840
+4859,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4841
+4860,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",TRUE,"grid",4842
+4861,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",TRUE,"rowwise",4843
+4862,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4844
+4863,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",TRUE,"trapezoid",4845
+4864,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"double sin",TRUE,"trapezoid-freeze",4846
+4865,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",FALSE,"grid",4847
+4866,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",FALSE,"rowwise",4848
+4867,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",FALSE,"rowwise-freeze",4849
+4868,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",FALSE,"trapezoid",4850
+4869,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",FALSE,"trapezoid-freeze",4851
+4870,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",TRUE,"grid",4852
+4871,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",TRUE,"rowwise",4853
+4872,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"double sin",TRUE,"rowwise-freeze",4854
+5035,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",FALSE,"grid",5017
+5036,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",FALSE,"rowwise",5018
+5037,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5019
+5038,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",FALSE,"trapezoid",5020
+5039,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5021
+5040,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",TRUE,"grid",5022
+5041,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",TRUE,"rowwise",5023
+5042,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5024
+5043,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",TRUE,"trapezoid",5025
+5044,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",5026
+5045,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",FALSE,"grid",5027
+5046,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",FALSE,"rowwise",5028
+5047,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5029
+5048,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",FALSE,"trapezoid",5030
+5049,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5031
+5050,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",TRUE,"grid",5032
+5051,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",TRUE,"rowwise",5033
+5052,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5034
+5215,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",FALSE,"grid",5197
+5216,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",FALSE,"rowwise",5198
+5217,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5199
+5218,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",FALSE,"trapezoid",5200
+5219,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5201
+5220,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",TRUE,"grid",5202
+5221,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",TRUE,"rowwise",5203
+5222,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5204
+5223,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",TRUE,"trapezoid",5205
+5224,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",5206
+5225,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",FALSE,"grid",5207
+5226,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",FALSE,"rowwise",5208
+5227,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5209
+5228,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",FALSE,"trapezoid",5210
+5229,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5211
+5230,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",TRUE,"grid",5212
+5231,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",TRUE,"rowwise",5213
+5232,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5214
+5395,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",FALSE,"grid",5377
+5396,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",FALSE,"rowwise",5378
+5397,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5379
+5398,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",FALSE,"trapezoid",5380
+5399,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5381
+5400,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",TRUE,"grid",5382
+5401,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",TRUE,"rowwise",5383
+5402,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5384
+5403,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",TRUE,"trapezoid",5385
+5404,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",5386
+5405,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",FALSE,"grid",5387
+5406,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",FALSE,"rowwise",5388
+5407,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5389
+5408,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",FALSE,"trapezoid",5390
+5409,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5391
+5410,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",TRUE,"grid",5392
+5411,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",TRUE,"rowwise",5393
+5412,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5394
+5575,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",FALSE,"grid",5557
+5576,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",FALSE,"rowwise",5558
+5577,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5559
+5578,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",FALSE,"trapezoid",5560
+5579,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5561
+5580,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",TRUE,"grid",5562
+5581,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",TRUE,"rowwise",5563
+5582,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5564
+5583,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",TRUE,"trapezoid",5565
+5584,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",5566
+5585,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",FALSE,"grid",5567
+5586,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",FALSE,"rowwise",5568
+5587,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5569
+5588,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",FALSE,"trapezoid",5570
+5589,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5571
+5590,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",TRUE,"grid",5572
+5591,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",TRUE,"rowwise",5573
+5592,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5574
+5755,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",FALSE,"grid",5737
+5756,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",FALSE,"rowwise",5738
+5757,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5739
+5758,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",FALSE,"trapezoid",5740
+5759,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5741
+5760,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",TRUE,"grid",5742
+5761,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",TRUE,"rowwise",5743
+5762,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5744
+5763,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",TRUE,"trapezoid",5745
+5764,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",5746
+5765,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",FALSE,"grid",5747
+5766,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",FALSE,"rowwise",5748
+5767,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5749
+5768,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",FALSE,"trapezoid",5750
+5769,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5751
+5770,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",TRUE,"grid",5752
+5771,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",TRUE,"rowwise",5753
+5772,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5754
+5935,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",FALSE,"grid",5917
+5936,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",FALSE,"rowwise",5918
+5937,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5919
+5938,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",FALSE,"trapezoid",5920
+5939,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5921
+5940,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",TRUE,"grid",5922
+5941,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",TRUE,"rowwise",5923
+5942,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5924
+5943,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",TRUE,"trapezoid",5925
+5944,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",5926
+5945,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",FALSE,"grid",5927
+5946,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",FALSE,"rowwise",5928
+5947,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",FALSE,"rowwise-freeze",5929
+5948,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",FALSE,"trapezoid",5930
+5949,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",5931
+5950,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",TRUE,"grid",5932
+5951,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",TRUE,"rowwise",5933
+5952,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"parabola",TRUE,"rowwise-freeze",5934
+6115,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",FALSE,"grid",6097
+6116,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",FALSE,"rowwise",6098
+6117,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",FALSE,"rowwise-freeze",6099
+6118,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",FALSE,"trapezoid",6100
+6119,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",6101
+6120,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",TRUE,"grid",6102
+6121,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",TRUE,"rowwise",6103
+6122,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",TRUE,"rowwise-freeze",6104
+6123,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",TRUE,"trapezoid",6105
+6124,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",6106
+6125,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",FALSE,"grid",6107
+6126,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",FALSE,"rowwise",6108
+6127,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",FALSE,"rowwise-freeze",6109
+6128,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",FALSE,"trapezoid",6110
+6129,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",6111
+6130,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",TRUE,"grid",6112
+6131,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",TRUE,"rowwise",6113
+6132,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"parabola",TRUE,"rowwise-freeze",6114
+6295,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",FALSE,"grid",6277
+6296,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",FALSE,"rowwise",6278
+6297,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",FALSE,"rowwise-freeze",6279
+6298,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",FALSE,"trapezoid",6280
+6299,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",6281
+6300,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",TRUE,"grid",6282
+6301,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",TRUE,"rowwise",6283
+6302,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",TRUE,"rowwise-freeze",6284
+6303,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",TRUE,"trapezoid",6285
+6304,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",6286
+6305,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",FALSE,"grid",6287
+6306,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",FALSE,"rowwise",6288
+6307,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",FALSE,"rowwise-freeze",6289
+6308,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",FALSE,"trapezoid",6290
+6309,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",6291
+6310,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",TRUE,"grid",6292
+6311,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",TRUE,"rowwise",6293
+6312,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"parabola",TRUE,"rowwise-freeze",6294
+6475,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",FALSE,"grid",6457
+6476,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",FALSE,"rowwise",6458
+6477,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",FALSE,"rowwise-freeze",6459
+6478,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",FALSE,"trapezoid",6460
+6479,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",6461
+6480,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",TRUE,"grid",6462
+6481,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",TRUE,"rowwise",6463
+6482,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",TRUE,"rowwise-freeze",6464
+6483,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",TRUE,"trapezoid",6465
+6484,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"parabola",TRUE,"trapezoid-freeze",6466
+6485,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",FALSE,"grid",6467
+6486,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",FALSE,"rowwise",6468
+6487,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",FALSE,"rowwise-freeze",6469
+6488,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",FALSE,"trapezoid",6470
+6489,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",FALSE,"trapezoid-freeze",6471
+6490,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",TRUE,"grid",6472
+6491,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",TRUE,"rowwise",6473
+6492,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"parabola",TRUE,"rowwise-freeze",6474
+6655,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"grid",6637
+6656,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise",6638
+6657,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",6639
+6658,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid",6640
+6659,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",6641
+6660,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"grid",6642
+6661,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise",6643
+6662,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",6644
+6663,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"trapezoid",6645
+6664,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",6646
+6665,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"grid",6647
+6666,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise",6648
+6667,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",6649
+6668,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid",6650
+6669,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",6651
+6670,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"grid",6652
+6671,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise",6653
+6672,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",6654
+6835,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"grid",6817
+6836,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise",6818
+6837,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",6819
+6838,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid",6820
+6839,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",6821
+6840,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"grid",6822
+6841,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise",6823
+6842,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",6824
+6843,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"trapezoid",6825
+6844,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",6826
+6845,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"grid",6827
+6846,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise",6828
+6847,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",6829
+6848,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid",6830
+6849,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",6831
+6850,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"grid",6832
+6851,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise",6833
+6852,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",6834
+7015,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"grid",6997
+7016,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise",6998
+7017,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",6999
+7018,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid",7000
+7019,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7001
+7020,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"grid",7002
+7021,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise",7003
+7022,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7004
+7023,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"trapezoid",7005
+7024,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",7006
+7025,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"grid",7007
+7026,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise",7008
+7027,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7009
+7028,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid",7010
+7029,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7011
+7030,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"grid",7012
+7031,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise",7013
+7032,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7014
+7195,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"grid",7177
+7196,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise",7178
+7197,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7179
+7198,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid",7180
+7199,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7181
+7200,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"grid",7182
+7201,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise",7183
+7202,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7184
+7203,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"trapezoid",7185
+7204,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",7186
+7205,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"grid",7187
+7206,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise",7188
+7207,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7189
+7208,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid",7190
+7209,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7191
+7210,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"grid",7192
+7211,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise",7193
+7212,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7194
+7375,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"grid",7357
+7376,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise",7358
+7377,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7359
+7378,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid",7360
+7379,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7361
+7380,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"grid",7362
+7381,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise",7363
+7382,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7364
+7383,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"trapezoid",7365
+7384,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",7366
+7385,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"grid",7367
+7386,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise",7368
+7387,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7369
+7388,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid",7370
+7389,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7371
+7390,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"grid",7372
+7391,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise",7373
+7392,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7374
+7555,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"grid",7537
+7556,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise",7538
+7557,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7539
+7558,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid",7540
+7559,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7541
+7560,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"grid",7542
+7561,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise",7543
+7562,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7544
+7563,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"trapezoid",7545
+7564,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",7546
+7565,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"grid",7547
+7566,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise",7548
+7567,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7549
+7568,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid",7550
+7569,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7551
+7570,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"grid",7552
+7571,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise",7553
+7572,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7554
+7735,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"grid",7717
+7736,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise",7718
+7737,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7719
+7738,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid",7720
+7739,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7721
+7740,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"grid",7722
+7741,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise",7723
+7742,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7724
+7743,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"trapezoid",7725
+7744,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",7726
+7745,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"grid",7727
+7746,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise",7728
+7747,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7729
+7748,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid",7730
+7749,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7731
+7750,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"grid",7732
+7751,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise",7733
+7752,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7734
+7915,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"grid",7897
+7916,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise",7898
+7917,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7899
+7918,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid",7900
+7919,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7901
+7920,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"grid",7902
+7921,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise",7903
+7922,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7904
+7923,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"trapezoid",7905
+7924,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",7906
+7925,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"grid",7907
+7926,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise",7908
+7927,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",7909
+7928,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid",7910
+7929,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",7911
+7930,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"grid",7912
+7931,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise",7913
+7932,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",7914
+8095,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"grid",8077
+8096,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise",8078
+8097,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",8079
+8098,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid",8080
+8099,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",8081
+8100,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"grid",8082
+8101,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise",8083
+8102,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",8084
+8103,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"trapezoid",8085
+8104,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"trapezoid-freeze",8086
+8105,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"grid",8087
+8106,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise",8088
+8107,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"rowwise-freeze",8089
+8108,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid",8090
+8109,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",FALSE,"trapezoid-freeze",8091
+8110,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"grid",8092
+8111,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise",8093
+8112,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"shifted sin",TRUE,"rowwise-freeze",8094
+8275,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"sin",FALSE,"grid",8257
+8276,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"sin",FALSE,"rowwise",8258
+8277,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"sin",FALSE,"rowwise-freeze",8259
+8278,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"sin",FALSE,"trapezoid",8260
+8279,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8261
+8280,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"sin",TRUE,"grid",8262
+8281,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"sin",TRUE,"rowwise",8263
+8282,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.45,0.02,0.1,"sin",TRUE,"rowwise-freeze",8264
+8283,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"sin",TRUE,"trapezoid",8265
+8284,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.45,0.02,0.1,"sin",TRUE,"trapezoid-freeze",8266
+8285,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"sin",FALSE,"grid",8267
+8286,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"sin",FALSE,"rowwise",8268
+8287,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"sin",FALSE,"rowwise-freeze",8269
+8288,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"sin",FALSE,"trapezoid",8270
+8289,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.45,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8271
+8290,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"sin",TRUE,"grid",8272
+8291,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"sin",TRUE,"rowwise",8273
+8292,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.45,0.02,0.1,"sin",TRUE,"rowwise-freeze",8274
+8455,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"sin",FALSE,"grid",8437
+8456,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"sin",FALSE,"rowwise",8438
+8457,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"sin",FALSE,"rowwise-freeze",8439
+8458,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"sin",FALSE,"trapezoid",8440
+8459,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8441
+8460,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"sin",TRUE,"grid",8442
+8461,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"sin",TRUE,"rowwise",8443
+8462,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.65,0.02,0.1,"sin",TRUE,"rowwise-freeze",8444
+8463,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"sin",TRUE,"trapezoid",8445
+8464,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.65,0.02,0.1,"sin",TRUE,"trapezoid-freeze",8446
+8465,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"sin",FALSE,"grid",8447
+8466,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"sin",FALSE,"rowwise",8448
+8467,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"sin",FALSE,"rowwise-freeze",8449
+8468,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"sin",FALSE,"trapezoid",8450
+8469,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.65,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8451
+8470,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"sin",TRUE,"grid",8452
+8471,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"sin",TRUE,"rowwise",8453
+8472,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.65,0.02,0.1,"sin",TRUE,"rowwise-freeze",8454
+8635,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"sin",FALSE,"grid",8617
+8636,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"sin",FALSE,"rowwise",8618
+8637,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"sin",FALSE,"rowwise-freeze",8619
+8638,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"sin",FALSE,"trapezoid",8620
+8639,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8621
+8640,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"sin",TRUE,"grid",8622
+8641,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"sin",TRUE,"rowwise",8623
+8642,"My200-4-2-0.csv",20,4,2,3,10,8,0.45,0.85,0.02,0.1,"sin",TRUE,"rowwise-freeze",8624
+8643,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"sin",TRUE,"trapezoid",8625
+8644,"My200-4-2-0.csv",20,12,2,3,10,8,0.45,0.85,0.02,0.1,"sin",TRUE,"trapezoid-freeze",8626
+8645,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"sin",FALSE,"grid",8627
+8646,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"sin",FALSE,"rowwise",8628
+8647,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"sin",FALSE,"rowwise-freeze",8629
+8648,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"sin",FALSE,"trapezoid",8630
+8649,"My200-4-2-0.csv",20,12,2,3,10,15,0.45,0.85,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8631
+8650,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"sin",TRUE,"grid",8632
+8651,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"sin",TRUE,"rowwise",8633
+8652,"My200-4-2-0.csv",20,4,2,3,10,15,0.45,0.85,0.02,0.1,"sin",TRUE,"rowwise-freeze",8634
+8815,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"sin",FALSE,"grid",8797
+8816,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"sin",FALSE,"rowwise",8798
+8817,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"sin",FALSE,"rowwise-freeze",8799
+8818,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"sin",FALSE,"trapezoid",8800
+8819,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8801
+8820,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"sin",TRUE,"grid",8802
+8821,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"sin",TRUE,"rowwise",8803
+8822,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.45,0.02,0.1,"sin",TRUE,"rowwise-freeze",8804
+8823,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"sin",TRUE,"trapezoid",8805
+8824,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.45,0.02,0.1,"sin",TRUE,"trapezoid-freeze",8806
+8825,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"sin",FALSE,"grid",8807
+8826,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"sin",FALSE,"rowwise",8808
+8827,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"sin",FALSE,"rowwise-freeze",8809
+8828,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"sin",FALSE,"trapezoid",8810
+8829,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.45,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8811
+8830,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"sin",TRUE,"grid",8812
+8831,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"sin",TRUE,"rowwise",8813
+8832,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.45,0.02,0.1,"sin",TRUE,"rowwise-freeze",8814
+8995,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"sin",FALSE,"grid",8977
+8996,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"sin",FALSE,"rowwise",8978
+8997,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"sin",FALSE,"rowwise-freeze",8979
+8998,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"sin",FALSE,"trapezoid",8980
+8999,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8981
+9000,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"sin",TRUE,"grid",8982
+9001,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"sin",TRUE,"rowwise",8983
+9002,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.65,0.02,0.1,"sin",TRUE,"rowwise-freeze",8984
+9003,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"sin",TRUE,"trapezoid",8985
+9004,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.65,0.02,0.1,"sin",TRUE,"trapezoid-freeze",8986
+9005,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"sin",FALSE,"grid",8987
+9006,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"sin",FALSE,"rowwise",8988
+9007,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"sin",FALSE,"rowwise-freeze",8989
+9008,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"sin",FALSE,"trapezoid",8990
+9009,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.65,0.02,0.1,"sin",FALSE,"trapezoid-freeze",8991
+9010,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"sin",TRUE,"grid",8992
+9011,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"sin",TRUE,"rowwise",8993
+9012,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.65,0.02,0.1,"sin",TRUE,"rowwise-freeze",8994
+9175,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"sin",FALSE,"grid",9157
+9176,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"sin",FALSE,"rowwise",9158
+9177,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"sin",FALSE,"rowwise-freeze",9159
+9178,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"sin",FALSE,"trapezoid",9160
+9179,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9161
+9180,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"sin",TRUE,"grid",9162
+9181,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"sin",TRUE,"rowwise",9163
+9182,"My200-4-2-0.csv",20,4,2,3,10,8,0.65,0.85,0.02,0.1,"sin",TRUE,"rowwise-freeze",9164
+9183,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"sin",TRUE,"trapezoid",9165
+9184,"My200-4-2-0.csv",20,12,2,3,10,8,0.65,0.85,0.02,0.1,"sin",TRUE,"trapezoid-freeze",9166
+9185,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"sin",FALSE,"grid",9167
+9186,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"sin",FALSE,"rowwise",9168
+9187,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"sin",FALSE,"rowwise-freeze",9169
+9188,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"sin",FALSE,"trapezoid",9170
+9189,"My200-4-2-0.csv",20,12,2,3,10,15,0.65,0.85,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9171
+9190,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"sin",TRUE,"grid",9172
+9191,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"sin",TRUE,"rowwise",9173
+9192,"My200-4-2-0.csv",20,4,2,3,10,15,0.65,0.85,0.02,0.1,"sin",TRUE,"rowwise-freeze",9174
+9355,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"sin",FALSE,"grid",9337
+9356,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"sin",FALSE,"rowwise",9338
+9357,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"sin",FALSE,"rowwise-freeze",9339
+9358,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"sin",FALSE,"trapezoid",9340
+9359,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9341
+9360,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"sin",TRUE,"grid",9342
+9361,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"sin",TRUE,"rowwise",9343
+9362,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.45,0.02,0.1,"sin",TRUE,"rowwise-freeze",9344
+9363,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"sin",TRUE,"trapezoid",9345
+9364,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.45,0.02,0.1,"sin",TRUE,"trapezoid-freeze",9346
+9365,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"sin",FALSE,"grid",9347
+9366,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"sin",FALSE,"rowwise",9348
+9367,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"sin",FALSE,"rowwise-freeze",9349
+9368,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"sin",FALSE,"trapezoid",9350
+9369,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.45,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9351
+9370,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"sin",TRUE,"grid",9352
+9371,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"sin",TRUE,"rowwise",9353
+9372,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.45,0.02,0.1,"sin",TRUE,"rowwise-freeze",9354
+9535,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"sin",FALSE,"grid",9517
+9536,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"sin",FALSE,"rowwise",9518
+9537,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"sin",FALSE,"rowwise-freeze",9519
+9538,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"sin",FALSE,"trapezoid",9520
+9539,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9521
+9540,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"sin",TRUE,"grid",9522
+9541,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"sin",TRUE,"rowwise",9523
+9542,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.65,0.02,0.1,"sin",TRUE,"rowwise-freeze",9524
+9543,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"sin",TRUE,"trapezoid",9525
+9544,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.65,0.02,0.1,"sin",TRUE,"trapezoid-freeze",9526
+9545,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"sin",FALSE,"grid",9527
+9546,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"sin",FALSE,"rowwise",9528
+9547,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"sin",FALSE,"rowwise-freeze",9529
+9548,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"sin",FALSE,"trapezoid",9530
+9549,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.65,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9531
+9550,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"sin",TRUE,"grid",9532
+9551,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"sin",TRUE,"rowwise",9533
+9552,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.65,0.02,0.1,"sin",TRUE,"rowwise-freeze",9534
+9715,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"sin",FALSE,"grid",9697
+9716,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"sin",FALSE,"rowwise",9698
+9717,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"sin",FALSE,"rowwise-freeze",9699
+9718,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"sin",FALSE,"trapezoid",9700
+9719,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9701
+9720,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"sin",TRUE,"grid",9702
+9721,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"sin",TRUE,"rowwise",9703
+9722,"My200-4-2-0.csv",20,4,2,3,10,8,0.85,0.85,0.02,0.1,"sin",TRUE,"rowwise-freeze",9704
+9723,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"sin",TRUE,"trapezoid",9705
+9724,"My200-4-2-0.csv",20,12,2,3,10,8,0.85,0.85,0.02,0.1,"sin",TRUE,"trapezoid-freeze",9706
+9725,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"sin",FALSE,"grid",9707
+9726,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"sin",FALSE,"rowwise",9708
+9727,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"sin",FALSE,"rowwise-freeze",9709
+9728,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"sin",FALSE,"trapezoid",9710
+9729,"My200-4-2-0.csv",20,12,2,3,10,15,0.85,0.85,0.02,0.1,"sin",FALSE,"trapezoid-freeze",9711
+9730,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"sin",TRUE,"grid",9712
+9731,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"sin",TRUE,"rowwise",9713
+9732,"My200-4-2-0.csv",20,4,2,3,10,15,0.85,0.85,0.02,0.1,"sin",TRUE,"rowwise-freeze",9714
